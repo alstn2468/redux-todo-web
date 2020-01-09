@@ -13,7 +13,9 @@ function TodoInput({ dispatch }) {
         } else {
             dispatch(
                 actionCreators.createTodoItem({
-                    item: { id: uuid(), text, isCompleted: false }
+                    id: uuid(),
+                    text,
+                    isCompleted: false
                 })
             );
         }

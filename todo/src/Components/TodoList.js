@@ -7,7 +7,7 @@ function TodoList({ todos }) {
     return (
         <div>
             {todos.length > 0 ? (
-                todos.map(todo => <Todo key={todo.item.id} item={todo.item} />)
+                todos.map(todo => <Todo key={todo.id} item={todo} />)
             ) : (
                 <div>Empty Todo list</div>
             )}

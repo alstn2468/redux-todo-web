@@ -23,9 +23,7 @@ function reducer(state = initialState, action) {
             };
 
         case DELETE_TODO_ITEM:
-            newTodos = state.todos.filter(
-                todo => todo.item.id !== action.item.id
-            );
+            newTodos = state.todos.filter(todo => todo.id !== action.item.id);
 
             if (action.item.isCompleted) {
                 return {
@@ -43,13 +41,11 @@ function reducer(state = initialState, action) {
 
         case CHANGE_TODO_ITEM_COMPLETED:
             newTodos = state.todos.map(todo => {
-                if (todo.item.id === action.item.id) {
+                if (todo.id === action.item.id) {
                     return {
-                        item: {
-                            id: action.item.id,
-                            text: action.item.text,
-                            isCompleted: !action.item.isCompleted
-                        }
+                        id: todo.id,
+                        text: todo.text,
+                        isCompleted: !todo.isCompleted
                     };
                 }
                 return todo;
@@ -73,8 +69,8 @@ function reducer(state = initialState, action) {
 
         case UPDATE_TODO_ITEM:
             newTodos = state.todos.map(todo => {
-                if (todo.item.id === action.item.id) {
-                    return { item: action.item };
+                if (todo.id === action.item.id) {
+                    return action.item;
                 }
                 return todo;
             });

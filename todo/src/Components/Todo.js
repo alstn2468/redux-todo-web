@@ -21,6 +21,8 @@ function Todo({ item, dispatch }) {
         setFlag(!flag);
     }
 
+    console.log(item.isCompleted);
+
     return (
         <div>
             {item.isCompleted.toString()} / {item.id} /{" "}
