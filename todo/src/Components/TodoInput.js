@@ -18,6 +18,7 @@ function TodoInput({ dispatch }) {
                     isCompleted: false
                 })
             );
+            setText("");
         }
     }
 
