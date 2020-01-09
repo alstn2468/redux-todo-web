@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import uuid from "uuid";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import actionCreators from "redux/action";
 
@@ -7,11 +8,15 @@ function TodoInput({ dispatch }) {
     const [text, setText] = useState("");
 
     function handleOnClick(event) {
-        dispatch(
-            actionCreators.createTodoItem({
-                item: { id: uuid(), text, isCompleted: false }
-            })
-        );
+        if (text === "") {
+            alert("메세지를 입력하세요");
+        } else {
+            dispatch(
+                actionCreators.createTodoItem({
+                    item: { id: uuid(), text, isCompleted: false }
+                })
+            );
+        }
     }
 
     return (
@@ -25,5 +30,9 @@ function TodoInput({ dispatch }) {
         </div>
     );
 }
+
+TodoInput.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(TodoInput);
