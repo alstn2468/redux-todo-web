@@ -47,7 +47,7 @@ function reducer(state = initialState, action) {
                     return {
                         item: {
                             id: action.item.id,
-                            text: action.itemtext,
+                            text: action.item.text,
                             isCompleted: !action.item.isCompleted
                         }
                     };

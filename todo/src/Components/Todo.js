@@ -32,8 +32,8 @@ function Todo({ item, dispatch }) {
             ) : (
                 item.text
             )}
-            <CompleteChangeButton dispatch={dispatch} item={item} />
-            <DeleteButton dispatch={dispatch} item={item} />
+            <CompleteChangeButton dispatch={dispatch} item={item} flag={flag} />
+            <DeleteButton dispatch={dispatch} item={item} flag={flag} />
             <button onClick={() => onClickUpdateButton()}>UPDATE</button>
         </div>
     );
