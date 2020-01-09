@@ -3,7 +3,7 @@ import {
     CHANGE_TODO_ITEM_COMPLETED,
     DELETE_TODO_ITEM,
     UPDATE_TODO_ITEM
-} from "./action";
+} from "redux/action";
 
 const initialState = {
     todos: []
