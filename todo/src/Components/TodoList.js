@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Todo from "Components/Todo";
 
 function TodoList({ todos }) {
-    console.log(todos);
     return (
         <div>
             {todos.length > 0 ? (
@@ -19,11 +18,15 @@ function TodoList({ todos }) {
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            isCompleted: PropTypes.bool.isRequired
-        }).isRequired
-    ).isRequired
+            item: PropTypes.objectOf(
+                PropTypes.shape({
+                    id: PropTypes.string,
+                    text: PropTypes.string,
+                    isCompleted: PropTypes.bool
+                })
+            )
+        })
+    )
 };
 
 export default connect()(TodoList);
