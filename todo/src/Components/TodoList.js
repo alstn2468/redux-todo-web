@@ -18,13 +18,11 @@ function TodoList({ todos }) {
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            item: PropTypes.objectOf(
-                PropTypes.shape({
-                    id: PropTypes.string,
-                    text: PropTypes.string,
-                    isCompleted: PropTypes.bool
-                })
-            )
+            item: PropTypes.shape({
+                id: PropTypes.string,
+                text: PropTypes.string,
+                isCompleted: PropTypes.bool
+            })
         })
     )
 };
