@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoInput from "Components/TodoInput";
 import TodoList from "Components/TodoList";
 import GlobalStyles from "Components/GlobalStyles";
@@ -11,13 +11,20 @@ const mapStateToProps = state => {
 
 function App(state) {
     const { todos } = state;
-    console.log(state);
+    const [theme, setTheme] = useState(true);
+
+    function onClickSetThemeButton() {
+        setTheme(!theme);
+    }
 
     return (
         <>
             <TodoInput />
             <TodoList todos={todos} key="TodoList" />
-            <GlobalStyles />
+            <button onClick={() => onClickSetThemeButton()}>
+                CHANGE THEME
+            </button>
+            <GlobalStyles theme={theme} />
         </>
     );
 }
