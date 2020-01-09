@@ -6,50 +6,84 @@ import {
 } from "redux/action";
 
 const initialState = {
-    todos: []
+    todos: [],
+    completed: 0,
+    uncompleted: 0
 };
 
 function reducer(state = initialState, action) {
+    let newTodos;
+
     switch (action.type) {
         case CREATE_TODO_ITEM:
             return {
                 ...state,
-                todos: [...state.todos, action.item]
+                todos: [...state.todos, action.item],
+                uncompleted: state.uncompleted + 1
             };
+
         case DELETE_TODO_ITEM:
-            return {
-                ...state,
-                todos: state.todos.filter(
-                    todo => todo.item.id !== action.item.id
-                )
-            };
-        case CHANGE_TODO_ITEM_COMPLETED:
-            const { id, text, isCompleted } = action.item;
+            newTodos = state.todos.filter(
+                todo => todo.item.id !== action.item.id
+            );
+
+            if (action.item.isCompleted) {
+                return {
+                    ...state,
+                    todos: newTodos,
+                    completed: state.completed - 1
+                };
+            }
 
             return {
-                todos: state.todos.map(todo => {
-                    if (todo.item.id === id) {
-                        return {
-                            item: {
-                                id: id,
-                                text: text,
-                                isCompleted: !isCompleted
-                            }
-                        };
-                    }
-                    return todo;
-                })
+                ...state,
+                todos: newTodos,
+                uncompleted: state.uncompleted - 1
             };
-        case UPDATE_TODO_ITEM:
+
+        case CHANGE_TODO_ITEM_COMPLETED:
+            newTodos = state.todos.map(todo => {
+                if (todo.item.id === action.item.id) {
+                    return {
+                        item: {
+                            id: action.item.id,
+                            text: action.itemtext,
+                            isCompleted: !action.item.isCompleted
+                        }
+                    };
+                }
+                return todo;
+            });
+
+            if (action.item.isCompleted) {
+                return {
+                    ...state,
+                    todos: newTodos,
+                    completed: state.completed - 1,
+                    uncompleted: state.uncompleted + 1
+                };
+            }
+
             return {
                 ...state,
-                todos: state.todos.map(todo => {
-                    if (todo.id === action.item.id) {
-                        return action.item;
-                    }
-                    return todo;
-                })
+                todos: newTodos,
+                completed: state.completed + 1,
+                uncompleted: state.uncompleted - 1
             };
+
+        case UPDATE_TODO_ITEM:
+            newTodos = state.todos.map(todo => {
+                if (todo.item.id === action.item.id) {
+                    return { item: action.item };
+                }
+                return todo;
+            });
+
+            return {
+                ...state,
+                todos: newTodos
+            };
+
         default:
             return state;
     }

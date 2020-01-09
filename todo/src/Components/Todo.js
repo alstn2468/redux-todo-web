@@ -1,35 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import actionCreators from "redux/action";
 import { connect } from "react-redux";
+import DeleteButton from "./DeleteButton";
+import CompleteChangeButton from "./CompleteChangeButton";
+import actionCreators from "../redux/action";
 
 function Todo({ item, dispatch }) {
-    function onClickCompletedStatusButton() {
-        dispatch(actionCreators.changeTodoItemCompleted(item));
+    const [text, setText] = useState(item.text);
+    const [flag, setFlag] = useState(false);
+
+    function onClickUpdateButton() {
+        if (flag) {
+            dispatch(
+                actionCreators.updateTodoItem({
+                    ...item,
+                    text
+                })
+            );
+        }
+        setFlag(!flag);
     }
-
-    function onClickDeleteButton() {
-        dispatch(actionCreators.deleteTodoItem(item));
-    }
-
-    useEffect(() => {
-        console.log(`${item.id} 화면에 출력`);
-
-        return () => {
-            console.log(`${item.id} 화면에서 삭제`);
-        };
-    }, [item]);
-
-    console.log(item);
-    console.log(typeof item);
 
     return (
         <div>
-            {item.isCompleted.toString()} / {item.id} / {item.text}
-            <button onClick={() => onClickCompletedStatusButton()}>
-                {item.isCompleted ? "COMPLETED" : "UNCOMPLETED"}
-            </button>
-            <button onClick={() => onClickDeleteButton()}>DELETE</button>
+            {item.isCompleted.toString()} / {item.id} /{" "}
+            {flag ? (
+                <input
+                    onChange={event => setText(event.target.value)}
+                    value={text}
+                />
+            ) : (
+                item.text
+            )}
+            <CompleteChangeButton dispatch={dispatch} item={item} />
+            <DeleteButton dispatch={dispatch} item={item} />
+            <button onClick={() => onClickUpdateButton()}>UPDATE</button>
         </div>
     );
 }
