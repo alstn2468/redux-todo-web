@@ -8,6 +8,10 @@ function Todo({ item, dispatch }) {
         dispatch(actionCreators.changeTodoItemCompleted(item));
     }
 
+    function onClickDeleteButton() {
+        dispatch(actionCreators.deleteTodoItem(item));
+    }
+
     useEffect(() => {
         console.log(`${item.id} 화면에 출력`);
 
@@ -25,6 +29,7 @@ function Todo({ item, dispatch }) {
             <button onClick={() => onClickCompletedStatusButton()}>
                 {item.isCompleted ? "COMPLETED" : "UNCOMPLETED"}
             </button>
+            <button onClick={() => onClickDeleteButton()}>DELETE</button>
         </div>
     );
 }

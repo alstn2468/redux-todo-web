@@ -19,7 +19,9 @@ function reducer(state = initialState, action) {
         case DELETE_TODO_ITEM:
             return {
                 ...state,
-                todos: state.todos.filter(todo => todo.id !== action.item.id)
+                todos: state.todos.filter(
+                    todo => todo.item.id !== action.item.id
+                )
             };
         case CHANGE_TODO_ITEM_COMPLETED:
             const { id, text, isCompleted } = action.item;
