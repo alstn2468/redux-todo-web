@@ -9,13 +9,38 @@ const globalStyles = createGlobalStyle`
     }
     * {
         box-sizing: border-box;
+        font-size: 14px;
     }
     body {
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         color: ${props =>
-            props.theme ? "rgba(20, 20, 20, 1)" : "rgb(255, 255, 255, 1)"};
+            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
         background-color: ${props =>
-            props.theme ? "rgb(255, 255, 255, 1)" : "rgba(20, 20, 20, 1)"};
+            props.theme ? "rgba(255, 255, 255,0.87)" : "#121212"};
+
+        transition-property: background-color color;
+        transition-duration: 400ms;
+        transition-timing-function: ease;
+    }
+    input {
+        color: ${props =>
+            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
+        background-color: ${props =>
+            props.theme ? "rgba(255, 255, 255,0.87)" : "#121212"};
+        border: border: 1px solid ${props =>
+            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin: 5px;
+    }
+    button {
+        color: ${props =>
+            props.theme ? "#FF0266" : "rgba(255, 255, 255,0.87)"};
+        background-color: ${props =>
+            props.theme ? "rgba(255, 255, 255,0.87)" : "#FF0266"};
+        border: 1px solid ${props => (props.theme ? "#FF0266" : "#121212")};;
+        border-radius: 10px;
+        padding: 10px 25px;
+        margin: 5px;
     }
 `;
 
