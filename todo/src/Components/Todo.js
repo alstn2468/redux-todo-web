@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import actionCreators from "../redux/action";
+import actionCreators from "redux/action";
 import { connect } from "react-redux";
 
 function Todo({ item, dispatch }) {
-    function onClickCompletedStatusButton(event) {
+    function onClickCompletedStatusButton() {
         dispatch(actionCreators.changeTodoItemCompleted(item));
     }
 
@@ -22,7 +22,7 @@ function Todo({ item, dispatch }) {
     return (
         <div>
             {item.isCompleted.toString()} / {item.id} / {item.text}
-            <button onClick={event => onClickCompletedStatusButton(event)}>
+            <button onClick={() => onClickCompletedStatusButton()}>
                 {item.isCompleted ? "COMPLETED" : "UNCOMPLETED"}
             </button>
         </div>

@@ -7,7 +7,7 @@ import actionCreators from "redux/action";
 function TodoInput({ dispatch }) {
     const [text, setText] = useState("");
 
-    function handleOnClick(event) {
+    function onClickCreateButton() {
         if (text === "") {
             alert("메세지를 입력하세요");
         } else {
@@ -26,7 +26,7 @@ function TodoInput({ dispatch }) {
                 value={text}
                 onChange={event => setText(event.target.value)}
             />
-            <button onClick={event => handleOnClick(event)}>CREATE</button>
+            <button onClick={() => onClickCreateButton()}>CREATE</button>
         </div>
     );
 }
