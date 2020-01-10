@@ -18,46 +18,33 @@ const InputContainer = styled.div`
 
 const Input = styled.input`
     height: 50%;
-    width: 40%;
+    width: 60%;
     font-size: 22px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 65%;
-        height: 40%;
-        font-size: 16px;
-    }
-`;
-
-const Button = styled.button`
-    height: 50%;
-    width: 15%;
-    margin: 10px;
-    font-weight: 600;
-    font-size: 22px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        width: 25%;
+        width: 80%;
         height: 40%;
         font-size: 14px;
-        margin: 5px;
     }
 `;
 
 function TodoInput({ dispatch }) {
     const [text, setText] = useState("");
 
-    function onClickCreateButton() {
-        if (text === "") {
-            alert("메세지를 입력하세요");
-        } else {
-            dispatch(
-                actionCreators.createTodoItem({
-                    id: uuid(),
-                    text,
-                    isCompleted: false
-                })
-            );
-            setText("");
+    function onPressEnterKey(event) {
+        if (event.key === "Enter") {
+            if (text === "") {
+                alert("메세지를 입력하세요");
+            } else {
+                dispatch(
+                    actionCreators.createTodoItem({
+                        id: uuid(),
+                        text,
+                        isCompleted: false
+                    })
+                );
+                setText("");
+            }
         }
     }
 
@@ -65,10 +52,11 @@ function TodoInput({ dispatch }) {
         <InputContainer>
             <Input
                 type="text"
+                placeholder="Write some to do and press enter."
                 value={text}
                 onChange={event => setText(event.target.value)}
+                onKeyPress={event => onPressEnterKey(event)}
             />
-            <Button onClick={() => onClickCreateButton()}>CREATE</Button>
         </InputContainer>
     );
 }
