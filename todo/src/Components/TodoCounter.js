@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { ReactComponent as Success } from "assets/Icons/success.svg";
@@ -26,7 +26,20 @@ const TodoCounterItem = styled.div`
 
 const TodoCounterText = styled.div`
     font-size: 20px;
-    margin: 10px;
+    margin: 5px 10px 5px 5px;
+
+    animation-duration: 1s;
+    animation-name: counter;
+
+    @keyframes counter {
+        from {
+            font-size: 24px;
+        }
+
+        to {
+            font-size: 20px;
+        }
+    }
 `;
 
 function TodoCounter({ completed, uncompleted }) {
@@ -43,5 +56,10 @@ function TodoCounter({ completed, uncompleted }) {
         </TodoCounterContainer>
     );
 }
+
+TodoCounter.propTypes = {
+    completed: PropTypes.number.isRequired,
+    uncompleted: PropTypes.number.isRequired
+};
 
 export default TodoCounter;
