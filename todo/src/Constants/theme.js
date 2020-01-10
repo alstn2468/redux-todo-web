@@ -4,11 +4,11 @@ export const lightTheme = {
     toggleBorder: "#FFF",
     gradient: "linear-gradient(#39598A, #79D7ED)",
     buttonBody: "#FAFAFA",
-    buttonText: "#FF0266",
-    buttonBorder: "#FF0266",
+    buttonText: "#363537",
+    buttonBorder: "#363537",
     inputBody: "#FAFAFA",
-    inputText: "#FF0266",
-    inputBorder: "#FF0266"
+    inputText: "#363537",
+    inputBorder: "#363537"
 };
 
 export const darkTheme = {
@@ -16,10 +16,10 @@ export const darkTheme = {
     text: "#FAFAFA",
     toggleBorder: "#6B8096",
     gradient: "linear-gradient(#091236, #1E215D)",
-    buttonBody: "#FF0266",
+    buttonBody: "#363537",
     buttonText: "#FAFAFA",
-    buttonBorder: "#FF0266",
+    buttonBorder: "#FAFAFA",
     inputBody: "#363537",
     inputText: "#FAFAFA",
-    inputBorder: "#FF0266"
+    inputBorder: "#FAFAFA"
 };

@@ -6,26 +6,42 @@ import { connect } from "react-redux";
 import actionCreators from "redux/action";
 
 const InputContainer = styled.div`
-    margin-top: 50px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        height: 80px;
+    }
 `;
 
 const Input = styled.input`
     height: 50%;
     width: 40%;
     font-size: 22px;
+    border-radius: 10px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 60%;
+        height: 40%;
+        font-size: 16px;
+    }
 `;
 
 const Button = styled.button`
     height: 50%;
     width: 15%;
-    border-radius: 15px;
+    border-radius: 10px;
     margin: 10px;
     font-weight: 600;
     font-size: 22px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 20%;
+        height: 40%;
+        font-size: 14px;
+    }
 `;
 
 function TodoInput({ dispatch }) {

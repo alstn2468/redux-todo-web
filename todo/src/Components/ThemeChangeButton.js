@@ -6,7 +6,7 @@ import { ReactComponent as SunIcon } from "Icons/sun.svg";
 
 const ButtonContainer = styled.button`
     position: fixed;
-    top: 50px;
+    top: 20px;
     right: 50px;
     background: ${({ theme }) => theme.gradient};
     border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -15,12 +15,12 @@ const ButtonContainer = styled.button`
     margin: 0 auto;
     overflow: hidden;
     padding: 0.5rem;
-    width: 6rem;
-    height: 3rem;
+    width: 5rem;
+    height: 2.5rem;
 
     svg {
         height: auto;
-        width: 1.8rem;
+        width: 1.5rem;
         transition: all 0.3s linear;
 
         &:first-child {
@@ -35,15 +35,15 @@ const ButtonContainer = styled.button`
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 5rem;
-        height: 2.5rem;
+        width: 3rem;
+        height: 1.5rem;
         border-radius: 20px;
         padding: 0.2rem;
         top: 25px;
         right: 25px;
 
         svg {
-            width: 1.5rem;
+            width: 1rem;
         }
     }
 `;

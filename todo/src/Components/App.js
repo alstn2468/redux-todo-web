@@ -17,6 +17,19 @@ const TodoContainer = styled.div`
     width: 100%;
 `;
 
+const TodoTitleText = styled.div`
+    text-align: center;
+    padding-top: 30px;
+    font-size: 52px;
+    font-weight: bold;
+    font-family: "Abel", sans-serif;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        padding-top: 24px;
+        font-size: 36px;
+    }
+`;
+
 const mapStateToProps = state => {
     return state;
 };
@@ -32,6 +45,7 @@ function App(state) {
     return (
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
             <TodoContainer>
+                <TodoTitleText>To Do</TodoTitleText>
                 <TodoInput />
                 <TodoList todos={todos} key="TodoList" />
                 <ThemeChangeButton

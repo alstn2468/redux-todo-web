@@ -38,7 +38,7 @@ const globalStyles = createGlobalStyle`
     input {
       background-color: ${({ theme }) => theme.inputBody};
       color: ${({ theme }) => theme.inputText};
-      border: 2px solid ${({ theme }) => theme.inputBorder};
+      border: 1px solid ${({ theme }) => theme.inputBorder};
       text-align: center;
     }
 
