@@ -7,6 +7,7 @@ const Button = styled.button`
     justify-content: center;
     align-items: center;
     margin-right: 15px;
+    visibility: ${props => (props.flag ? "hidden" : "visible")};
 
     svg {
         height: auto;
@@ -22,7 +23,7 @@ const Button = styled.button`
 
 function TodoButton({ onClick, buttonIcon, flag, styles }) {
     return (
-        <Button onClick={onClick} disabled={flag} style={styles}>
+        <Button onClick={onClick} style={styles} flag={flag}>
             {buttonIcon}
         </Button>
     );
