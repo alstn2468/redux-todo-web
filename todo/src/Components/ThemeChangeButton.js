@@ -15,12 +15,12 @@ const ButtonContainer = styled.button`
     margin: 0 auto;
     overflow: hidden;
     padding: 0.5rem;
-    width: 8rem;
-    height: 4rem;
+    width: 6rem;
+    height: 3rem;
 
     svg {
         height: auto;
-        width: 2.5rem;
+        width: 1.8rem;
         transition: all 0.3s linear;
 
         &:first-child {
@@ -35,13 +35,15 @@ const ButtonContainer = styled.button`
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 6rem;
-        height: 3rem;
+        width: 5rem;
+        height: 2.5rem;
         border-radius: 20px;
         padding: 0.2rem;
+        top: 25px;
+        right: 25px;
 
         svg {
-            width: 2rem;
+            width: 1.5rem;
         }
     }
 `;
