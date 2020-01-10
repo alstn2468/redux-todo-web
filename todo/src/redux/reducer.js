@@ -7,26 +7,8 @@ import {
 
 const initialState = {
     todos: [
-        {
-            id: "dummy-data-for-test-id1",
-            text: "DUMMY_DATA_FOR_TEST",
-            isCompleted: false
-        },
-        {
-            id: "dummy-data-for-test-id2",
-            text: "dummy-data-for-test-text",
-            isCompleted: true
-        },
-        {
-            id: "dummy-data-for-test-id1",
-            text: "DUMMY_DATA_FOR_TEST",
-            isCompleted: false
-        },
-        {
-            id: "dummy-data-for-test-id2",
-            text: "dummy-data-for-test-text",
-            isCompleted: true
-        }
+        { id: "Test-Data-Id-1", text: "Test-Data-Text-1", isCompleted: false },
+        { id: "Test-Data-Id-2", text: "Test-Data-Text-2", isCompleted: true }
     ],
     completed: 0,
     uncompleted: 0
@@ -64,8 +46,7 @@ function reducer(state = initialState, action) {
             newTodos = state.todos.map(todo => {
                 if (todo.id === action.item.id) {
                     return {
-                        id: todo.id,
-                        text: todo.text,
+                        ...todo,
                         isCompleted: !todo.isCompleted
                     };
                 }
@@ -74,7 +55,6 @@ function reducer(state = initialState, action) {
 
             if (action.item.isCompleted) {
                 return {
-                    ...state,
                     todos: newTodos,
                     completed: state.completed - 1,
                     uncompleted: state.uncompleted + 1
@@ -82,7 +62,6 @@ function reducer(state = initialState, action) {
             }
 
             return {
-                ...state,
                 todos: newTodos,
                 completed: state.completed + 1,
                 uncompleted: state.uncompleted - 1
@@ -91,10 +70,29 @@ function reducer(state = initialState, action) {
         case UPDATE_TODO_ITEM:
             newTodos = state.todos.map(todo => {
                 if (todo.id === action.item.id) {
-                    return action.item;
+                    if (todo.isCompleted) {
+                        return {
+                            ...todo.item,
+                            isCompleted: !todo.isCompleted,
+                            text: action.item.text
+                        };
+                    }
+
+                    return {
+                        ...todo,
+                        text: action.item.text
+                    };
                 }
                 return todo;
             });
+
+            if (action.item.isCompleted) {
+                return {
+                    todos: newTodos,
+                    completed: state.completed - 1,
+                    uncompleted: state.uncompleted + 1
+                };
+            }
 
             return {
                 ...state,

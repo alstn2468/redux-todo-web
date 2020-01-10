@@ -8,14 +8,6 @@ const Button = styled.button`
     align-items: center;
     margin-right: 15px;
 
-    :first-child {
-        margin-right: 0;
-    }
-
-    :last-child {
-        margin-right: 0;
-    }
-
     svg {
         height: auto;
         width: 1.4rem;
@@ -28,7 +20,7 @@ const Button = styled.button`
     }
 `;
 
-function TodoButton({ onClick, buttonIcon, flag, styles }) {
+function TodoButton({ onClick, buttonIcon, flag = false, styles }) {
     return (
         <Button onClick={onClick} disabled={flag} style={styles}>
             {buttonIcon}

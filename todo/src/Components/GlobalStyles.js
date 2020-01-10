@@ -50,7 +50,10 @@ const globalStyles = createGlobalStyle`
       padding: 0;
       border: 0;
       background: none;
-      color: ${({ theme }) => theme.buttonText};
+    }
+
+    .todo-input {
+      border-bottom: 1px solid ${({ theme }) => theme.containerBorder};
     }
 `;
 

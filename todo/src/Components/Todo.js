@@ -13,11 +13,11 @@ import { ReactComponent as Success } from "Icons/success.svg";
 import { ReactComponent as Cross } from "Icons/cross.svg";
 import { ReactComponent as Trash } from "Icons/trash.svg";
 import { ReactComponent as Pencil } from "Icons/pencil.svg";
+import { ReactComponent as Save } from "Icons/save.svg";
 
 const TodoContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 50px;
     width: 90%;
     margin: 0px 0px 20px 0px;
@@ -31,14 +31,24 @@ const TodoContainer = styled.div`
 `;
 
 const TodoData = styled.div`
-    font-size: 24px;
+    width: 80%;
+    font-size: 22px;
     font-weight: 400;
     text-decoration: ${props => (props.isCompleted ? "line-through" : "none")};
     margin: 0 10px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 14px;
+        font-size: 15px;
     }
+`;
+
+const TodoInput = styled.input`
+    width: 80%;
+    border: none;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: left;
+    margin: 0 10px;
 `;
 
 function Todo({ item, dispatch }) {
@@ -47,12 +57,16 @@ function Todo({ item, dispatch }) {
 
     function onClickUpdateButton() {
         if (flag) {
-            dispatch(
-                actionCreators.updateTodoItem({
-                    ...item,
-                    text
-                })
-            );
+            if (text !== "") {
+                dispatch(
+                    actionCreators.updateTodoItem({
+                        ...item,
+                        text
+                    })
+                );
+            } else {
+                alert("텍스트를 입력하세요.");
+            }
         }
         setFlag(!flag);
     }
@@ -73,16 +87,20 @@ function Todo({ item, dispatch }) {
                 flag={flag}
                 styles={changeCompleteButtonStyle}
             />
-            <TodoData isCompleted={item.isCompleted}>
-                {flag ? (
-                    <input
-                        onChange={event => setText(event.target.value)}
-                        value={text}
-                    />
-                ) : (
-                    item.text
-                )}
-            </TodoData>
+            {flag ? (
+                <TodoInput
+                    className="todo-input"
+                    onChange={event => setText(event.target.value)}
+                    value={text}
+                    inputStyle={{
+                        fontSize: 20,
+                        fontWeight: 400,
+                        padding: "5px 10px"
+                    }}
+                />
+            ) : (
+                <TodoData isCompleted={item.isCompleted}>{item.text}</TodoData>
+            )}
             <TodoButton
                 onClick={onClickDeleteButton}
                 buttonIcon={<Trash />}
@@ -91,8 +109,7 @@ function Todo({ item, dispatch }) {
             />
             <TodoButton
                 onClick={onClickUpdateButton}
-                buttonIcon={<Pencil />}
-                flag={false}
+                buttonIcon={flag ? <Save /> : <Pencil />}
                 styles={updateTodoItemButtonStyle}
             />
         </TodoContainer>
