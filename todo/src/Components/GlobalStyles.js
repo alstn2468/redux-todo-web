@@ -32,6 +32,11 @@ const globalStyles = createGlobalStyle`
       text-align: center;
     }
 
+    button {
+      background-color: ${({ theme }) => theme.inputBody};
+      color: ${({ theme }) => theme.inputText};
+    }
+
     #root {
       display: flex;
       flex:1;

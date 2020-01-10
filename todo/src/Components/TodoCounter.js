@@ -6,17 +6,7 @@ import { ReactComponent as Cross } from "assets/Icons/cross.svg";
 
 const TodoCounterContainer = styled.div`
     display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: flex-end;
     flex-direction: row;
-    height: 40px;
-    padding-right: 35px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        width: 90%;
-        padding-right: 10px;
-    }
 `;
 
 const TodoCounterItem = styled.div`
@@ -46,9 +36,9 @@ const TodoCounterText = styled.div`
     }
 `;
 
-function TodoCounter({ completed, uncompleted }) {
+function Header({ completed, uncompleted }) {
     return (
-        <TodoCounterContainer className="todo-counter-container">
+        <TodoCounterContainer>
             <TodoCounterItem>
                 <Success className="counter-icon" />
                 <TodoCounterText>{completed}</TodoCounterText>
@@ -61,9 +51,9 @@ function TodoCounter({ completed, uncompleted }) {
     );
 }
 
-TodoCounter.propTypes = {
+Header.propTypes = {
     completed: PropTypes.number.isRequired,
     uncompleted: PropTypes.number.isRequired
 };
 
-export default TodoCounter;
+export default Header;

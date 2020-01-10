@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { lightTheme, darkTheme } from "Constants/theme";
 import TodoInput from "Components/TodoInput";
 import TodoList from "Components/TodoList";
-import TodoCounter from "Components/TodoCounter";
+import Header from "Components/Header";
 import GlobalStyles from "Components/GlobalStyles";
 import ThemeChangeButton from "Components/ThemeChangeButton";
 import useDarkMode from "Components/useDarkMode";
@@ -51,7 +51,7 @@ function App(state) {
             <TodoContainer>
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <TodoInput />
-                <TodoCounter completed={completed} uncompleted={uncompleted} />
+                <Header completed={completed} uncompleted={uncompleted} />
                 <TodoList todos={todos} key="TodoList" />
                 <ThemeChangeButton theme={theme} setTheme={setTheme} />
                 <GlobalStyles />

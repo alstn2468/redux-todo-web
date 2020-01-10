@@ -2,7 +2,8 @@ import {
     CREATE_TODO_ITEM,
     CHANGE_TODO_ITEM_COMPLETED,
     DELETE_TODO_ITEM,
-    UPDATE_TODO_ITEM
+    UPDATE_TODO_ITEM,
+    CLEAR_COMPLETED_TODO_ITEM
 } from "redux/action";
 
 const initialState = {
@@ -10,8 +11,8 @@ const initialState = {
         { id: "Test-Data-Id-1", text: "Test-Data-Text-1", isCompleted: false },
         { id: "Test-Data-Id-2", text: "Test-Data-Text-2", isCompleted: true }
     ],
-    completed: 0,
-    uncompleted: 0
+    completed: 1,
+    uncompleted: 1
 };
 
 function reducer(state = initialState, action) {
@@ -97,6 +98,15 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 todos: newTodos
+            };
+
+        case CLEAR_COMPLETED_TODO_ITEM:
+            newTodos = state.todos.filter(todo => !todo.isCompleted);
+
+            return {
+                ...state,
+                todos: newTodos,
+                completed: 0
             };
 
         default:
