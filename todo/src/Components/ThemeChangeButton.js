@@ -15,28 +15,28 @@ const ButtonContainer = styled.button`
     margin: 0 auto;
     overflow: hidden;
     padding: 0.5rem;
-    width: 5rem;
+    width: 4.5rem;
     height: 2.5rem;
 
     svg {
         height: auto;
-        width: 1.5rem;
+        width: 1.2rem;
         transition: all 0.3s linear;
 
         &:first-child {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateX(0)" : "translateX(-100px)"};
+                lightTheme ? "translateX(10)" : "translateX(-100px)"};
         }
 
         &:nth-child(2) {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateX(100px)" : "translateX(0)"};
+                lightTheme ? "translateX(100px)" : "translateX(-10)"};
         }
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 3rem;
-        height: 1.5rem;
+        width: 3.5rem;
+        height: 1.7rem;
         border-radius: 20px;
         padding: 0.2rem;
         top: 25px;
