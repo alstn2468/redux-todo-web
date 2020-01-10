@@ -6,7 +6,7 @@ import Todo from "Components/Todo";
 
 const TodoListContainer = styled.div`
     display: flex;
-    width: 60%;
+    width: 50%;
     align-items: center;
     flex-direction: column;
     padding-top: 20px;

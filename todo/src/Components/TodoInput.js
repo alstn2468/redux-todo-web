@@ -19,7 +19,7 @@ const InputContainer = styled.div`
 
 const Input = styled.input`
     height: 50%;
-    width: 60%;
+    width: 50%;
     font-size: 22px;
 
     @media (min-width: 320px) and (max-width: 480px) {

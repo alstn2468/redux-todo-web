@@ -60,6 +60,15 @@ const globalStyles = createGlobalStyle`
     .todo-input {
       border-bottom: 1px solid ${({ theme }) => theme.containerBorder};
     }
+
+    .counter-icon {
+      width: 20px;
+      height: auto;
+      
+      @media (min-width: 320px) and (max-width: 480px) {
+        width: 16px;
+      }
+    }
 `;
 
 export default globalStyles;
