@@ -1,8 +1,26 @@
 import React, { useState } from "react";
 import uuid from "uuid";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import actionCreators from "redux/action";
+
+const InputContainer = styled.div`
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Input = styled.input`
+    height: 30%;
+    width: 30%;
+`;
+
+const Button = styled.button`
+    height: 30%;
+    width: 15%;
+`;
 
 function TodoInput({ dispatch }) {
     const [text, setText] = useState("");
@@ -23,14 +41,14 @@ function TodoInput({ dispatch }) {
     }
 
     return (
-        <div>
-            <input
+        <InputContainer>
+            <Input
                 type="text"
                 value={text}
                 onChange={event => setText(event.target.value)}
             />
-            <button onClick={() => onClickCreateButton()}>CREATE</button>
-        </div>
+            <Button onClick={() => onClickCreateButton()}>CREATE</Button>
+        </InputContainer>
     );
 }
 

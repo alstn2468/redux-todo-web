@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
 import { lightTheme, darkTheme } from "Constants/theme";
@@ -8,6 +9,13 @@ import TodoList from "Components/TodoList";
 import GlobalStyles from "Components/GlobalStyles";
 import ThemeChangeButton from "Components/ThemeChangeButton";
 import useDarkMode from "Components/useDarkMode";
+
+const TodoContainer = styled.div`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+`;
 
 const mapStateToProps = state => {
     return state;
@@ -23,7 +31,7 @@ function App(state) {
 
     return (
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-            <>
+            <TodoContainer>
                 <TodoInput />
                 <TodoList todos={todos} key="TodoList" />
                 <ThemeChangeButton
@@ -33,7 +41,7 @@ function App(state) {
                 <h2>Completed : {completed}</h2>
                 <h2>uncompleted : {uncompleted}</h2>
                 <GlobalStyles />
-            </>
+            </TodoContainer>
         </ThemeProvider>
     );
 }
