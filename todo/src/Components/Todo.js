@@ -65,7 +65,7 @@ function Todo({ item, dispatch }) {
                     })
                 );
             } else {
-                alert("텍스트를 입력하세요.");
+                alert("Please write any text.");
             }
         }
         setFlag(!flag);

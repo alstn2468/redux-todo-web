@@ -35,7 +35,7 @@ function TodoInput({ dispatch }) {
     function onPressEnterKey(event) {
         if (event.key === "Enter") {
             if (text === "") {
-                alert("메세지를 입력하세요");
+                alert("Please write any text.");
             } else {
                 dispatch(
                     actionCreators.createTodoItem({
@@ -53,7 +53,7 @@ function TodoInput({ dispatch }) {
         <InputContainer>
             <Input
                 type="text"
-                placeholder="Write some to do and press enter."
+                placeholder="Write some to do task and press enter."
                 value={text}
                 onChange={event => setText(event.target.value)}
                 onKeyPress={event => onPressEnterKey(event)}
