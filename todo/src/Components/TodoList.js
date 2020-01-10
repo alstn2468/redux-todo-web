@@ -17,13 +17,25 @@ const TodoListContainer = styled.div`
     }
 `;
 
+const EmptyList = styled.div`
+    display: flex;
+    height: 100px;
+    align-items: center;
+    margin-top: -20px;
+    font-size: 26px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin-top: -15px;
+    }
+`;
+
 function TodoList({ todos }) {
     return (
         <TodoListContainer className="todo-container">
             {todos.length > 0 ? (
                 todos.map(todo => <Todo key={todo.id} item={todo} />)
             ) : (
-                <div>Empty Todo list</div>
+                <EmptyList>Todo list is empty.</EmptyList>
             )}
         </TodoListContainer>
     );
