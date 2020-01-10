@@ -122,9 +122,10 @@ Todo.propTypes = {
         PropTypes.shape({
             id: PropTypes.string,
             text: PropTypes.string,
-            isCompleted: PropTypes.bool
+            isCompleted: PropTypes.bool.isRequired
         })
-    )
+    ),
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(Todo);
