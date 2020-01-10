@@ -18,7 +18,6 @@ function App(state) {
     const [theme, setTheme, componentMounted] = useDarkMode();
 
     if (!componentMounted) {
-        console.log("Didn't mounted yet");
         return <div />;
     }
 
