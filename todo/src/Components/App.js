@@ -20,14 +20,14 @@ const TodoContainer = styled.div`
 
 const TodoTitleText = styled.div`
     text-align: center;
-    padding-top: 30px;
+    margin-top: 30px;
     font-size: 52px;
     font-weight: bold;
     font-family: "Abel", sans-serif;
     text-shadow: 4px 4px 1px gray;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        padding-top: 24px;
+        margin-top: 24px;
         font-size: 36px;
         text-shadow: 3px 3px 1px gray;
     }

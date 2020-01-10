@@ -18,7 +18,7 @@ const globalStyles = createGlobalStyle`
       width: 100%;
       flex-direction: column;
       justify-content: center;
-      height: 100vh;
+      height: 100%;
       margin: 0;
       padding: 0;
       font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
