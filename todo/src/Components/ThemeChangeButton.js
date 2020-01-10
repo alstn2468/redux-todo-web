@@ -25,12 +25,23 @@ const ButtonContainer = styled.button`
 
         &:first-child {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateY(0)" : "translateY(100px)"};
+                lightTheme ? "translateX(0)" : "translateX(-100px)"};
         }
 
         &:nth-child(2) {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateY(-100px)" : "translateY(0)"};
+                lightTheme ? "translateX(100px)" : "translateX(0)"};
+        }
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 6rem;
+        height: 3rem;
+        border-radius: 20px;
+        padding: 0.2rem;
+
+        svg {
+            width: 2rem;
         }
     }
 `;
