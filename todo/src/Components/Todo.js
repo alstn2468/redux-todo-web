@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import DeleteButton from "Components/DeleteButton";
-import CompleteChangeButton from "Components/CompleteChangeButton";
+import TodoButton from "Components/TodoButton";
 import actionCreators from "redux/action";
 
 function Todo({ item, dispatch }) {
@@ -21,7 +20,13 @@ function Todo({ item, dispatch }) {
         setFlag(!flag);
     }
 
-    console.log(item.isCompleted);
+    function onClickDeleteButton() {
+        dispatch(actionCreators.deleteTodoItem(item));
+    }
+
+    function onClickCompletedStatusButton() {
+        dispatch(actionCreators.changeTodoItemCompleted(item));
+    }
 
     return (
         <div>
@@ -34,9 +39,26 @@ function Todo({ item, dispatch }) {
             ) : (
                 item.text
             )}
-            <CompleteChangeButton dispatch={dispatch} item={item} flag={flag} />
-            <DeleteButton dispatch={dispatch} item={item} flag={flag} />
-            <button onClick={() => onClickUpdateButton()}>UPDATE</button>
+            {/* <CompleteChangeButton dispatch={dispatch} item={item} flag={flag} /> */}
+            {/* <DeleteButton
+                onClickDeleteButton={onClickDeleteButton}
+                flag={flag}
+            /> */}
+            <TodoButton
+                onClick={onClickCompletedStatusButton}
+                buttonName={item.isCompleted ? "COMPLETE" : "UNCOMPLETE"}
+                flag={flag}
+            />
+            <TodoButton
+                onClick={onClickDeleteButton}
+                buttonName="DELETE"
+                flag={flag}
+            />
+            <TodoButton
+                onClick={onClickUpdateButton}
+                buttonName="UPDATE"
+                flag={false}
+            />
         </div>
     );
 }
