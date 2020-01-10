@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "styled-components";
 import { connect } from "react-redux";
@@ -7,6 +7,7 @@ import TodoInput from "Components/TodoInput";
 import TodoList from "Components/TodoList";
 import GlobalStyles from "Components/GlobalStyles";
 import ThemeChangeButton from "Components/ThemeChangeButton";
+import useDarkMode from "Components/useDarkMode";
 
 const mapStateToProps = state => {
     return state;
@@ -14,14 +15,11 @@ const mapStateToProps = state => {
 
 function App(state) {
     const { todos, completed, uncompleted } = state;
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme, componentMounted] = useDarkMode();
 
-    function onClickChangeThemeButton() {
-        if (theme === "light") {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
+    if (!componentMounted) {
+        console.log("Didn't mounted yet");
+        return <div />;
     }
 
     return (
@@ -31,7 +29,7 @@ function App(state) {
                 <TodoList todos={todos} key="TodoList" />
                 <ThemeChangeButton
                     theme={theme}
-                    onClickChangeThemeButton={onClickChangeThemeButton}
+                    setTheme={setTheme}
                 ></ThemeChangeButton>
                 <h2>Completed : {completed}</h2>
                 <h2>uncompleted : {uncompleted}</h2>

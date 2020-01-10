@@ -46,14 +46,11 @@ const ButtonContainer = styled.button`
     }
 `;
 
-function ThemeChangeButton({ theme, onClickChangeThemeButton }) {
+function ThemeChangeButton({ theme, setTheme }) {
     const isLight = theme === "light";
 
     return (
-        <ButtonContainer
-            onClick={onClickChangeThemeButton}
-            lightTheme={isLight}
-        >
+        <ButtonContainer onClick={setTheme} lightTheme={isLight}>
             <SunIcon />
             <MoonIcon />
         </ButtonContainer>
@@ -62,7 +59,7 @@ function ThemeChangeButton({ theme, onClickChangeThemeButton }) {
 
 ThemeChangeButton.propTypes = {
     theme: PropTypes.string.isRequired,
-    onClickChangeThemeButton: PropTypes.func.isRequired
+    setTheme: PropTypes.func.isRequired
 };
 
 export default ThemeChangeButton;
