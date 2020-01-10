@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import DeleteButton from "./DeleteButton";
-import CompleteChangeButton from "./CompleteChangeButton";
-import actionCreators from "../redux/action";
+import DeleteButton from "Components/DeleteButton";
+import CompleteChangeButton from "Components/CompleteChangeButton";
+import actionCreators from "redux/action";
 
 function Todo({ item, dispatch }) {
     const [text, setText] = useState(item.text);
