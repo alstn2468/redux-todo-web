@@ -23,10 +23,12 @@ const TodoTitleText = styled.div`
     font-size: 52px;
     font-weight: bold;
     font-family: "Abel", sans-serif;
+    text-shadow: 4px 4px 1px gray;
 
     @media (min-width: 320px) and (max-width: 480px) {
         padding-top: 24px;
         font-size: 36px;
+        text-shadow: 3px 3px 1px gray;
     }
 `;
 
@@ -45,7 +47,7 @@ function App(state) {
     return (
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
             <TodoContainer>
-                <TodoTitleText>To Do</TodoTitleText>
+                <TodoTitleText>TO DO LIST</TodoTitleText>
                 <TodoInput />
                 <TodoList todos={todos} key="TodoList" />
                 <ThemeChangeButton

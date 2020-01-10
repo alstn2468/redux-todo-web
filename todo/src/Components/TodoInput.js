@@ -20,10 +20,9 @@ const Input = styled.input`
     height: 50%;
     width: 40%;
     font-size: 22px;
-    border-radius: 10px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 60%;
+        width: 65%;
         height: 40%;
         font-size: 16px;
     }
@@ -32,15 +31,15 @@ const Input = styled.input`
 const Button = styled.button`
     height: 50%;
     width: 15%;
-    border-radius: 10px;
     margin: 10px;
     font-weight: 600;
     font-size: 22px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 20%;
+        width: 25%;
         height: 40%;
         font-size: 14px;
+        margin: 5px;
     }
 `;
 
