@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ReactComponent as MoonIcon } from "Icons/moon.svg";
-import { ReactComponent as SunIcon } from "Icons/sun.svg";
+import { ReactComponent as MoonIcon } from "assets/Icons/moon.svg";
+import { ReactComponent as SunIcon } from "assets/Icons/sun.svg";
 
 const ButtonContainer = styled.button`
     position: fixed;

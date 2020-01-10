@@ -42,6 +42,11 @@ const globalStyles = createGlobalStyle`
       border: 1px solid ${({ theme }) => theme.containerBorder};
     }
 
+    .todo-counter-container {
+      border: 1px solid ${({ theme }) => theme.containerBorder};
+      border-bottom: none;
+    }
+
     .todo-item {
       border: 1px solid ${({ theme }) => theme.containerBorder};
     }

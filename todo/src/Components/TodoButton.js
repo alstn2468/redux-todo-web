@@ -20,7 +20,7 @@ const Button = styled.button`
     }
 `;
 
-function TodoButton({ onClick, buttonIcon, flag = false, styles }) {
+function TodoButton({ onClick, buttonIcon, flag, styles }) {
     return (
         <Button onClick={onClick} disabled={flag} style={styles}>
             {buttonIcon}
@@ -30,7 +30,7 @@ function TodoButton({ onClick, buttonIcon, flag = false, styles }) {
 
 TodoButton.propTypes = {
     onClick: ProptTypes.func.isRequired,
-    buttonName: ProptTypes.string.isRequired,
+    buttonIcon: ProptTypes.element.isRequired,
     flag: ProptTypes.bool.isRequired
 };
 

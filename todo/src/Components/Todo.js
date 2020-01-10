@@ -9,11 +9,11 @@ import {
     deleteTodoItemButtonStyle,
     updateTodoItemButtonStyle
 } from "Constants/ButtonStyles";
-import { ReactComponent as Success } from "Icons/success.svg";
-import { ReactComponent as Cross } from "Icons/cross.svg";
-import { ReactComponent as Trash } from "Icons/trash.svg";
-import { ReactComponent as Pencil } from "Icons/pencil.svg";
-import { ReactComponent as Save } from "Icons/save.svg";
+import { ReactComponent as Success } from "assets/Icons/success.svg";
+import { ReactComponent as Cross } from "assets/Icons/cross.svg";
+import { ReactComponent as Trash } from "assets/Icons/trash.svg";
+import { ReactComponent as Pencil } from "assets/Icons/pencil.svg";
+import { ReactComponent as Save } from "assets/Icons/save.svg";
 
 const TodoContainer = styled.div`
     display: flex;
@@ -110,6 +110,7 @@ function Todo({ item, dispatch }) {
             <TodoButton
                 onClick={onClickUpdateButton}
                 buttonIcon={flag ? <Save /> : <Pencil />}
+                flag={false}
                 styles={updateTodoItemButtonStyle}
             />
         </TodoContainer>
