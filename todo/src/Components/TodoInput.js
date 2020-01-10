@@ -8,6 +8,7 @@ import actionCreators from "redux/action";
 const InputContainer = styled.div`
     height: 100px;
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
 
@@ -22,7 +23,7 @@ const Input = styled.input`
     font-size: 22px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 80%;
+        width: 90%;
         height: 40%;
         font-size: 14px;
     }

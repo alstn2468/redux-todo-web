@@ -3,10 +3,6 @@ import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
     ${reset};
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
     *,
     *::after,
     *::before {
@@ -29,12 +25,6 @@ const globalStyles = createGlobalStyle`
       transition: all 0.25s linear;
     }
 
-    button {
-      background-color: ${({ theme }) => theme.buttonBody};
-      color: ${({ theme }) => theme.buttonText};
-      border: 1px solid ${({ theme }) => theme.buttonBorder};
-    }
-
     input {
       background-color: ${({ theme }) => theme.inputBody};
       color: ${({ theme }) => theme.inputText};
@@ -46,6 +36,21 @@ const globalStyles = createGlobalStyle`
       display: flex;
       flex:1;
       width: 100%;
+    }
+
+    .todo-container {
+      border: 1px solid ${({ theme }) => theme.containerBorder};
+    }
+
+    .todo-item {
+      border: 1px solid ${({ theme }) => theme.containerBorder};
+    }
+
+    button {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: ${({ theme }) => theme.buttonText};
     }
 `;
 

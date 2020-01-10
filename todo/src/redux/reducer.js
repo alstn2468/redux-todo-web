@@ -6,7 +6,23 @@ import {
 } from "redux/action";
 
 const initialState = {
-    todos: [],
+    todos: [
+        {
+            id: "dummy-data-for-test-id1",
+            text: "DUMMY_DATA_FOR_TEST",
+            isCompleted: false
+        },
+        {
+            id: "dummy-data-for-test-id2",
+            text: "dummy-data-for-test-text",
+            isCompleted: true
+        },
+        {
+            id: "dummy-data-for-test-id3",
+            text: "dummy-data-for-test-text",
+            isCompleted: true
+        }
+    ],
     completed: 0,
     uncompleted: 0
 };

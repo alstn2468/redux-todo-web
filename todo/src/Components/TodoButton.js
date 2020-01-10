@@ -1,11 +1,38 @@
 import React from "react";
+import styled from "styled-components";
 import ProptTypes from "prop-types";
 
-function TodoButton({ onClick, buttonName, flag }) {
+const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+
+    :first-child {
+        margin-right: 0;
+    }
+
+    :last-child {
+        margin-right: 0;
+    }
+
+    svg {
+        height: auto;
+        width: 1.4rem;
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        svg {
+            width: 1rem;
+        }
+    }
+`;
+
+function TodoButton({ onClick, buttonIcon, flag, styles }) {
     return (
-        <button onClick={onClick} disabled={flag}>
-            {buttonName}
-        </button>
+        <Button onClick={onClick} disabled={flag} style={styles}>
+            {buttonIcon}
+        </Button>
     );
 }
 
