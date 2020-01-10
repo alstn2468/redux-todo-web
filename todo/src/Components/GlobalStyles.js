@@ -7,40 +7,24 @@ const globalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-    * {
+    *,
+    *::after,
+    *::before {
         box-sizing: border-box;
-        font-size: 14px;
     }
-    body {
-        color: ${props =>
-            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
-        background-color: ${props =>
-            props.theme ? "rgba(255, 255, 255,0.87)" : "#121212"};
 
-        transition-property: background-color color;
-        transition-duration: 400ms;
-        transition-timing-function: ease;
-    }
-    input {
-        color: ${props =>
-            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
-        background-color: ${props =>
-            props.theme ? "rgba(255, 255, 255,0.87)" : "#121212"};
-        border: border: 1px solid ${props =>
-            props.theme ? "#121212" : "rgba(255, 255, 255,0.87)"};
-        border-radius: 10px;
-        padding: 10px 20px;
-        margin: 5px;
-    }
-    button {
-        color: ${props =>
-            props.theme ? "#FF0266" : "rgba(255, 255, 255,0.87)"};
-        background-color: ${props =>
-            props.theme ? "rgba(255, 255, 255,0.87)" : "#FF0266"};
-        border: 1px solid ${props => (props.theme ? "#FF0266" : "#121212")};;
-        border-radius: 10px;
-        padding: 10px 25px;
-        margin: 5px;
+    body {
+      align-items: center;
+      background: ${({ theme }) => theme.body};
+      color: ${({ theme }) => theme.text};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      transition: all 0.25s linear;
     }
 `;
 

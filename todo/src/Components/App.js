@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { ThemeProvider } from "styled-components";
+import { connect } from "react-redux";
+import { lightTheme, darkTheme } from "Constants/theme";
 import TodoInput from "Components/TodoInput";
 import TodoList from "Components/TodoList";
 import GlobalStyles from "Components/GlobalStyles";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import ThemeChangeButton from "Components/ThemeChangeButton";
 
 const mapStateToProps = state => {
     return state;
@@ -11,23 +14,30 @@ const mapStateToProps = state => {
 
 function App(state) {
     const { todos, completed, uncompleted } = state;
-    const [theme, setTheme] = useState(true);
+    const [theme, setTheme] = useState("light");
 
-    function onClickSetThemeButton() {
-        setTheme(!theme);
+    function onClickChangeThemeButton() {
+        if (theme === "light") {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
     }
 
     return (
-        <>
-            <TodoInput />
-            <TodoList todos={todos} key="TodoList" />
-            <button onClick={() => onClickSetThemeButton()}>
-                CHANGE THEME
-            </button>
-            <h2>Completed : {completed}</h2>
-            <h2>uncompleted : {uncompleted}</h2>
-            <GlobalStyles theme={theme} />
-        </>
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+            <>
+                <TodoInput />
+                <TodoList todos={todos} key="TodoList" />
+                <ThemeChangeButton
+                    theme={theme}
+                    onClickChangeThemeButton={onClickChangeThemeButton}
+                ></ThemeChangeButton>
+                <h2>Completed : {completed}</h2>
+                <h2>uncompleted : {uncompleted}</h2>
+                <GlobalStyles />
+            </>
+        </ThemeProvider>
     );
 }
 
