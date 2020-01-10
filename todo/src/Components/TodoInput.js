@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import actionCreators from "redux/action";
 
 const InputContainer = styled.div`
+    margin-top: 50px;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -13,13 +14,18 @@ const InputContainer = styled.div`
 `;
 
 const Input = styled.input`
-    height: 30%;
-    width: 30%;
+    height: 50%;
+    width: 40%;
+    font-size: 22px;
 `;
 
 const Button = styled.button`
-    height: 30%;
+    height: 50%;
     width: 15%;
+    border-radius: 15px;
+    margin: 10px;
+    font-weight: 600;
+    font-size: 22px;
 `;
 
 function TodoInput({ dispatch }) {

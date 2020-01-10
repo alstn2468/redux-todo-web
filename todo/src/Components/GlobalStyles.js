@@ -29,6 +29,19 @@ const globalStyles = createGlobalStyle`
       transition: all 0.25s linear;
     }
 
+    button {
+      background-color: ${({ theme }) => theme.buttonBody};
+      color: ${({ theme }) => theme.buttonText};
+      border: 1px solid ${({ theme }) => theme.buttonBorder};
+    }
+
+    input {
+      background-color: ${({ theme }) => theme.inputBody};
+      color: ${({ theme }) => theme.inputText};
+      border: 2px solid ${({ theme }) => theme.inputBorder};
+      text-align: center;
+    }
+
     #root {
       display: flex;
       flex:1;
