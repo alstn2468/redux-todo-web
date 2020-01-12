@@ -1,8 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import ClearCompletedButton from "Components/ClearCompletedButton";
-import TodoCounter from "Components/TodoCounter";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import ClearCompletedButton from 'Components/ClearCompletedButton';
+import TodoFilterButton from 'Components/TodoFilterButton';
+import TodoCounter from 'Components/TodoCounter';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -23,6 +24,7 @@ function Header({ completed, uncompleted }) {
     return (
         <HeaderContainer className="todo-counter-container">
             <ClearCompletedButton />
+            <TodoFilterButton />
             <TodoCounter completed={completed} uncompleted={uncompleted} />
         </HeaderContainer>
     );

@@ -1,19 +1,20 @@
-import React from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import actionCreators from "redux/action";
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import actionCreators from 'redux/action';
 
 const Button = styled.button`
     display: flex;
     flex-direction: flex-start;
-    font-size: 20px;
+    font-size: 18px;
+    color: rgba(220, 220, 220, 0.6);
 
     :hover {
-        font-size: 22px;
+        color: rgba(220, 220, 220, 1);
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 14px;
+        font-size: 12px;
         margin-left: 10px;
 
         :hover {

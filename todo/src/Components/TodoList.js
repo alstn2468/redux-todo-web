@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Todo from "Components/Todo";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Todo from 'Components/Todo';
 
 const TodoListContainer = styled.div`
     display: flex;
@@ -53,4 +52,4 @@ TodoList.propTypes = {
     )
 };
 
-export default connect()(TodoList);
+export default TodoList;
