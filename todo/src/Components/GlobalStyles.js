@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const globalStyles = createGlobalStyle`
     ${reset};
@@ -74,6 +74,24 @@ const globalStyles = createGlobalStyle`
         width: 16px;
       }
     }
+
+    .header-button {
+        color: ${({ theme }) => theme.headerButtonColor};
+
+        :after {
+            content: '';
+            border-right-width: 1px;
+            border-right-color: ${({ theme }) => theme.headerAfterBorderColor};
+            border-right-style: solid;
+            margin: 0 10px;
+        }
+
+        :hover {
+            color: ${({ theme }) => theme.headerButtonHoverColor};
+        }
+    }
+
+    .
 `;
 
 export default globalStyles;

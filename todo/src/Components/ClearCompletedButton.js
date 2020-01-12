@@ -7,11 +7,6 @@ const Button = styled.button`
     display: flex;
     flex-direction: flex-start;
     font-size: 18px;
-    color: rgba(220, 220, 220, 0.6);
-
-    :hover {
-        color: rgba(220, 220, 220, 1);
-    }
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 12px;
@@ -28,7 +23,10 @@ function ClearCompletedButton({ dispatch }) {
         dispatch(actionCreators.clearCompletedTodoItem());
     }
     return (
-        <Button onClick={() => onClickClearCompletedButton()}>
+        <Button
+            className="header-button"
+            onClick={() => onClickClearCompletedButton()}
+        >
             CLEAR COMPLETED
         </Button>
     );
