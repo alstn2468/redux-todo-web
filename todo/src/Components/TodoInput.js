@@ -57,6 +57,7 @@ function TodoInput({ dispatch }) {
                 value={text}
                 onChange={event => setText(event.target.value)}
                 onKeyPress={event => onPressEnterKey(event)}
+                autoFocus
             />
         </InputContainer>
     );
