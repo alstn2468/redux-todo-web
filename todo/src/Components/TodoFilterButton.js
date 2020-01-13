@@ -18,21 +18,30 @@ const Button = styled.button`
         }
     }
 
+    :hover {
+        text-decoration: ${props => (props.filter ? "line-through" : "none")};
+    }
+
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 12px;
-        margin-left: 10px;
 
         :hover {
-            font-size: 16px;
+            font-size: 12px;
         }
     }
 `;
 
-function TodoFilterButton({ dispatch }) {
+function mapStateToProps(state) {
+    return { filter: state.todoDisplayFilterReducer };
+}
+
+function TodoFilterButton({ filter, dispatch }) {
     return (
         <FilterButtonContainer>
             <Button
                 className="header-button"
+                disabled={filter === todoDisplayFilter.DISPLAY_ALL_TODO}
+                filter={filter === todoDisplayFilter.DISPLAY_ALL_TODO}
                 onClick={() =>
                     dispatch(
                         actionCreators.setDisplayFilter(
@@ -45,6 +54,8 @@ function TodoFilterButton({ dispatch }) {
             </Button>
             <Button
                 className="header-button"
+                disabled={filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO}
+                filter={filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO}
                 onClick={() =>
                     dispatch(
                         actionCreators.setDisplayFilter(
@@ -57,6 +68,8 @@ function TodoFilterButton({ dispatch }) {
             </Button>
             <Button
                 className="header-button"
+                disabled={filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO}
+                filter={filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO}
                 onClick={() =>
                     dispatch(
                         actionCreators.setDisplayFilter(
@@ -71,4 +84,4 @@ function TodoFilterButton({ dispatch }) {
     );
 }
 
-export default connect()(TodoFilterButton);
+export default connect(mapStateToProps)(TodoFilterButton);

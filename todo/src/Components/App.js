@@ -39,8 +39,8 @@ const mapStateToProps = state => {
 };
 
 function App(state) {
-    const { completed, uncompleted } = state;
     const [theme, setTheme, componentMounted] = useDarkMode();
+    const { completed, uncompleted } = state.todoReducer;
 
     if (!componentMounted) {
         return <div />;
