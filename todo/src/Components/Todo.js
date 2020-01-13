@@ -92,11 +92,6 @@ function Todo({ item, dispatch }) {
                     className="todo-input"
                     onChange={event => setText(event.target.value)}
                     value={text}
-                    inputStyle={{
-                        fontSize: 20,
-                        fontWeight: 400,
-                        padding: "5px 10px"
-                    }}
                 />
             ) : (
                 <TodoData isCompleted={item.isCompleted}>{item.text}</TodoData>
