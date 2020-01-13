@@ -49,6 +49,10 @@ const TodoInput = styled.input`
     font-weight: 400;
     text-align: left;
     margin: 0 10px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 15px;
+    }
 `;
 
 function Todo({ item, dispatch }) {
