@@ -64,7 +64,8 @@ const globalStyles = createGlobalStyle`
     }
 
     .todo-input {
-      border-bottom: 1px solid ${({ theme }) => theme.containerBorder};
+      border-bottom: 1px solid ${({ theme }) =>
+          theme.containerBorder} !important;
     }
 
     .counter-icon {
