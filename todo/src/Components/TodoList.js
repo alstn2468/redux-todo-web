@@ -62,7 +62,7 @@ function TodoList({ todos }) {
             {todos.length > 0 ? (
                 todos.map(todo => <Todo key={todo.id} item={todo} />)
             ) : (
-                <EmptyList>Todo list is empty.</EmptyList>
+                <EmptyList>This list is empty.</EmptyList>
             )}
         </TodoListContainer>
     );
