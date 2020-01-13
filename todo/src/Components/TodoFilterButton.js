@@ -1,5 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { connect } from "react-redux";
+import actionCreators from "redux/action";
+import styled from "styled-components";
+import { todoDisplayFilter } from "redux/action";
 
 const FilterButtonContainer = styled.div`
     display: flex;
@@ -25,20 +28,47 @@ const Button = styled.button`
     }
 `;
 
-function TodoFilterButton() {
+function TodoFilterButton({ dispatch }) {
     return (
         <FilterButtonContainer>
-            <Button className="header-button" now={true}>
+            <Button
+                className="header-button"
+                onClick={() =>
+                    dispatch(
+                        actionCreators.setDisplayFilter(
+                            todoDisplayFilter.DISPLAY_ALL_TODO
+                        )
+                    )
+                }
+            >
                 ALL
             </Button>
-            <Button className="header-button" now={false}>
+            <Button
+                className="header-button"
+                onClick={() =>
+                    dispatch(
+                        actionCreators.setDisplayFilter(
+                            todoDisplayFilter.DISPLAY_COMPLETD_TODO
+                        )
+                    )
+                }
+            >
                 COMPLETE
             </Button>
-            <Button className="header-button" now={false}>
+            <Button
+                className="header-button"
+                onClick={() =>
+                    dispatch(
+                        actionCreators.setDisplayFilter(
+                            todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO
+                        )
+                    )
+                }
+            >
                 UNCOMPLETE
             </Button>
         </FilterButtonContainer>
     );
 }
 
-export default TodoFilterButton;
+export default connect()(TodoFilterButton);

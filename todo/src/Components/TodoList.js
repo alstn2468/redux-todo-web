@@ -1,7 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Todo from 'Components/Todo';
+import React from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import Todo from "Components/Todo";
+import { todoDisplayFilter } from "redux/action";
 
 const TodoListContainer = styled.div`
     display: flex;
@@ -28,6 +30,31 @@ const EmptyList = styled.div`
     }
 `;
 
+function getDisplayTodos(todos, filter) {
+    switch (filter) {
+        case todoDisplayFilter.DISPLAY_ALL_TODO:
+            return todos;
+
+        case todoDisplayFilter.DISPLAY_COMPLETD_TODO:
+            return todos.filter(todo => todo.isCompleted);
+
+        case todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO:
+            return todos.filter(todo => !todo.isCompleted);
+
+        default:
+            throw new Error("Unknown Filter : " + filter);
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        todos: getDisplayTodos(
+            state.todoReducer.todos,
+            state.todoDisplayFilterReducer
+        )
+    };
+}
+
 function TodoList({ todos }) {
     return (
         <TodoListContainer className="todo-container">
@@ -52,4 +79,4 @@ TodoList.propTypes = {
     )
 };
 
-export default TodoList;
+export default connect(mapStateToProps)(TodoList);

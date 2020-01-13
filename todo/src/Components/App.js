@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 };
 
 function App(state) {
-    const { todos, completed, uncompleted } = state;
+    const { completed, uncompleted } = state;
     const [theme, setTheme, componentMounted] = useDarkMode();
 
     if (!componentMounted) {
@@ -52,7 +52,7 @@ function App(state) {
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <TodoInput />
                 <Header completed={completed} uncompleted={uncompleted} />
-                <TodoList todos={todos} key="TodoList" />
+                <TodoList />
                 <ThemeChangeButton theme={theme} setTheme={setTheme} />
                 <GlobalStyles />
             </TodoContainer>

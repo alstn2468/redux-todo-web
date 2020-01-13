@@ -1,9 +1,12 @@
+import { combineReducers } from "redux";
 import {
     CREATE_TODO_ITEM,
     CHANGE_TODO_ITEM_COMPLETED,
     DELETE_TODO_ITEM,
     UPDATE_TODO_ITEM,
-    CLEAR_COMPLETED_TODO_ITEM
+    CLEAR_COMPLETED_TODO_ITEM,
+    SET_DISPLAY_FILTER,
+    todoDisplayFilter
 } from "redux/action";
 
 const initialState = {
@@ -15,7 +18,7 @@ const initialState = {
     uncompleted: 1
 };
 
-function reducer(state = initialState, action) {
+function todoReducer(state = initialState, action) {
     let newTodos;
 
     switch (action.type) {
@@ -113,5 +116,23 @@ function reducer(state = initialState, action) {
             return state;
     }
 }
+
+function todoDisplayFilterReducer(
+    state = todoDisplayFilter.DISPLAY_ALL_TODO,
+    action
+) {
+    switch (action.type) {
+        case SET_DISPLAY_FILTER:
+            return action.filter;
+
+        default:
+            return state;
+    }
+}
+
+const reducer = combineReducers({
+    todoReducer,
+    todoDisplayFilterReducer
+});
 
 export default reducer;
