@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
     ${reset};
@@ -91,7 +91,11 @@ const globalStyles = createGlobalStyle`
         }
     }
 
-    .
+    .selected {
+      :hover {
+            color: ${({ theme }) => theme.headerButtonColor};
+        }
+    }
 `;
 
 export default globalStyles;
