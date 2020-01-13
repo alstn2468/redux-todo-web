@@ -10,6 +10,7 @@ import Header from "Components/Header";
 import GlobalStyles from "Components/GlobalStyles";
 import ThemeChangeButton from "Components/ThemeChangeButton";
 import useDarkMode from "Components/useDarkMode";
+import SocialMedia from "./SocialMedia";
 
 const TodoContainer = styled.div`
     display: flex;
@@ -22,6 +23,7 @@ const TodoContainer = styled.div`
 const TodoTitleText = styled.div`
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 5px;
     font-size: 52px;
     font-weight: bold;
     font-family: "Abel", sans-serif;
@@ -50,6 +52,7 @@ function App(state) {
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
             <TodoContainer>
                 <TodoTitleText>TO DO LIST</TodoTitleText>
+                <SocialMedia />
                 <TodoInput />
                 <Header completed={completed} uncompleted={uncompleted} />
                 <TodoList />

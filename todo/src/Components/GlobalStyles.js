@@ -96,6 +96,18 @@ const globalStyles = createGlobalStyle`
     .selected {
       color: ${({ theme }) => theme.headerButtonHoverColor};
     }
+
+    .social-icon {
+      width: 30px;
+      height: auto;
+      fill: ${({ theme }) => theme.socialMediaIconColor};
+      margin: 5px;
+
+      @media (min-width: 320px) and (max-width: 480px) {
+        width: 25px;
+        margin: 2px;
+      }
+    }
 `;
 
 export default globalStyles;
