@@ -7,18 +7,17 @@ import { ReactComponent as Cross } from "assets/Icons/cross.svg";
 const TodoCounterContainer = styled.div`
     display: flex;
     flex-direction: row;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        display: flex;
-        flex-wrap: nowrap;
-        margin-left: -70px;
-        margin-top: -65px;
-    }
 `;
 
 const TodoCounterItem = styled.div`
     display: flex;
     flex-direction: row;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin-left: -70px;
+        margin-top: -65px;
+        align-items: center;
+    }
 `;
 
 const TodoCounterText = styled.div`
@@ -27,7 +26,7 @@ const TodoCounterText = styled.div`
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 16px;
-        margin: 5px 7px 5px 2px;
+        margin: 5px 8px 5px 5px;
     }
 `;
 
