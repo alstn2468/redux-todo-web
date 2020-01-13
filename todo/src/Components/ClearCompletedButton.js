@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 import actionCreators from "redux/action";
 
 const Button = styled.button`
@@ -29,5 +31,9 @@ function ClearCompletedButton({ dispatch }) {
         </Button>
     );
 }
+
+ClearCompletedButton.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(ClearCompletedButton);

@@ -120,8 +120,8 @@ function Todo({ item, dispatch }) {
 Todo.propTypes = {
     item: PropTypes.objectOf(
         PropTypes.shape({
-            id: PropTypes.string,
-            text: PropTypes.string,
+            id: PropTypes.string.isRequired,
+            text: PropTypes.string.isRequired,
             isCompleted: PropTypes.bool.isRequired
         })
     ),
