@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import actionCreators from "redux/action";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import actionCreators from "redux/action";
 import { todoDisplayFilter } from "redux/action";
 
 const FilterButtonContainer = styled.div`
@@ -90,5 +91,10 @@ function TodoFilterButton({ filter, dispatch }) {
         </FilterButtonContainer>
     );
 }
+
+TodoFilterButton.propTypes = {
+    filter: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(TodoFilterButton);
