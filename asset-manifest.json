@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "/Redux_ToDo_Web/static/js/main.f6780d3c.chunk.js",
+    "main.js.map": "/Redux_ToDo_Web/static/js/main.f6780d3c.chunk.js.map",
+    "runtime-main.js": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js",
+    "runtime-main.js.map": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js.map",
+    "static/js/2.63a9e9f5.chunk.js": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js",
+    "static/js/2.63a9e9f5.chunk.js.map": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.map",
+    "index.html": "/Redux_ToDo_Web/index.html",
+    "precache-manifest.05b2690b9f684423649be0574649a0e6.js": "/Redux_ToDo_Web/precache-manifest.05b2690b9f684423649be0574649a0e6.js",
+    "service-worker.js": "/Redux_ToDo_Web/service-worker.js",
+    "static/js/2.63a9e9f5.chunk.js.LICENSE": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.LICENSE",
+    "static/media/cross.441d8611.svg": "/Redux_ToDo_Web/static/media/cross.441d8611.svg",
+    "static/media/moon.89799566.svg": "/Redux_ToDo_Web/static/media/moon.89799566.svg",
+    "static/media/pencil.c4a18e05.svg": "/Redux_ToDo_Web/static/media/pencil.c4a18e05.svg",
+    "static/media/save.f27d5f1c.svg": "/Redux_ToDo_Web/static/media/save.f27d5f1c.svg",
+    "static/media/success.d29f1779.svg": "/Redux_ToDo_Web/static/media/success.d29f1779.svg",
+    "static/media/sun.fbbe405e.svg": "/Redux_ToDo_Web/static/media/sun.fbbe405e.svg",
+    "static/media/trash.480b19cb.svg": "/Redux_ToDo_Web/static/media/trash.480b19cb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebe40911.js",
+    "static/js/2.63a9e9f5.chunk.js",
+    "static/js/main.f6780d3c.chunk.js"
+  ]
+}
