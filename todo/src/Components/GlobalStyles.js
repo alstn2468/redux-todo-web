@@ -93,9 +93,7 @@ const globalStyles = createGlobalStyle`
     }
 
     .selected {
-      :hover {
-            color: ${({ theme }) => theme.headerButtonColor};
-        }
+      color: ${({ theme }) => theme.headerButtonHoverColor};
     }
 `;
 
