@@ -71,7 +71,7 @@ const globalStyles = createGlobalStyle`
       height: auto;
       
       @media (min-width: 320px) and (max-width: 480px) {
-        width: 16px;
+        width: 14px;
       }
     }
 

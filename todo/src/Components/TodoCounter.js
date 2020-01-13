@@ -9,7 +9,10 @@ const TodoCounterContainer = styled.div`
     flex-direction: row;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        display: none;
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: -70px;
+        margin-top: -65px;
     }
 `;
 
@@ -21,6 +24,11 @@ const TodoCounterItem = styled.div`
 const TodoCounterText = styled.div`
     font-size: 20px;
     margin: 5px 10px 5px 5px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 16px;
+        margin: 5px 7px 5px 2px;
+    }
 `;
 
 function TodoCounter({ completed, uncompleted }) {
