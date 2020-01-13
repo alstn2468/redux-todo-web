@@ -9,7 +9,7 @@ const TodoCounterContainer = styled.div`
     flex-direction: row;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        margin-left: -50px;
+        margin-left: -75px;
         margin-top: -65px;
         align-items: center;
         justify-content: center;
