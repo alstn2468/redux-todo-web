@@ -12,6 +12,7 @@ const Button = styled.button`
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 10px;
         margin-left: 5px;
+        font-weight: 500;
     }
 `;
 

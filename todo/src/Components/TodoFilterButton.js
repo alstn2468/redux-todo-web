@@ -24,6 +24,7 @@ const Button = styled.button`
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 12px;
+        font-weight: 500;
 
         :hover {
             font-size: 12px;
