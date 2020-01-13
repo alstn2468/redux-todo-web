@@ -12,7 +12,7 @@
 
 ### DEMO
 
-[DEMO](https://alstn2468.github.io/Redux_ToDo_Web/)
+[[DEMO]](https://alstn2468.github.io/Redux_ToDo_Web/)
 
 ### What I Earned
 
@@ -34,3 +34,10 @@
 -   `React Hook`을 잘 사용하기
 -   컴포넌트 **구조 설계**하기
 -   함수형 컴포넌트로 `Container - Presenter` 사용하기
+
+### DEMO IMAGE
+
+<img align="left" src="/DEMO/todo_pc_dark.gif" width="600" height="auto" alt="PC DARK MODE DEMO"><br>
+<img align="left" src="/DEMO/todo_pc_white.gif" width="600" height="auto" alt="PC WHITE MODE DEMO"><br>
+<img align="left" src="/DEMO/todo_mobile_dark.gif" width="250" height="auto" alt="MOBILE DARK MODE DEMO">
+<img align="left" src="/DEMO/todo_mobile_white.gif" width="250" height="auto" alt="MOBILE WHITE MODE DEMO"><br>
