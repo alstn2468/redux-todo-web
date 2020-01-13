@@ -14,8 +14,8 @@ const initialState = {
         // { id: "Test-Data-Id-1", text: "Test-Data-Text-1", isCompleted: false },
         // { id: "Test-Data-Id-2", text: "Test-Data-Text-2", isCompleted: true }
     ],
-    completed: 1,
-    uncompleted: 1
+    completed: 0,
+    uncompleted: 0
 };
 
 function todoReducer(state = initialState, action) {
