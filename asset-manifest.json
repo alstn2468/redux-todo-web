@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.js": "/Redux_ToDo_Web/static/js/main.8b028105.chunk.js",
-    "main.js.map": "/Redux_ToDo_Web/static/js/main.8b028105.chunk.js.map",
+    "main.js": "/Redux_ToDo_Web/static/js/main.704a5e5f.chunk.js",
+    "main.js.map": "/Redux_ToDo_Web/static/js/main.704a5e5f.chunk.js.map",
     "runtime-main.js": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js",
     "runtime-main.js.map": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js.map",
     "static/js/2.63a9e9f5.chunk.js": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js",
     "static/js/2.63a9e9f5.chunk.js.map": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.map",
     "index.html": "/Redux_ToDo_Web/index.html",
-    "precache-manifest.ae7a3ede64fa8cb247aeb616cf107a30.js": "/Redux_ToDo_Web/precache-manifest.ae7a3ede64fa8cb247aeb616cf107a30.js",
+    "precache-manifest.b48d8227e8d94f89955615faac938cbb.js": "/Redux_ToDo_Web/precache-manifest.b48d8227e8d94f89955615faac938cbb.js",
     "service-worker.js": "/Redux_ToDo_Web/service-worker.js",
     "static/js/2.63a9e9f5.chunk.js.LICENSE": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.LICENSE",
     "static/media/cross.441d8611.svg": "/Redux_ToDo_Web/static/media/cross.441d8611.svg",
+    "static/media/facebook.d99368ca.svg": "/Redux_ToDo_Web/static/media/facebook.d99368ca.svg",
+    "static/media/github.192a6620.svg": "/Redux_ToDo_Web/static/media/github.192a6620.svg",
+    "static/media/instagram.5b23a837.svg": "/Redux_ToDo_Web/static/media/instagram.5b23a837.svg",
+    "static/media/linkedin.9e36c8fd.svg": "/Redux_ToDo_Web/static/media/linkedin.9e36c8fd.svg",
     "static/media/moon.89799566.svg": "/Redux_ToDo_Web/static/media/moon.89799566.svg",
     "static/media/pencil.c4a18e05.svg": "/Redux_ToDo_Web/static/media/pencil.c4a18e05.svg",
     "static/media/save.f27d5f1c.svg": "/Redux_ToDo_Web/static/media/save.f27d5f1c.svg",
@@ -21,6 +25,6 @@
   "entrypoints": [
     "static/js/runtime-main.ebe40911.js",
     "static/js/2.63a9e9f5.chunk.js",
-    "static/js/main.8b028105.chunk.js"
+    "static/js/main.704a5e5f.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "500efb9ff19a2916afe4e6ccbeffa0b6",
+    "revision": "06bc2f17f4bc4d174ee9b0404ce9936e",
     "url": "/Redux_ToDo_Web/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.LICENSE"
   },
   {
-    "revision": "619f4209905844c5ead5",
-    "url": "/Redux_ToDo_Web/static/js/main.8b028105.chunk.js"
+    "revision": "688873f2aaac22789f43",
+    "url": "/Redux_ToDo_Web/static/js/main.704a5e5f.chunk.js"
   },
   {
     "revision": "c9d8c1ba0a33a741e737",
@@ -22,6 +22,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "441d8611106ab6473ed8c5487cda63ac",
     "url": "/Redux_ToDo_Web/static/media/cross.441d8611.svg"
+  },
+  {
+    "revision": "d99368ca4e133a9917838e76243e8cfb",
+    "url": "/Redux_ToDo_Web/static/media/facebook.d99368ca.svg"
+  },
+  {
+    "revision": "192a6620a687a9e7e51c0037973a1547",
+    "url": "/Redux_ToDo_Web/static/media/github.192a6620.svg"
+  },
+  {
+    "revision": "5b23a837268b09d0efa9e307023c1dae",
+    "url": "/Redux_ToDo_Web/static/media/instagram.5b23a837.svg"
+  },
+  {
+    "revision": "9e36c8fd15d6f93ed6a45f9484746e8f",
+    "url": "/Redux_ToDo_Web/static/media/linkedin.9e36c8fd.svg"
   },
   {
     "revision": "89799566ae64380797abc3f6fc450346",
