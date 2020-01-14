@@ -10,7 +10,8 @@ export const lightTheme = {
     headerButtonColor: "#363537",
     headerAfterBorderColor: "#363537",
     headerButtonHoverColor: "#0a94c9",
-    socialMediaIconColor: "#1E215D"
+    socialMediaIconColor: "#363537",
+    socialMediaIconHoverColor: "#67606e"
 };
 
 export const darkTheme = {
@@ -25,5 +26,6 @@ export const darkTheme = {
     headerButtonColor: "#FAFAFA",
     headerAfterBorderColor: "#FAFAFA",
     headerButtonHoverColor: "#659dd6",
-    socialMediaIconColor: "#79D7ED"
+    socialMediaIconColor: "#FAFAFA",
+    socialMediaIconHoverColor: "#ded9d9"
 };

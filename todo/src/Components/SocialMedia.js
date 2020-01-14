@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Facebook } from "assets/Icons/facebook.svg";
-import { ReactComponent as Instagram } from "assets/Icons/instagram.svg";
-import { ReactComponent as Github } from "assets/Icons/github.svg";
-import { ReactComponent as LinkedIn } from "assets/Icons/linkedin.svg";
+import { ReactComponent as FacebookIcon } from "assets/Icons/facebook.svg";
+import { ReactComponent as InstagramIcon } from "assets/Icons/instagram.svg";
+import { ReactComponent as GithubIcon } from "assets/Icons/github.svg";
+import { ReactComponent as LinkedInIcon } from "assets/Icons/linkedin.svg";
+import { FACEBOOK, INSTAGRAM, GITHUB, LINKEDIN } from "Constants/SocialLink";
 
 const SocialMediaContainer = styled.div`
     margin-bottom: -20px;
@@ -16,17 +17,17 @@ const SocialMediaContainer = styled.div`
 function SocialMedia() {
     return (
         <SocialMediaContainer>
-            <a href="https://www.facebook.com/alstn2468">
-                <Facebook className="social-icon" />
+            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer">
+                <FacebookIcon className="social-icon" />
             </a>
-            <a href="https://www.instagram.com/minsu._.0102">
-                <Instagram className="social-icon" />
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">
+                <InstagramIcon className="social-icon" />
             </a>
-            <a href="https://github.com/alstn2468">
-                <Github className="social-icon" />
+            <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+                <GithubIcon className="social-icon" />
             </a>
-            <a href="https://www.linkedin.com/in/minsu-kim-336289160">
-                <LinkedIn className="social-icon" />
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+                <LinkedInIcon className="social-icon" />
             </a>
         </SocialMediaContainer>
     );

@@ -91,6 +91,10 @@ const globalStyles = createGlobalStyle`
         :hover {
             color: ${({ theme }) => theme.headerButtonHoverColor};
         }
+
+        @media (hover: none) {
+            .header-button:hover { color: inherit; }
+        }
     }
 
     .selected {
@@ -103,8 +107,16 @@ const globalStyles = createGlobalStyle`
       fill: ${({ theme }) => theme.socialMediaIconColor};
       margin: 5px;
 
+      :hover {
+        fill: ${({ theme }) => theme.socialMediaIconHoverColor};
+      }
+
+      @media (hover: none) {
+        .social-icon:hover { fill: inherit; }
+      }
+
       @media (min-width: 320px) and (max-width: 480px) {
-        width: 25px;
+        width: 20px;
         margin: 2px;
       }
     }
