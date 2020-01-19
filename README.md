@@ -30,7 +30,7 @@
 ### What I Will Learn
 
 -   함수형 컴포넌트를 **함수형 컴포넌트 답게** 사용하기
--   `Redux`에 관한 깊은 이해하기
+-   `Redux`를 깊게 이해하기
 -   `React Hook`을 잘 사용하기
 -   컴포넌트 **구조 설계**하기
 -   함수형 컴포넌트로 `Container - Presenter` 사용하기
