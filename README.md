@@ -39,3 +39,11 @@
 
 <img align="left" src="/DEMO/todo_pc.gif" width="600" height="auto" alt="PC DARK MODE DEMO"><br>
 <img align="left" src="/DEMO/todo_mobile.gif" width="300" height="auto" alt="MOBILE WHITE MODE DEMO"><br>
+
+### To Do
+
+- [ ] Connect to [Back-End servers](https://github.com/alstn2468/Redux_ToDo_Web_Backend)
+- [ ] Redux asynchronous action processing
+- [ ] Implement authentication logic using jwt
+- [ ] Implement login modal
+- [ ] Implement sign up modal
