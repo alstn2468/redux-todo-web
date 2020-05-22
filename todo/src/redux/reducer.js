@@ -6,16 +6,21 @@ import {
     UPDATE_TODO_ITEM,
     CLEAR_COMPLETED_TODO_ITEM,
     SET_DISPLAY_FILTER,
-    todoDisplayFilter
+    SET_SNACK_BAR_STATE,
+    todoDisplayFilter,
 } from "redux/action";
+import { SUCCESS } from "../Constants/SnackBarVariant";
 
 const initialState = {
-    todos: [
-        // { id: "Test-Data-Id-1", text: "Test-Data-Text-1", isCompleted: false },
-        // { id: "Test-Data-Id-2", text: "Test-Data-Text-2", isCompleted: true }
-    ],
+    todos: [],
     completed: 0,
-    uncompleted: 0
+    uncompleted: 0,
+};
+
+export const initialSnackBarState = {
+    snackBarOpen: false,
+    snackBarVariant: SUCCESS,
+    snackBarContent: "",
 };
 
 function todoReducer(state = initialState, action) {
@@ -26,32 +31,32 @@ function todoReducer(state = initialState, action) {
             return {
                 ...state,
                 todos: [...state.todos, action.item],
-                uncompleted: state.uncompleted + 1
+                uncompleted: state.uncompleted + 1,
             };
 
         case DELETE_TODO_ITEM:
-            newTodos = state.todos.filter(todo => todo.id !== action.item.id);
+            newTodos = state.todos.filter((todo) => todo.id !== action.item.id);
 
             if (action.item.isCompleted) {
                 return {
                     ...state,
                     todos: newTodos,
-                    completed: state.completed - 1
+                    completed: state.completed - 1,
                 };
             }
 
             return {
                 ...state,
                 todos: newTodos,
-                uncompleted: state.uncompleted - 1
+                uncompleted: state.uncompleted - 1,
             };
 
         case CHANGE_TODO_ITEM_COMPLETED:
-            newTodos = state.todos.map(todo => {
+            newTodos = state.todos.map((todo) => {
                 if (todo.id === action.item.id) {
                     return {
                         ...todo,
-                        isCompleted: !todo.isCompleted
+                        isCompleted: !todo.isCompleted,
                     };
                 }
                 return todo;
@@ -61,30 +66,30 @@ function todoReducer(state = initialState, action) {
                 return {
                     todos: newTodos,
                     completed: state.completed - 1,
-                    uncompleted: state.uncompleted + 1
+                    uncompleted: state.uncompleted + 1,
                 };
             }
 
             return {
                 todos: newTodos,
                 completed: state.completed + 1,
-                uncompleted: state.uncompleted - 1
+                uncompleted: state.uncompleted - 1,
             };
 
         case UPDATE_TODO_ITEM:
-            newTodos = state.todos.map(todo => {
+            newTodos = state.todos.map((todo) => {
                 if (todo.id === action.item.id) {
                     if (todo.isCompleted) {
                         return {
                             ...todo.item,
                             isCompleted: !todo.isCompleted,
-                            text: action.item.text
+                            text: action.item.text,
                         };
                     }
 
                     return {
                         ...todo,
-                        text: action.item.text
+                        text: action.item.text,
                     };
                 }
                 return todo;
@@ -94,22 +99,22 @@ function todoReducer(state = initialState, action) {
                 return {
                     todos: newTodos,
                     completed: state.completed - 1,
-                    uncompleted: state.uncompleted + 1
+                    uncompleted: state.uncompleted + 1,
                 };
             }
 
             return {
                 ...state,
-                todos: newTodos
+                todos: newTodos,
             };
 
         case CLEAR_COMPLETED_TODO_ITEM:
-            newTodos = state.todos.filter(todo => !todo.isCompleted);
+            newTodos = state.todos.filter((todo) => !todo.isCompleted);
 
             return {
                 ...state,
                 todos: newTodos,
-                completed: 0
+                completed: 0,
             };
 
         default:
@@ -130,9 +135,25 @@ function todoDisplayFilterReducer(
     }
 }
 
+function snackBarReducer(state = initialSnackBarState, action) {
+    switch (action.type) {
+        case SET_SNACK_BAR_STATE:
+            return {
+                ...state,
+                ...action.snackBarState,
+            };
+
+        default:
+            return {
+                ...state,
+            };
+    }
+}
+
 const reducer = combineReducers({
     todoReducer,
-    todoDisplayFilterReducer
+    todoDisplayFilterReducer,
+    snackBarReducer,
 });
 
 export default reducer;

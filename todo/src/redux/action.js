@@ -4,51 +4,59 @@ export const UPDATE_TODO_ITEM = "UPDATE_TODO_ITEM";
 export const CHANGE_TODO_ITEM_COMPLETED = "CHANGE_TODO_ITEM_COMPLETED";
 export const CLEAR_COMPLETED_TODO_ITEM = "CLEAR_COMPLETED_TODO_ITEM";
 export const SET_DISPLAY_FILTER = "SET_DISPLAY_FILTER";
+export const SET_SNACK_BAR_STATE = "SET_SNACK_BAR_STATE";
 
 export const todoDisplayFilter = {
     DISPLAY_ALL_TODO: "DISPLAY_ALL_TODO",
     DISPLAY_COMPLETD_TODO: "DISPLAY_COMPLETED_TODO",
-    DISPLAY_UNCOMPLETD_TODO: "DISPLAY_UNCOMPLETED_TODO"
+    DISPLAY_UNCOMPLETD_TODO: "DISPLAY_UNCOMPLETED_TODO",
 };
 
 function createTodoItem(item) {
     return {
         type: CREATE_TODO_ITEM,
-        item
+        item,
     };
 }
 
 function deleteTodoItem(item) {
     return {
         type: DELETE_TODO_ITEM,
-        item
+        item,
     };
 }
 
 function updateTodoItem(item) {
     return {
         type: UPDATE_TODO_ITEM,
-        item
+        item,
     };
 }
 
 function changeTodoItemCompleted(item) {
     return {
         type: CHANGE_TODO_ITEM_COMPLETED,
-        item
+        item,
     };
 }
 
 function clearCompletedTodoItem() {
     return {
-        type: CLEAR_COMPLETED_TODO_ITEM
+        type: CLEAR_COMPLETED_TODO_ITEM,
     };
 }
 
 function setDisplayFilter(filter) {
     return {
         type: SET_DISPLAY_FILTER,
-        filter
+        filter,
+    };
+}
+
+function setSnackBarState(snackBarState) {
+    return {
+        type: SET_SNACK_BAR_STATE,
+        snackBarState,
     };
 }
 
@@ -58,7 +66,8 @@ const actionCreators = {
     updateTodoItem,
     changeTodoItemCompleted,
     clearCompletedTodoItem,
-    setDisplayFilter
+    setDisplayFilter,
+    setSnackBarState,
 };
 
 export default actionCreators;

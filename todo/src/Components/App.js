@@ -11,6 +11,7 @@ import GlobalStyles from "Components/GlobalStyles";
 import ThemeChangeButton from "Components/ThemeChangeButton";
 import useDarkMode from "Components/useDarkMode";
 import SocialMedia from "./SocialMedia";
+import SnackBar from "./SnackBar";
 
 const TodoContainer = styled.div`
     display: flex;
@@ -59,6 +60,7 @@ function App(state) {
                 <ThemeChangeButton theme={theme} setTheme={setTheme} />
                 <GlobalStyles />
             </TodoContainer>
+            <SnackBar />
         </ThemeProvider>
     );
 }
