@@ -9,7 +9,12 @@ export const api = {
             },
         });
 
-        console.log(response);
+        if (response.status === 200) {
+            const response_json = await response.json();
+            return response_json;
+        }
+
+        return null;
     },
     post: async (text) => {
         const response = await fetch(API_URL, {
@@ -20,7 +25,12 @@ export const api = {
             body: JSON.stringify(text),
         });
 
-        console.log(response);
+        if (response.status === 200) {
+            const response_json = await response.json();
+            return response_json;
+        }
+
+        return null;
     },
     put: async (obj) => {
         const { id, ...rest } = obj;
@@ -32,7 +42,12 @@ export const api = {
             body: JSON.stringify(rest),
         });
 
-        console.log(response);
+        if (response.status === 200) {
+            const response_json = await response.json();
+            return response_json;
+        }
+
+        return null;
     },
     delete: async (id) => {
         const response = await fetch(API_URL + `/${id}`, {
@@ -42,6 +57,11 @@ export const api = {
             },
         });
 
-        console.log(response);
+        if (response.status === 204) {
+            const response_json = await response.json();
+            return response_json;
+        }
+
+        return null;
     },
 };
