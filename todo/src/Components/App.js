@@ -36,7 +36,7 @@ const TodoTitleText = styled.div`
     }
 `;
 
-function App(state) {
+function App() {
     const [theme, setTheme, componentMounted] = useDarkMode();
 
     if (!componentMounted) {
