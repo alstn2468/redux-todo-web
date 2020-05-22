@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Todo from "Components/Todo";
 import { todoDisplayFilter } from "redux/action";
+import actionCreators from "../redux/action";
 
 const TodoListContainer = styled.div`
     display: flex;
@@ -38,13 +39,13 @@ function getDisplayTodos(state, filter) {
         case todoDisplayFilter.DISPLAY_COMPLETD_TODO:
             return {
                 ...state,
-                todos: state.todos.filter(todo => todo.isCompleted)
+                todos: state.todos.filter((todo) => todo.isCompleted),
             };
 
         case todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO:
             return {
                 ...state,
-                todos: state.todos.filter(todo => !todo.isCompleted)
+                todos: state.todos.filter((todo) => !todo.isCompleted),
             };
 
         default:
@@ -56,11 +57,12 @@ function mapStateToProps(state) {
     return getDisplayTodos(state.todoReducer, state.todoDisplayFilterReducer);
 }
 
-function TodoList({ todos }) {
+function TodoList({ todos, dispatch }) {
+    dispatch(actionCreators.fetchTodoList());
     return (
         <TodoListContainer className="todo-container">
             {todos.length > 0 ? (
-                todos.map(todo => <Todo key={todo.id} item={todo} />)
+                todos.map((todo) => <Todo key={todo.id} item={todo} />)
             ) : (
                 <EmptyList>This list is empty.</EmptyList>
             )}
@@ -71,13 +73,15 @@ function TodoList({ todos }) {
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            item: PropTypes.shape({
-                id: PropTypes.string,
-                text: PropTypes.string,
-                isCompleted: PropTypes.bool
-            })
+            item: PropTypes.objectOf(
+                PropTypes.shape({
+                    id: PropTypes.number,
+                    text: PropTypes.string,
+                    isCompleted: PropTypes.bool,
+                })
+            ),
         })
-    )
+    ),
 };
 
 export default connect(mapStateToProps)(TodoList);

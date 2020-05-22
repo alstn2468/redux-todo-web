@@ -7,6 +7,7 @@ import {
     CLEAR_COMPLETED_TODO_ITEM,
     SET_DISPLAY_FILTER,
     SET_SNACK_BAR_STATE,
+    SET_TODO_LIST,
     todoDisplayFilter,
 } from "redux/action";
 import { SUCCESS } from "../Constants/SnackBarVariant";
@@ -27,6 +28,20 @@ function todoReducer(state = initialState, action) {
     let newTodos;
 
     switch (action.type) {
+        case SET_TODO_LIST:
+            const {
+                todos: { data },
+            } = action;
+            const completed = data.filter((todo) => todo.isCompleted).length;
+            const uncompleted = data.filter((todo) => !todo.isCompleted).length;
+
+            return {
+                ...state,
+                todos: data,
+                completed: completed,
+                uncompleted: uncompleted,
+            };
+
         case CREATE_TODO_ITEM:
             return {
                 ...state,

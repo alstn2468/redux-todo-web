@@ -7,7 +7,7 @@ import actionCreators from "redux/action";
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
-    updateTodoItemButtonStyle
+    updateTodoItemButtonStyle,
 } from "Constants/ButtonStyles";
 import { ReactComponent as Success } from "assets/Icons/success.svg";
 import { ReactComponent as Cross } from "assets/Icons/cross.svg";
@@ -34,7 +34,8 @@ const TodoData = styled.div`
     width: 80%;
     font-size: 22px;
     font-weight: 400;
-    text-decoration: ${props => (props.isCompleted ? "line-through" : "none")};
+    text-decoration: ${(props) =>
+        props.isCompleted ? "line-through" : "none"};
     margin: 0 10px;
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -65,7 +66,7 @@ function Todo({ item, dispatch }) {
                 dispatch(
                     actionCreators.updateTodoItem({
                         ...item,
-                        text
+                        text,
                     })
                 );
             } else {
@@ -94,7 +95,7 @@ function Todo({ item, dispatch }) {
             {flag ? (
                 <TodoInput
                     className="todo-input"
-                    onChange={event => setText(event.target.value)}
+                    onChange={(event) => setText(event.target.value)}
                     value={text}
                 />
             ) : (
@@ -119,12 +120,12 @@ function Todo({ item, dispatch }) {
 Todo.propTypes = {
     item: PropTypes.objectOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
             text: PropTypes.string.isRequired,
-            isCompleted: PropTypes.bool.isRequired
+            isCompleted: PropTypes.bool.isRequired,
         })
     ),
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(Todo);
