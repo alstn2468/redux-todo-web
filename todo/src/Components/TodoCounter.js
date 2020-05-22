@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import { ReactComponent as Success } from "assets/Icons/success.svg";
 import { ReactComponent as Cross } from "assets/Icons/cross.svg";
@@ -29,6 +30,10 @@ const TodoCounterText = styled.div`
     }
 `;
 
+function mapStateToProps(state) {
+    return state.todoReducer;
+}
+
 function TodoCounter({ completed, uncompleted }) {
     return (
         <TodoCounterContainer>
@@ -46,7 +51,7 @@ function TodoCounter({ completed, uncompleted }) {
 
 TodoCounter.propTypes = {
     completed: PropTypes.number.isRequired,
-    uncompleted: PropTypes.number.isRequired
+    uncompleted: PropTypes.number.isRequired,
 };
 
-export default TodoCounter;
+export default connect(mapStateToProps)(TodoCounter);

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import ClearCompletedButton from "Components/ClearCompletedButton";
 import TodoFilterButton from "Components/TodoFilterButton";
@@ -20,19 +19,14 @@ const HeaderContainer = styled.div`
     }
 `;
 
-function Header({ completed, uncompleted }) {
+function Header() {
     return (
         <HeaderContainer className="todo-counter-container">
             <ClearCompletedButton />
             <TodoFilterButton />
-            <TodoCounter completed={completed} uncompleted={uncompleted} />
+            <TodoCounter />
         </HeaderContainer>
     );
 }
-
-Header.propTypes = {
-    completed: PropTypes.number.isRequired,
-    uncompleted: PropTypes.number.isRequired
-};
 
 export default Header;

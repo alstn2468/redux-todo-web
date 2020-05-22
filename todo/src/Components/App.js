@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-import { connect } from "react-redux";
 import { lightTheme, darkTheme } from "Constants/theme";
 import TodoInput from "Components/TodoInput";
 import TodoList from "Components/TodoList";
@@ -37,13 +36,8 @@ const TodoTitleText = styled.div`
     }
 `;
 
-const mapStateToProps = (state) => {
-    return state;
-};
-
 function App(state) {
     const [theme, setTheme, componentMounted] = useDarkMode();
-    const { completed, uncompleted } = state.todoReducer;
 
     if (!componentMounted) {
         return <div />;
@@ -55,7 +49,7 @@ function App(state) {
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <SocialMedia />
                 <TodoInput />
-                <Header completed={completed} uncompleted={uncompleted} />
+                <Header />
                 <TodoList />
                 <ThemeChangeButton theme={theme} setTheme={setTheme} />
                 <GlobalStyles />
@@ -76,4 +70,4 @@ App.propTypes = {
     ),
 };
 
-export default connect(mapStateToProps)(App);
+export default App;
