@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -58,7 +58,10 @@ function mapStateToProps(state) {
 }
 
 function TodoList({ todos, dispatch }) {
-    dispatch(actionCreators.fetchTodoList());
+    useEffect(() => {
+        dispatch(actionCreators.fetchTodoList());
+    }, []);
+
     return (
         <TodoListContainer className="todo-container">
             {todos.length > 0 ? (
@@ -73,13 +76,11 @@ function TodoList({ todos, dispatch }) {
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            item: PropTypes.objectOf(
-                PropTypes.shape({
-                    id: PropTypes.number,
-                    text: PropTypes.string,
-                    isCompleted: PropTypes.bool,
-                })
-            ),
+            item: PropTypes.shape({
+                id: PropTypes.number,
+                text: PropTypes.string,
+                isCompleted: PropTypes.bool,
+            }),
         })
     ),
 };

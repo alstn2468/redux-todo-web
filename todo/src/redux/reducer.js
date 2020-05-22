@@ -14,6 +14,7 @@ import { SUCCESS } from "../Constants/SnackBarVariant";
 
 const initialState = {
     todos: [],
+    isFetchin: false,
     completed: 0,
     uncompleted: 0,
 };

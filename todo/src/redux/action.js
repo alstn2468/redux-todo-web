@@ -28,7 +28,7 @@ function fetchTodoList() {
         const response_json = await response.json();
 
         dispatch(setTodoList(response_json));
-        dispatch(
+        return dispatch(
             setSnackBarState({
                 snackBarOpen: true,
                 snackBarVariant: SUCCESS,

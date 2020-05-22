@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import uuid from "uuid";
 import PropTypes from "prop-types";
+import { WARNING } from "../Constants/SnackBarVariant";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import actionCreators from "redux/action";
@@ -35,13 +36,21 @@ function TodoInput({ dispatch }) {
     function onPressEnterKey(event) {
         if (event.key === "Enter") {
             if (text === "") {
-                alert("Please write any text.");
+                dispatch(
+                    dispatch(
+                        actionCreators.setSnackBarState({
+                            snackBarOpen: true,
+                            snackBarVariant: WARNING,
+                            snackBarContent: "Please write any text.",
+                        })
+                    )
+                );
             } else {
                 dispatch(
                     actionCreators.createTodoItem({
                         id: uuid(),
                         text,
-                        isCompleted: false
+                        isCompleted: false,
                     })
                 );
                 setText("");
@@ -55,8 +64,8 @@ function TodoInput({ dispatch }) {
                 type="text"
                 placeholder="Write some to do task and press enter."
                 value={text}
-                onChange={event => setText(event.target.value)}
-                onKeyPress={event => onPressEnterKey(event)}
+                onChange={(event) => setText(event.target.value)}
+                onKeyPress={(event) => onPressEnterKey(event)}
                 autoFocus
             />
         </InputContainer>
@@ -64,7 +73,7 @@ function TodoInput({ dispatch }) {
 }
 
 TodoInput.propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(TodoInput);

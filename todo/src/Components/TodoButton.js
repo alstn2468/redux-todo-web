@@ -7,7 +7,7 @@ const Button = styled.button`
     justify-content: center;
     align-items: center;
     margin-right: 15px;
-    visibility: ${props => (props.flag ? "hidden" : "visible")};
+    visibility: ${(props) => (props.flag ? "hidden" : "visible")};
 
     svg {
         height: auto;
@@ -32,7 +32,7 @@ function TodoButton({ onClick, buttonIcon, flag, styles }) {
 TodoButton.propTypes = {
     onClick: ProptTypes.func.isRequired,
     buttonIcon: ProptTypes.element.isRequired,
-    flag: ProptTypes.bool.isRequired
+    flag: ProptTypes.bool.isRequired,
 };
 
 export default TodoButton;

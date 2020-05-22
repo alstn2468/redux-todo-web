@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { WARNING } from "../Constants/SnackBarVariant";
 import TodoButton from "Components/TodoButton";
 import actionCreators from "redux/action";
 import {
@@ -70,7 +71,13 @@ function Todo({ item, dispatch }) {
                     })
                 );
             } else {
-                alert("Please write any text.");
+                dispatch(
+                    actionCreators.setSnackBarState({
+                        snackBarOpen: true,
+                        snackBarVariant: WARNING,
+                        snackBarContent: "Please write any text.",
+                    })
+                );
             }
         }
         setFlag(!flag);
@@ -118,13 +125,11 @@ function Todo({ item, dispatch }) {
 }
 
 Todo.propTypes = {
-    item: PropTypes.objectOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            text: PropTypes.string.isRequired,
-            isCompleted: PropTypes.bool.isRequired,
-        })
-    ),
+    item: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        isCompleted: PropTypes.bool.isRequired,
+    }),
     dispatch: PropTypes.func.isRequired,
 };
 
