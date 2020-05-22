@@ -36,7 +36,7 @@ const TodoTitleText = styled.div`
     }
 `;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state;
 };
 
@@ -69,9 +69,9 @@ App.propTypes = {
             todos: PropTypes.array.isRequired,
             completed: PropTypes.number.isRequired,
             uncompleted: PropTypes.number.isRequired,
-            dispatch: PropTypes.func.isRequired
+            dispatch: PropTypes.func.isRequired,
         })
-    )
+    ),
 };
 
 export default connect(mapStateToProps)(App);
