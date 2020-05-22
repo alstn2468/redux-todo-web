@@ -43,7 +43,6 @@ function TodoFilterButton({ filter, dispatch }) {
                         : "unselected"
                 }`}
                 disabled={filter === todoDisplayFilter.DISPLAY_ALL_TODO}
-                filter={filter === todoDisplayFilter.DISPLAY_ALL_TODO}
                 onClick={() =>
                     dispatch(
                         actionCreators.setDisplayFilter(
@@ -94,7 +93,7 @@ function TodoFilterButton({ filter, dispatch }) {
 
 TodoFilterButton.propTypes = {
     filter: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(TodoFilterButton);
