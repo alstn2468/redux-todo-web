@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 import {
     CREATE_TODO_ITEM,
     CHANGE_TODO_ITEM_COMPLETED,
@@ -9,12 +9,12 @@ import {
     SET_SNACK_BAR_STATE,
     SET_TODO_LIST,
     todoDisplayFilter,
-} from "redux/action";
-import { SUCCESS } from "../Constants/SnackBarVariant";
+} from 'redux/action';
+import { SUCCESS } from '../Constants/SnackBarVariant';
 
 const initialState = {
     todos: [],
-    isFetchin: false,
+    isFetching: true,
     completed: 0,
     uncompleted: 0,
 };
@@ -22,7 +22,7 @@ const initialState = {
 export const initialSnackBarState = {
     snackBarOpen: false,
     snackBarVariant: SUCCESS,
-    snackBarContent: "",
+    snackBarContent: '',
 };
 
 function todoReducer(state = initialState, action) {
@@ -41,6 +41,7 @@ function todoReducer(state = initialState, action) {
                 todos: data,
                 completed: completed,
                 uncompleted: uncompleted,
+                isFetching: false,
             };
 
         case CREATE_TODO_ITEM:
