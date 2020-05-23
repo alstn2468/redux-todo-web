@@ -84,7 +84,7 @@ function Todo({ item, dispatch }) {
     }
 
     function onClickDeleteButton() {
-        dispatch(actionCreators.deleteTodoItem(item));
+        dispatch(actionCreators.fetchDeleteTodoItem(item));
     }
 
     function onClickCompletedStatusButton() {

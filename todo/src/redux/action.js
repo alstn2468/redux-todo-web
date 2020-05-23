@@ -56,7 +56,7 @@ function fetchTodoList() {
     };
 }
 
-function addTodoItem(text) {
+function fetchCreateTodoItem(text) {
     return async (dispatch) => {
         dispatch(setIsFetching(true));
 
@@ -136,6 +136,42 @@ function fetchUpdateTodoItem(item) {
     };
 }
 
+function fetchDeleteTodoItem(item) {
+    return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
+        const response = await fetch(API_URL + `/${item.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 204) {
+            dispatch(deleteTodoItem(item));
+            dispatch(setIsFetching(false));
+
+            return dispatch(
+                setSnackBarState({
+                    snackBarOpen: true,
+                    snackBarVariant: SUCCESS,
+                    snackBarContent: 'Success Delete Todo Item!',
+                })
+            );
+        }
+
+        dispatch(setIsFetching(false));
+
+        return dispatch(
+            setSnackBarState({
+                snackBarOpen: true,
+                snackBarVariant: ERROR,
+                snackBarContent: 'Fail Delete Todo Item!',
+            })
+        );
+    };
+}
+
 function setIsFetching(isFetching) {
     return {
         type: SET_IS_FETCHING,
@@ -192,13 +228,13 @@ function setSnackBarState(snackBarState) {
 }
 
 const actionCreators = {
-    addTodoItem,
-    deleteTodoItem,
+    fetchTodoList,
+    fetchCreateTodoItem,
     fetchUpdateTodoItem,
+    fetchDeleteTodoItem,
     clearCompletedTodoItem,
     setDisplayFilter,
     setSnackBarState,
-    fetchTodoList,
 };
 
 export default actionCreators;

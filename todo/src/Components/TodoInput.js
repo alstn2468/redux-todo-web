@@ -46,7 +46,7 @@ function TodoInput({ dispatch }) {
                 );
             } else {
                 dispatch(
-                    actionCreators.addTodoItem({
+                    actionCreators.fetchCreateTodoItem({
                         text,
                     })
                 );
