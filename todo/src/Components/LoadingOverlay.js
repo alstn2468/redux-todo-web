@@ -34,7 +34,7 @@ function LoadingOverlay({ isFetching }) {
                     fontSize: 33,
                 }),
             }}
-            text="Lodaing..."
+            text="Loading..."
         />
     );
 }
