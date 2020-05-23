@@ -71,7 +71,7 @@ function Todo({ item, dispatch }) {
                     })
                 );
             } else {
-                dispatch(
+                return dispatch(
                     actionCreators.setSnackBarState({
                         snackBarOpen: true,
                         snackBarVariant: WARNING,
@@ -91,13 +91,11 @@ function Todo({ item, dispatch }) {
         if (event.key === 'Enter') {
             if (text === '') {
                 dispatch(
-                    dispatch(
-                        actionCreators.setSnackBarState({
-                            snackBarOpen: true,
-                            snackBarVariant: WARNING,
-                            snackBarContent: 'Please write any text.',
-                        })
-                    )
+                    actionCreators.setSnackBarState({
+                        snackBarOpen: true,
+                        snackBarVariant: WARNING,
+                        snackBarContent: 'Please write any text.',
+                    })
                 );
             } else {
                 dispatch(
