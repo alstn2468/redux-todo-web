@@ -8,13 +8,14 @@ import {
     SET_DISPLAY_FILTER,
     SET_SNACK_BAR_STATE,
     SET_TODO_LIST,
+    SET_IS_FETCHING,
     todoDisplayFilter,
 } from 'redux/action';
 import { SUCCESS } from '../Constants/SnackBarVariant';
 
 const initialState = {
     todos: [],
-    isFetching: true,
+    isFetching: false,
     completed: 0,
     uncompleted: 0,
 };
@@ -29,19 +30,23 @@ function todoReducer(state = initialState, action) {
     let newTodos;
 
     switch (action.type) {
+        case SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            };
+
         case SET_TODO_LIST:
-            const {
-                todos: { data },
-            } = action;
-            const completed = data.filter((todo) => todo.isCompleted).length;
-            const uncompleted = data.filter((todo) => !todo.isCompleted).length;
+            const { todos } = action;
+            const completed = todos.filter((todo) => todo.isCompleted).length;
+            const uncompleted = todos.filter((todo) => !todo.isCompleted)
+                .length;
 
             return {
                 ...state,
-                todos: data,
+                todos: todos,
                 completed: completed,
                 uncompleted: uncompleted,
-                isFetching: false,
             };
 
         case CREATE_TODO_ITEM:

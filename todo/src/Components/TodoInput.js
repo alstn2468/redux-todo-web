@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import uuid from "uuid";
-import PropTypes from "prop-types";
-import { WARNING } from "../Constants/SnackBarVariant";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import actionCreators from "redux/action";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { WARNING } from '../Constants/SnackBarVariant';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import actionCreators from 'redux/action';
 
 const InputContainer = styled.div`
     height: 100px;
@@ -31,29 +30,27 @@ const Input = styled.input`
 `;
 
 function TodoInput({ dispatch }) {
-    const [text, setText] = useState("");
+    const [text, setText] = useState('');
 
     function onPressEnterKey(event) {
-        if (event.key === "Enter") {
-            if (text === "") {
+        if (event.key === 'Enter') {
+            if (text === '') {
                 dispatch(
                     dispatch(
                         actionCreators.setSnackBarState({
                             snackBarOpen: true,
                             snackBarVariant: WARNING,
-                            snackBarContent: "Please write any text.",
+                            snackBarContent: 'Please write any text.',
                         })
                     )
                 );
             } else {
                 dispatch(
-                    actionCreators.createTodoItem({
-                        id: uuid(),
+                    actionCreators.addTodoItem({
                         text,
-                        isCompleted: false,
                     })
                 );
-                setText("");
+                setText('');
             }
         }
     }

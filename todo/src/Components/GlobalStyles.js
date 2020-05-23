@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const globalStyles = createGlobalStyle`
     ${reset};
@@ -99,6 +99,15 @@ const globalStyles = createGlobalStyle`
 
     .selected {
       color: ${({ theme }) => theme.headerButtonHoverColor};
+    }
+
+    ._loading_overlay_content{
+        color: ${({ theme }) => theme.loadingOverlayContentColor};
+    }
+
+    ._loading_overlay_wrapper {
+        background-color: ${({ theme }) => theme.loadingOverlayBackgroundColor};
+        opacity: ${({ theme }) => theme.loadingOverlayOpacity};
     }
 
     .social-icon {

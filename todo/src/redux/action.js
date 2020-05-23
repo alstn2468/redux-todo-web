@@ -8,6 +8,7 @@ export const CHANGE_TODO_ITEM_COMPLETED = 'CHANGE_TODO_ITEM_COMPLETED';
 export const CLEAR_COMPLETED_TODO_ITEM = 'CLEAR_COMPLETED_TODO_ITEM';
 export const SET_DISPLAY_FILTER = 'SET_DISPLAY_FILTER';
 export const SET_SNACK_BAR_STATE = 'SET_SNACK_BAR_STATE';
+export const SET_IS_FETCHING = 'SET_IS_FETCHING';
 
 export const todoDisplayFilter = {
     DISPLAY_ALL_TODO: 'DISPLAY_ALL_TODO',
@@ -19,6 +20,8 @@ const API_URL = process.env.REACT_APP_API_URL + 'todo';
 
 function fetchTodoList() {
     return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -27,8 +30,10 @@ function fetchTodoList() {
         });
         if (response.status === 200) {
             const response_json = await response.json();
-            console.log(response);
-            dispatch(setTodoList(response_json));
+            const { data } = response_json;
+
+            dispatch(setTodoList(data));
+            dispatch(setIsFetching(false));
             return dispatch(
                 setSnackBarState({
                     snackBarOpen: true,
@@ -38,6 +43,7 @@ function fetchTodoList() {
             );
         }
 
+        dispatch(setIsFetching(false));
         return dispatch(
             setSnackBarState({
                 snackBarOpen: true,
@@ -45,6 +51,52 @@ function fetchTodoList() {
                 snackBarContent: 'Fail Fetch Todo List!',
             })
         );
+    };
+}
+
+function addTodoItem(text) {
+    return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(text),
+        });
+
+        if (response.status === 200) {
+            const response_json = await response.json();
+            const { data } = response_json;
+
+            dispatch(createTodoItem(data));
+            dispatch(setIsFetching(false));
+
+            return dispatch(
+                setSnackBarState({
+                    snackBarOpen: true,
+                    snackBarVariant: SUCCESS,
+                    snackBarContent: 'Success Add Todo Item!',
+                })
+            );
+        }
+
+        dispatch(setIsFetching(false));
+        return dispatch(
+            setSnackBarState({
+                snackBarOpen: true,
+                snackBarVariant: ERROR,
+                snackBarContent: 'Fail Fetch Todo List!',
+            })
+        );
+    };
+}
+
+function setIsFetching(isFetching) {
+    return {
+        type: SET_IS_FETCHING,
+        isFetching,
     };
 }
 
@@ -104,14 +156,13 @@ function setSnackBarState(snackBarState) {
 }
 
 const actionCreators = {
-    createTodoItem,
+    addTodoItem,
     deleteTodoItem,
     updateTodoItem,
     changeTodoItemCompleted,
     clearCompletedTodoItem,
     setDisplayFilter,
     setSnackBarState,
-    setTodoList,
     fetchTodoList,
 };
 

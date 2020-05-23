@@ -1,16 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "Constants/theme";
-import TodoInput from "Components/TodoInput";
-import TodoList from "Components/TodoList";
-import Header from "Components/Header";
-import GlobalStyles from "Components/GlobalStyles";
-import ThemeChangeButton from "Components/ThemeChangeButton";
-import useDarkMode from "Components/useDarkMode";
-import SocialMedia from "./SocialMedia";
-import SnackBar from "./SnackBar";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from 'Constants/theme';
+import TodoInput from 'Components/TodoInput';
+import TodoList from 'Components/TodoList';
+import Header from 'Components/Header';
+import GlobalStyles from 'Components/GlobalStyles';
+import ThemeChangeButton from 'Components/ThemeChangeButton';
+import useDarkMode from 'Components/useDarkMode';
+import SocialMedia from './SocialMedia';
+import SnackBar from './SnackBar';
+import LoadingOverlay from './LoadingOverlay';
 
 const TodoContainer = styled.div`
     display: flex;
@@ -26,7 +27,7 @@ const TodoTitleText = styled.div`
     margin-bottom: 5px;
     font-size: 52px;
     font-weight: bold;
-    font-family: "Abel", sans-serif;
+    font-family: 'Abel', sans-serif;
     text-shadow: 4px 4px 1px gray;
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -44,8 +45,9 @@ function App() {
     }
 
     return (
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <TodoContainer>
+                <LoadingOverlay />
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <SocialMedia />
                 <TodoInput />

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import Todo from "Components/Todo";
-import { todoDisplayFilter } from "redux/action";
-import actionCreators from "../redux/action";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Todo from 'Components/Todo';
+import { todoDisplayFilter } from 'redux/action';
+import actionCreators from '../redux/action';
 
 const TodoListContainer = styled.div`
     display: flex;
@@ -49,7 +49,7 @@ function getDisplayTodos(state, filter) {
             };
 
         default:
-            throw new Error("Unknown Filter : " + filter);
+            throw new Error('Unknown Filter : ' + filter);
     }
 }
 
@@ -61,7 +61,6 @@ function TodoList({ todos, dispatch }) {
     useEffect(() => {
         dispatch(actionCreators.fetchTodoList());
     }, []);
-
     return (
         <TodoListContainer className="todo-container">
             {todos.length > 0 ? (
