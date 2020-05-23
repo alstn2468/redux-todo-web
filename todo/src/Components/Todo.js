@@ -87,6 +87,30 @@ function Todo({ item, dispatch }) {
         dispatch(actionCreators.fetchDeleteTodoItem(item));
     }
 
+    function onPressEnterKey(event) {
+        if (event.key === 'Enter') {
+            if (text === '') {
+                dispatch(
+                    dispatch(
+                        actionCreators.setSnackBarState({
+                            snackBarOpen: true,
+                            snackBarVariant: WARNING,
+                            snackBarContent: 'Please write any text.',
+                        })
+                    )
+                );
+            } else {
+                dispatch(
+                    actionCreators.fetchUpdateTodoItem({
+                        ...item,
+                        text,
+                    })
+                );
+                setFlag(!flag);
+            }
+        }
+    }
+
     function onClickCompletedStatusButton() {
         dispatch(
             actionCreators.fetchUpdateTodoItem({
@@ -108,6 +132,7 @@ function Todo({ item, dispatch }) {
                 <TodoInput
                     className="todo-input"
                     onChange={(event) => setText(event.target.value)}
+                    onKeyPress={(event) => onPressEnterKey(event)}
                     value={text}
                 />
             ) : (
