@@ -1,13 +1,6 @@
 import React from 'react';
 import BaseLoadingOverlay from 'react-loading-overlay';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-
-const StyledLoadingOverlay = styled(BaseLoadingOverlay)`
-    position: fixed;
-    top: 0;
-    left: 0;
-`;
 
 function mapStateToProps(state) {
     return state.todoReducer;
@@ -15,16 +8,18 @@ function mapStateToProps(state) {
 
 function LoadingOverlay({ isFetching }) {
     return (
-        <StyledLoadingOverlay
+        <BaseLoadingOverlay
             active={isFetching}
             spinner
             styles={{
-                wrapper: {
+                wrapper: (base) => ({
+                    ...base,
+                    position: 'absolute',
                     width: '100%',
                     height: '100%',
                     overflow: 'scroll',
                     display: isFetching ? 'unset' : 'none',
-                },
+                }),
                 spinner: (base) => ({
                     ...base,
                     width: 80,

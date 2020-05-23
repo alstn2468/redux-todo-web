@@ -47,7 +47,6 @@ function App() {
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <TodoContainer>
-                <LoadingOverlay />
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <SocialMedia />
                 <TodoInput />
@@ -56,6 +55,7 @@ function App() {
                 <ThemeChangeButton theme={theme} setTheme={setTheme} />
                 <GlobalStyles />
             </TodoContainer>
+            <LoadingOverlay />
             <SnackBar />
         </ThemeProvider>
     );
