@@ -52,7 +52,7 @@ function todoReducer(state = initialState, action) {
         case CREATE_TODO_ITEM:
             return {
                 ...state,
-                todos: [...state.todos, action.item],
+                todos: [action.item, ...state.todos],
                 uncompleted: state.uncompleted + 1,
             };
 
