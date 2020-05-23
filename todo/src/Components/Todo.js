@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { WARNING } from "../Constants/SnackBarVariant";
-import TodoButton from "Components/TodoButton";
-import actionCreators from "redux/action";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { WARNING } from '../Constants/SnackBarVariant';
+import TodoButton from 'Components/TodoButton';
+import actionCreators from 'redux/action';
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
     updateTodoItemButtonStyle,
-} from "Constants/ButtonStyles";
-import { ReactComponent as Success } from "assets/Icons/success.svg";
-import { ReactComponent as Cross } from "assets/Icons/cross.svg";
-import { ReactComponent as Trash } from "assets/Icons/trash.svg";
-import { ReactComponent as Pencil } from "assets/Icons/pencil.svg";
-import { ReactComponent as Save } from "assets/Icons/save.svg";
+} from 'Constants/ButtonStyles';
+import { ReactComponent as Success } from 'assets/Icons/success.svg';
+import { ReactComponent as Cross } from 'assets/Icons/cross.svg';
+import { ReactComponent as Trash } from 'assets/Icons/trash.svg';
+import { ReactComponent as Pencil } from 'assets/Icons/pencil.svg';
+import { ReactComponent as Save } from 'assets/Icons/save.svg';
 
 const TodoContainer = styled.div`
     display: flex;
@@ -36,7 +36,7 @@ const TodoData = styled.div`
     font-size: 22px;
     font-weight: 400;
     text-decoration: ${(props) =>
-        props.isCompleted ? "line-through" : "none"};
+        props.isCompleted ? 'line-through' : 'none'};
     margin: 0 10px;
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -63,9 +63,9 @@ function Todo({ item, dispatch }) {
 
     function onClickUpdateButton() {
         if (flag) {
-            if (text !== "") {
+            if (text !== '') {
                 dispatch(
-                    actionCreators.updateTodoItem({
+                    actionCreators.fetchUpdateTodoItem({
                         ...item,
                         text,
                     })
@@ -75,7 +75,7 @@ function Todo({ item, dispatch }) {
                     actionCreators.setSnackBarState({
                         snackBarOpen: true,
                         snackBarVariant: WARNING,
-                        snackBarContent: "Please write any text.",
+                        snackBarContent: 'Please write any text.',
                     })
                 );
             }
@@ -88,7 +88,12 @@ function Todo({ item, dispatch }) {
     }
 
     function onClickCompletedStatusButton() {
-        dispatch(actionCreators.changeTodoItemCompleted(item));
+        dispatch(
+            actionCreators.fetchUpdateTodoItem({
+                ...item,
+                isCompleted: !item.isCompleted,
+            })
+        );
     }
 
     return (

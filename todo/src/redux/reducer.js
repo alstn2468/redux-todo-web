@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import {
     CREATE_TODO_ITEM,
-    CHANGE_TODO_ITEM_COMPLETED,
     DELETE_TODO_ITEM,
     UPDATE_TODO_ITEM,
     CLEAR_COMPLETED_TODO_ITEM,
@@ -27,7 +26,7 @@ export const initialSnackBarState = {
 };
 
 function todoReducer(state = initialState, action) {
-    let newTodos;
+    let newTodos, completed, uncompleted;
 
     switch (action.type) {
         case SET_IS_FETCHING:
@@ -38,9 +37,8 @@ function todoReducer(state = initialState, action) {
 
         case SET_TODO_LIST:
             const { todos } = action;
-            const completed = todos.filter((todo) => todo.isCompleted).length;
-            const uncompleted = todos.filter((todo) => !todo.isCompleted)
-                .length;
+            completed = todos.filter((todo) => todo.isCompleted).length;
+            uncompleted = todos.filter((todo) => !todo.isCompleted).length;
 
             return {
                 ...state,
@@ -73,61 +71,24 @@ function todoReducer(state = initialState, action) {
                 uncompleted: state.uncompleted - 1,
             };
 
-        case CHANGE_TODO_ITEM_COMPLETED:
-            newTodos = state.todos.map((todo) => {
-                if (todo.id === action.item.id) {
-                    return {
-                        ...todo,
-                        isCompleted: !todo.isCompleted,
-                    };
-                }
-                return todo;
-            });
-
-            if (action.item.isCompleted) {
-                return {
-                    todos: newTodos,
-                    completed: state.completed - 1,
-                    uncompleted: state.uncompleted + 1,
-                };
-            }
-
-            return {
-                todos: newTodos,
-                completed: state.completed + 1,
-                uncompleted: state.uncompleted - 1,
-            };
-
         case UPDATE_TODO_ITEM:
             newTodos = state.todos.map((todo) => {
                 if (todo.id === action.item.id) {
-                    if (todo.isCompleted) {
-                        return {
-                            ...todo.item,
-                            isCompleted: !todo.isCompleted,
-                            text: action.item.text,
-                        };
-                    }
-
                     return {
-                        ...todo,
-                        text: action.item.text,
+                        ...action.item,
                     };
                 }
                 return todo;
             });
 
-            if (action.item.isCompleted) {
-                return {
-                    todos: newTodos,
-                    completed: state.completed - 1,
-                    uncompleted: state.uncompleted + 1,
-                };
-            }
+            completed = newTodos.filter((todo) => todo.isCompleted).length;
+            uncompleted = newTodos.filter((todo) => !todo.isCompleted).length;
 
             return {
                 ...state,
                 todos: newTodos,
+                completed: completed,
+                uncompleted: uncompleted,
             };
 
         case CLEAR_COMPLETED_TODO_ITEM:
