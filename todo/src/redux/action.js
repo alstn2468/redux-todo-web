@@ -23,9 +23,6 @@ function fetchTodoList() {
 
         const response = await fetch(API_URL, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
         });
 
         if (response.status === 200) {
@@ -142,9 +139,6 @@ function fetchDeleteTodoItem(item) {
 
         const response = await fetch(API_URL + `/${item.id}`, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
         });
 
         if (response.status === 204) {
@@ -167,6 +161,39 @@ function fetchDeleteTodoItem(item) {
                 snackBarOpen: true,
                 snackBarVariant: ERROR,
                 snackBarContent: 'Fail Delete Todo Item!',
+            })
+        );
+    };
+}
+
+function fetchClearCompletedTodoItem() {
+    return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
+        const response = await fetch(API_URL, {
+            method: 'DELETE',
+        });
+
+        if (response.status === 204) {
+            dispatch(clearCompletedTodoItem());
+            dispatch(setIsFetching(false));
+
+            return dispatch(
+                setSnackBarState({
+                    snackBarOpen: true,
+                    snackBarVariant: SUCCESS,
+                    snackBarContent: 'Success Clear Completed Todo Items!',
+                })
+            );
+        }
+
+        dispatch(setIsFetching(false));
+
+        return dispatch(
+            setSnackBarState({
+                snackBarOpen: true,
+                snackBarVariant: ERROR,
+                snackBarContent: 'Fail Clear Completed Todo Items!',
             })
         );
     };
@@ -232,7 +259,7 @@ const actionCreators = {
     fetchCreateTodoItem,
     fetchUpdateTodoItem,
     fetchDeleteTodoItem,
-    clearCompletedTodoItem,
+    fetchClearCompletedTodoItem,
     setDisplayFilter,
     setSnackBarState,
 };

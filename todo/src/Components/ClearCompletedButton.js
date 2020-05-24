@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import actionCreators from "redux/action";
+import actionCreators from 'redux/action';
 
 const Button = styled.button`
     display: flex;
@@ -20,7 +20,7 @@ const Button = styled.button`
 
 function ClearCompletedButton({ dispatch }) {
     function onClickClearCompletedButton() {
-        dispatch(actionCreators.clearCompletedTodoItem());
+        dispatch(actionCreators.fetchClearCompletedTodoItem());
     }
     return (
         <Button
@@ -33,7 +33,7 @@ function ClearCompletedButton({ dispatch }) {
 }
 
 ClearCompletedButton.propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(ClearCompletedButton);
