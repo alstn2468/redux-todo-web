@@ -16,8 +16,8 @@
 
 ### To Do
 
-- [ ] Connect to [Back-End servers](https://github.com/alstn2468/Redux_ToDo_Web_Backend)
-- [ ] Redux asynchronous action processing
+- [x] Connect to [Back-End servers](https://github.com/alstn2468/Redux_ToDo_Web_Backend)
+- [x] Redux asynchronous action processing
 - [ ] Implement authentication logic using jwt
 - [ ] Implement login modal
 - [ ] Implement sign up modal
