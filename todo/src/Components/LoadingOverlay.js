@@ -11,16 +11,8 @@ function LoadingOverlay({ isFetching }) {
         <BaseLoadingOverlay
             active={isFetching}
             spinner
+            fadeSpeed={500}
             styles={{
-                wrapper: (base) => ({
-                    ...base,
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'scroll',
-                    display: isFetching ? 'unset' : 'none',
-                    zIndex: 1000,
-                }),
                 spinner: (base) => ({
                     ...base,
                     width: 80,

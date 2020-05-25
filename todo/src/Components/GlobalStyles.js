@@ -105,7 +105,8 @@ const globalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.loadingOverlayContentColor};
     }
 
-    ._loading_overlay_wrapper {
+    ._loading_overlay_overlay {
+        position: fixed !important;
         background-color: ${({ theme }) => theme.loadingOverlayBackgroundColor};
         opacity: ${({ theme }) => theme.loadingOverlayOpacity};
     }
