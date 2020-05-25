@@ -19,6 +19,7 @@ function LoadingOverlay({ isFetching }) {
                     height: '100%',
                     overflow: 'scroll',
                     display: isFetching ? 'unset' : 'none',
+                    zIndex: 1000,
                 }),
                 spinner: (base) => ({
                     ...base,
