@@ -59,8 +59,13 @@ function mapStateToProps(state) {
 
 function TodoList({ todos, dispatch }) {
     useEffect(() => {
-        dispatch(actionCreators.fetchTodoList());
-    }, []);
+        function fetchTodoList() {
+            dispatch(actionCreators.fetchTodoList());
+        }
+
+        fetchTodoList();
+    }, [dispatch]);
+    
     return (
         <TodoListContainer className="todo-container">
             {todos.length > 0 ? (
