@@ -29,8 +29,8 @@ function fetchTodoList() {
             const response_json = await response.json();
             const { data } = response_json;
 
+            setTimeout(() => dispatch(setIsFetching(false)), 100);
             dispatch(setTodoList(data));
-            dispatch(setIsFetching(false));
 
             return dispatch(
                 setSnackBarState({
@@ -41,7 +41,7 @@ function fetchTodoList() {
             );
         }
 
-        dispatch(setIsFetching(false));
+        setTimeout(() => dispatch(setIsFetching(false)), 100);
 
         return dispatch(
             setSnackBarState({
@@ -70,7 +70,7 @@ function fetchCreateTodoItem(text) {
             const { data } = response_json;
 
             dispatch(createTodoItem(data));
-            dispatch(setIsFetching(false));
+            setTimeout(() => dispatch(setIsFetching(false)), 100);
 
             return dispatch(
                 setSnackBarState({
@@ -81,7 +81,7 @@ function fetchCreateTodoItem(text) {
             );
         }
 
-        dispatch(setIsFetching(false));
+        setTimeout(() => dispatch(setIsFetching(false)), 100);
 
         return dispatch(
             setSnackBarState({
@@ -110,7 +110,7 @@ function fetchUpdateTodoItem(item) {
             const { data } = response_json;
 
             dispatch(updateTodoItem(data));
-            dispatch(setIsFetching(false));
+            setTimeout(() => dispatch(setIsFetching(false)), 100);
 
             return dispatch(
                 setSnackBarState({
@@ -121,7 +121,7 @@ function fetchUpdateTodoItem(item) {
             );
         }
 
-        dispatch(setIsFetching(false));
+        setTimeout(() => dispatch(setIsFetching(false)), 100);
 
         return dispatch(
             setSnackBarState({
@@ -143,7 +143,7 @@ function fetchDeleteTodoItem(item) {
 
         if (response.status === 204) {
             dispatch(deleteTodoItem(item));
-            dispatch(setIsFetching(false));
+            setTimeout(() => dispatch(setIsFetching(false)), 100);
 
             return dispatch(
                 setSnackBarState({
@@ -154,7 +154,7 @@ function fetchDeleteTodoItem(item) {
             );
         }
 
-        dispatch(setIsFetching(false));
+        setTimeout(() => dispatch(setIsFetching(false)), 100);
 
         return dispatch(
             setSnackBarState({
@@ -176,7 +176,7 @@ function fetchClearCompletedTodoItem() {
 
         if (response.status === 204) {
             dispatch(clearCompletedTodoItem());
-            dispatch(setIsFetching(false));
+            setTimeout(() => dispatch(setIsFetching(false)), 100);
 
             return dispatch(
                 setSnackBarState({
@@ -187,7 +187,7 @@ function fetchClearCompletedTodoItem() {
             );
         }
 
-        dispatch(setIsFetching(false));
+        setTimeout(() => dispatch(setIsFetching(false)), 100);
 
         return dispatch(
             setSnackBarState({
