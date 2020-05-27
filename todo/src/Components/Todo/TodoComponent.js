@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { WARNING } from '../Constants/SnackBarVariant';
 import TodoButton from 'Components/TodoButton';
-import actionCreators from 'redux/action';
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
@@ -57,67 +54,16 @@ const TodoInput = styled.input`
     }
 `;
 
-function Todo({ item, dispatch }) {
-    const [text, setText] = useState(item.text);
-    const [flag, setFlag] = useState(false);
-
-    function onClickUpdateButton() {
-        if (flag) {
-            if (text !== '') {
-                dispatch(
-                    actionCreators.fetchUpdateTodoItem({
-                        ...item,
-                        text,
-                    })
-                );
-            } else {
-                return dispatch(
-                    actionCreators.setSnackBarState({
-                        snackBarOpen: true,
-                        snackBarVariant: WARNING,
-                        snackBarContent: 'Please write any text.',
-                    })
-                );
-            }
-        }
-        setFlag(!flag);
-    }
-
-    function onClickDeleteButton() {
-        dispatch(actionCreators.fetchDeleteTodoItem(item));
-    }
-
-    function onPressEnterKey(event) {
-        if (event.key === 'Enter') {
-            if (text === '') {
-                dispatch(
-                    actionCreators.setSnackBarState({
-                        snackBarOpen: true,
-                        snackBarVariant: WARNING,
-                        snackBarContent: 'Please write any text.',
-                    })
-                );
-            } else {
-                dispatch(
-                    actionCreators.fetchUpdateTodoItem({
-                        ...item,
-                        text,
-                    })
-                );
-                setFlag(!flag);
-            }
-        }
-    }
-
-    function onClickCompletedStatusButton() {
-        dispatch(
-            actionCreators.fetchUpdateTodoItem({
-                ...item,
-                isCompleted: !item.isCompleted,
-            })
-        );
-    }
-
+function TodoComponent({
+    text,
+    flag,
+    item,
+    setText,
+    onClickUpdateButton,
+    onClickDeleteButton,
+    onPressEnterKey,
+    onClickCompletedStatusButton,
+}) {
     return (
         <TodoContainer className="todo-item">
             <TodoButton
@@ -152,13 +98,19 @@ function Todo({ item, dispatch }) {
     );
 }
 
-Todo.propTypes = {
+TodoComponent.propTypes = {
+    flag: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired,
     item: PropTypes.shape({
         id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         isCompleted: PropTypes.bool.isRequired,
     }),
-    dispatch: PropTypes.func.isRequired,
+    setText: PropTypes.func.isRequired,
+    onClickUpdateButton: PropTypes.func.isRequired,
+    onClickDeleteButton: PropTypes.func.isRequired,
+    onPressEnterKey: PropTypes.func.isRequired,
+    onClickCompletedStatusButton: PropTypes.func.isRequired,
 };
 
-export default connect()(Todo);
+export default TodoComponent;

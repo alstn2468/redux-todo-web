@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { ReactComponent as FacebookIcon } from "assets/Icons/facebook.svg";
-import { ReactComponent as InstagramIcon } from "assets/Icons/instagram.svg";
-import { ReactComponent as GithubIcon } from "assets/Icons/github.svg";
-import { ReactComponent as LinkedInIcon } from "assets/Icons/linkedin.svg";
-import { FACEBOOK, INSTAGRAM, GITHUB, LINKEDIN } from "Constants/SocialLink";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as GithubIcon } from 'assets/Icons/github.svg';
+import { ReactComponent as LinkedInIcon } from 'assets/Icons/linkedin.svg';
+import { ReactComponent as FacebookIcon } from 'assets/Icons/facebook.svg';
+import { ReactComponent as InstagramIcon } from 'assets/Icons/instagram.svg';
+import { FACEBOOK, INSTAGRAM, GITHUB, LINKEDIN } from 'Constants/SocialLink';
 
 const SocialMediaContainer = styled.div`
     margin-bottom: -20px;

@@ -1,12 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BaseLoadingOverlay from 'react-loading-overlay';
-import { connect } from 'react-redux';
 
-function mapStateToProps(state) {
-    return state.todoReducer;
-}
-
-function LoadingOverlay({ isFetching }) {
+function LoadingOverlayComponent({ isFetching }) {
     return (
         <BaseLoadingOverlay
             active={isFetching}
@@ -27,4 +23,8 @@ function LoadingOverlay({ isFetching }) {
     );
 }
 
-export default connect(mapStateToProps)(LoadingOverlay);
+LoadingOverlayComponent.propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+};
+
+export default LoadingOverlayComponent;

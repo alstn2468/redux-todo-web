@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from 'Constants/theme';
-import TodoInput from 'Components/TodoInput';
-import TodoList from 'Components/TodoList';
+import useDarkMode from 'Hooks/useDarkMode';
 import Header from 'Components/Header';
+import SnackBar from 'Components/SnackBar';
+import TodoList from 'Components/TodoList';
+import TodoInput from 'Components/TodoInput';
+import SocialMedia from 'Components/SocialMedia';
 import GlobalStyles from 'Components/GlobalStyles';
+import LoadingOverlay from 'Components/LoadingOverlay';
 import ThemeChangeButton from 'Components/ThemeChangeButton';
-import useDarkMode from 'Components/useDarkMode';
-import SocialMedia from './SocialMedia';
-import SnackBar from './SnackBar';
-import LoadingOverlay from './LoadingOverlay';
 
 const TodoContainer = styled.div`
     display: flex;
