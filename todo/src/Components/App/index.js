@@ -12,6 +12,7 @@ import SocialMedia from 'Components/SocialMedia';
 import GlobalStyles from 'Components/GlobalStyles';
 import LoadingOverlay from 'Components/LoadingOverlay';
 import ThemeChangeButton from 'Components/ThemeChangeButton';
+import UserInfo from 'Components/UserInfo';
 
 const TodoContainer = styled.div`
     display: flex;
@@ -49,6 +50,7 @@ function App() {
             <TodoContainer>
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <SocialMedia />
+                <UserInfo />
                 <TodoInput />
                 <Header />
                 <TodoList />

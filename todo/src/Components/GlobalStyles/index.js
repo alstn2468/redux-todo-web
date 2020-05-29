@@ -77,9 +77,24 @@ const globalStyles = createGlobalStyle`
       }
     }
 
+    .auth-button {
+        color: ${({ theme }) => theme.headerButtonColor};
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: ${({ theme }) => theme.headerButtonHoverColor};
+        }
+    }
+
+    .auth-button.logout {
+        border-left: 1px solid ${({ theme }) => theme.containerBorder};
+        padding-left: 5px;
+        margin-left: 5px;
+    }
+
     .header-button {
         color: ${({ theme }) => theme.headerButtonColor};
-
+        
         :after {
             content: '';
             border-right-width: 1px;
@@ -94,6 +109,7 @@ const globalStyles = createGlobalStyle`
     }
 
     .header-button.able:hover{
+        transition: color 0.5s ease;
         color: ${({ theme }) => theme.headerButtonHoverColor};
     }
 
@@ -116,6 +132,7 @@ const globalStyles = createGlobalStyle`
       height: auto;
       fill: ${({ theme }) => theme.socialMediaIconColor};
       margin: 5px;
+      transition: fill 0.5s ease;
 
       :hover {
         fill: ${({ theme }) => theme.socialMediaIconHoverColor};
