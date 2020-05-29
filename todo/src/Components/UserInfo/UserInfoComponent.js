@@ -6,42 +6,41 @@ const UserInfoContainer = styled.div`
     display: flex;
     width: 50%;
     align-items: center;
-    justify-content: flex-end;
     margin-bottom: -20px;
     z-index: 10;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        width: 88%;
+        width: 90%;
     }
 `;
 
 const UserName = styled.div`
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
     font-size: 20px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 12px;
+        font-size: 10px;
     }
 `;
 
 const AuthButton = styled.button`
     font-size: 20px;
-
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
     @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 12px;
+        font-size: 10px;
     }
 `;
 
 function UserInfoComponent({ isLoggedIn, user }) {
     return (
         <UserInfoContainer>
+            <UserName>{user}</UserName>
             {isLoggedIn ? (
-                <>
-                    <UserName>{user}</UserName>
-                    <AuthButton className="auth-button logout">
-                        LOGOUT
-                    </AuthButton>
-                </>
+                <AuthButton className="auth-button">LOGOUT</AuthButton>
             ) : (
                 <AuthButton className="auth-button">LOGIN</AuthButton>
             )}

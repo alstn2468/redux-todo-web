@@ -84,12 +84,20 @@ const globalStyles = createGlobalStyle`
         &:hover {
             color: ${({ theme }) => theme.headerButtonHoverColor};
         }
+
+        &:focus {
+            outline: none;
+        }
     }
 
     .auth-button.logout {
         border-left: 1px solid ${({ theme }) => theme.containerBorder};
         padding-left: 5px;
         margin-left: 5px;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     .header-button {
@@ -106,11 +114,21 @@ const globalStyles = createGlobalStyle`
         @media (hover: none) {
             .header-button:hover { color: inherit; }
         }
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    .header-button.able:hover{
+    .header-button.able {
         transition: color 0.5s ease;
-        color: ${({ theme }) => theme.headerButtonHoverColor};
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            color: ${({ theme }) => theme.headerButtonHoverColor};
+        }
     }
 
     .selected {
@@ -128,24 +146,28 @@ const globalStyles = createGlobalStyle`
     }
 
     .social-icon {
-      width: 30px;
-      height: auto;
-      fill: ${({ theme }) => theme.socialMediaIconColor};
-      margin: 5px;
-      transition: fill 0.5s ease;
+        width: 30px;
+        height: auto;
+        fill: ${({ theme }) => theme.socialMediaIconColor};
+        margin: 5px;
+        transition: fill 0.5s ease;
 
-      :hover {
-        fill: ${({ theme }) => theme.socialMediaIconHoverColor};
-      }
+        :hover {
+            fill: ${({ theme }) => theme.socialMediaIconHoverColor};
+        }
 
-      @media (hover: none) {
-        .social-icon:hover { fill: inherit; }
-      }
+        &:focus {
+            outline: none;
+        }
 
-      @media (min-width: 320px) and (max-width: 480px) {
-        width: 20px;
-        margin: 2px;
-      }
+        @media (hover: none) {
+            .social-icon:hover { fill: inherit; }
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+            width: 20px;
+            margin: 2px;
+        }
     }
 `;
 
