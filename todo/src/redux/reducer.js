@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 import {
+    LOGIN_USER,
+    SIGNUP_USER,
+    LOGOUT_USER,
     CREATE_TODO_ITEM,
     DELETE_TODO_ITEM,
     UPDATE_TODO_ITEM,
@@ -11,6 +14,11 @@ import {
     todoDisplayFilter,
 } from 'redux/action';
 import { SUCCESS } from '../Constants/SnackBarVariant';
+
+const initialLoggedInState = {
+    isLoggedIn: false,
+    user: '',
+};
 
 const initialState = {
     todos: [],
@@ -24,6 +32,24 @@ export const initialSnackBarState = {
     snackBarVariant: SUCCESS,
     snackBarContent: '',
 };
+
+function authReducer(state = initialLoggedInState, action) {
+    switch (action.type) {
+        case LOGIN_USER:
+        case SIGNUP_USER:
+            return {
+                ...state,
+            };
+
+        case LOGOUT_USER:
+            return {
+                ...initialLoggedInState,
+            };
+
+        default:
+            return state;
+    }
+}
 
 function todoReducer(state = initialState, action) {
     let newTodos, completed, uncompleted;
@@ -134,6 +160,7 @@ function snackBarReducer(state = initialSnackBarState, action) {
 }
 
 const reducer = combineReducers({
+    authReducer,
     todoReducer,
     todoDisplayFilterReducer,
     snackBarReducer,

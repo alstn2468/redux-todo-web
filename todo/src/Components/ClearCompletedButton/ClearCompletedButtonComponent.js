@@ -15,15 +15,23 @@ const Button = styled.button`
     }
 `;
 
-function ClearCompletedButtonComponent({ onClickClearCompletedButton }) {
+function ClearCompletedButtonComponent({
+    isLoggedIn,
+    onClickClearCompletedButton,
+}) {
     return (
-        <Button className="header-button" onClick={onClickClearCompletedButton}>
+        <Button
+            disabled={!isLoggedIn}
+            className={`header-button${isLoggedIn ? ' able' : ''}`}
+            onClick={onClickClearCompletedButton}
+        >
             CLEAR COMPLETED
         </Button>
     );
 }
 
 ClearCompletedButtonComponent.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
     onClickClearCompletedButton: PropTypes.func.isRequired,
 };
 

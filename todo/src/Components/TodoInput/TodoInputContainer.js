@@ -4,7 +4,13 @@ import { WARNING } from 'Constants/SnackBarVariant';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
 
-function TodoInputContainer({ dispatch }) {
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: state.authReducer.isLoggedIn,
+    };
+}
+
+function TodoInputContainer({ isLoggedIn, dispatch }) {
     const [text, setText] = useState('');
 
     function onChangeText(event) {
@@ -35,10 +41,11 @@ function TodoInputContainer({ dispatch }) {
     return (
         <TodoInputComponent
             text={text}
+            isLoggedIn={isLoggedIn}
             onPressEnterKey={onPressEnterKey}
             onChangeText={onChangeText}
         />
     );
 }
 
-export default connect()(TodoInputContainer);
+export default connect(mapStateToProps)(TodoInputContainer);

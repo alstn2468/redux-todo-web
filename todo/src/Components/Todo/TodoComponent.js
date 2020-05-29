@@ -55,6 +55,7 @@ const TodoInput = styled.input`
 `;
 
 function TodoComponent({
+    isLoggedIn,
     text,
     flag,
     item,
@@ -75,6 +76,7 @@ function TodoComponent({
             {flag ? (
                 <TodoInput
                     className="todo-input"
+                    disabled={!isLoggedIn}
                     onChange={(event) => setText(event.target.value)}
                     onKeyPress={(event) => onPressEnterKey(event)}
                     value={text}
@@ -83,12 +85,14 @@ function TodoComponent({
                 <TodoData isCompleted={item.isCompleted}>{item.text}</TodoData>
             )}
             <TodoButton
+                disabled={!isLoggedIn}
                 onClick={onClickDeleteButton}
                 buttonIcon={<Trash />}
                 flag={flag}
                 styles={deleteTodoItemButtonStyle}
             />
             <TodoButton
+                disabled={!isLoggedIn}
                 onClick={onClickUpdateButton}
                 buttonIcon={flag ? <Save /> : <Pencil />}
                 flag={false}
@@ -99,6 +103,7 @@ function TodoComponent({
 }
 
 TodoComponent.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
     flag: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
     item: PropTypes.shape({

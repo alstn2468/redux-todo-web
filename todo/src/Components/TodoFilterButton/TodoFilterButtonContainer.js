@@ -5,10 +5,13 @@ import { todoDisplayFilter } from 'redux/action';
 import TodoFilterButtonComponent from './TodoFilterButtonComponent';
 
 function mapStateToProps(state) {
-    return { filter: state.todoDisplayFilterReducer };
+    return {
+        filter: state.todoDisplayFilterReducer,
+        isLoggedIn: state.authReducer.isLoggedIn,
+    };
 }
 
-function TodoFilterButtonContainer({ filter, dispatch }) {
+function TodoFilterButtonContainer({ isLoggedIn, filter, dispatch }) {
     function onClickDisplayAllButton() {
         dispatch(
             actionCreators.setDisplayFilter(todoDisplayFilter.DISPLAY_ALL_TODO)
@@ -33,6 +36,7 @@ function TodoFilterButtonContainer({ filter, dispatch }) {
     return (
         <TodoFilterButtonComponent
             filter={filter}
+            isLoggedIn={isLoggedIn}
             onClickDisplayAllButton={onClickDisplayAllButton}
             onClickDisplayCompletedButton={onClickDisplayCompletedButton}
             onClickDisplayUncompletedButton={onClickDisplayUncompletedButton}

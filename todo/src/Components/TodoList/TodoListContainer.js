@@ -27,19 +27,24 @@ function getDisplayTodos(state, filter) {
 }
 
 function mapStateToProps(state) {
-    return getDisplayTodos(state.todoReducer, state.todoDisplayFilterReducer);
+    return {
+        ...getDisplayTodos(state.todoReducer, state.todoDisplayFilterReducer),
+        isLoggedIn: state.authReducer.isLoggedIn,
+    };
 }
 
-function TodoListContainer({ todos, dispatch }) {
+function TodoListContainer({ isLoggedIn, todos, dispatch }) {
     useEffect(() => {
         function fetchTodoList() {
             dispatch(actionCreators.fetchTodoList());
         }
 
-        fetchTodoList();
-    }, [dispatch]);
+        if (isLoggedIn) {
+            fetchTodoList();
+        }
+    }, [dispatch, isLoggedIn]);
 
-    return <TodoListComponent todos={todos} />;
+    return <TodoListComponent todos={todos} isLoggedIn={isLoggedIn} />;
 }
 
 export default connect(mapStateToProps)(TodoListContainer);

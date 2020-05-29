@@ -28,13 +28,17 @@ const EmptyList = styled.div`
     }
 `;
 
-function TodoListComponent({ todos }) {
+function TodoListComponent({ todos, isLoggedIn }) {
     return (
         <TodoListContainer className="todo-container">
-            {todos.length > 0 ? (
-                todos.map((todo) => <Todo key={todo.id} item={todo} />)
+            {isLoggedIn ? (
+                todos.length > 0 ? (
+                    todos.map((todo) => <Todo key={todo.id} item={todo} />)
+                ) : (
+                    <EmptyList>This list is empty.</EmptyList>
+                )
             ) : (
-                <EmptyList>This list is empty.</EmptyList>
+                <EmptyList>Please login first.</EmptyList>
             )}
         </TodoListContainer>
     );
@@ -50,6 +54,7 @@ TodoListComponent.propTypes = {
             }),
         })
     ),
+    isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default TodoListComponent;

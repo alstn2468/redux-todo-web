@@ -4,7 +4,13 @@ import { WARNING } from 'Constants/SnackBarVariant';
 import actionCreators from 'redux/action';
 import TodoComponent from './TodoComponent';
 
-function TodoContainer({ item, dispatch }) {
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: state.authReducer.isLoggedIn,
+    };
+}
+
+function TodoContainer({ isLoggedIn, item, dispatch }) {
     const [text, setText] = useState(item.text);
     const [flag, setFlag] = useState(false);
 
@@ -70,6 +76,7 @@ function TodoContainer({ item, dispatch }) {
             text={text}
             flag={flag}
             item={item}
+            isLoggedIn={isLoggedIn}
             setText={setText}
             onClickUpdateButton={onClickUpdateButton}
             onClickDeleteButton={onClickDeleteButton}
@@ -79,4 +86,4 @@ function TodoContainer({ item, dispatch }) {
     );
 }
 
-export default connect()(TodoContainer);
+export default connect(mapStateToProps)(TodoContainer);

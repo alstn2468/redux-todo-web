@@ -29,6 +29,7 @@ const Button = styled.button`
 
 function TodoFilterButtonComponent({
     filter,
+    isLoggedIn,
     onClickDisplayAllButton,
     onClickDisplayCompletedButton,
     onClickDisplayUncompletedButton,
@@ -37,33 +38,43 @@ function TodoFilterButtonComponent({
         <FilterButtonContainer>
             <Button
                 className={`header-button ${
-                    filter === todoDisplayFilter.DISPLAY_ALL_TODO
+                    filter === todoDisplayFilter.DISPLAY_ALL_TODO && isLoggedIn
                         ? 'selected'
                         : 'unselected'
-                }`}
-                disabled={filter === todoDisplayFilter.DISPLAY_ALL_TODO}
+                } ${isLoggedIn ? ' able' : ''}`}
+                disabled={
+                    filter === todoDisplayFilter.DISPLAY_ALL_TODO || !isLoggedIn
+                }
                 onClick={onClickDisplayAllButton}
             >
                 ALL
             </Button>
             <Button
                 className={`header-button ${
-                    filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO
+                    filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO &&
+                    isLoggedIn
                         ? 'selected'
                         : 'unselected'
-                }`}
-                disabled={filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO}
+                } ${isLoggedIn ? ' able' : ''}`}
+                disabled={
+                    filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO ||
+                    !isLoggedIn
+                }
                 onClick={onClickDisplayCompletedButton}
             >
                 COMPLETE
             </Button>
             <Button
                 className={`header-button ${
-                    filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO
+                    filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO &&
+                    isLoggedIn
                         ? 'selected'
                         : 'unselected'
-                }`}
-                disabled={filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO}
+                } ${isLoggedIn ? 'able' : ''}`}
+                disabled={
+                    filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO ||
+                    !isLoggedIn
+                }
                 onClick={onClickDisplayUncompletedButton}
             >
                 UNCOMPLETE
@@ -73,6 +84,7 @@ function TodoFilterButtonComponent({
 }
 
 TodoFilterButtonComponent.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
     filter: PropTypes.string.isRequired,
     onClickDisplayAllButton: PropTypes.func.isRequired,
     onClickDisplayCompletedButton: PropTypes.func.isRequired,

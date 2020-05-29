@@ -26,12 +26,22 @@ const Input = styled.input`
     }
 `;
 
-function TodoInputComponent({ text, onPressEnterKey, onChangeText }) {
+function TodoInputComponent({
+    isLoggedIn,
+    text,
+    onPressEnterKey,
+    onChangeText,
+}) {
     return (
         <InputContainer>
             <Input
+                disabled={!isLoggedIn}
                 type="text"
-                placeholder="Write some to do task and press enter."
+                placeholder={
+                    isLoggedIn
+                        ? 'Write some to do task and press enter.'
+                        : 'You can write it after login.'
+                }
                 value={text}
                 onChange={onChangeText}
                 onKeyPress={onPressEnterKey}
@@ -45,6 +55,7 @@ TodoInputComponent.propTypes = {
     text: PropTypes.string,
     onPressEnterKey: PropTypes.func.isRequired,
     onChangeText: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default TodoInputComponent;

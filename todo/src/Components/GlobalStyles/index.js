@@ -88,13 +88,13 @@ const globalStyles = createGlobalStyle`
             margin: 0 10px;
         }
 
-        :hover {
-            color: ${({ theme }) => theme.headerButtonHoverColor};
-        }
-
         @media (hover: none) {
             .header-button:hover { color: inherit; }
         }
+    }
+
+    .header-button.able:hover{
+        color: ${({ theme }) => theme.headerButtonHoverColor};
     }
 
     .selected {
