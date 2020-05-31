@@ -7,6 +7,8 @@ import {
     DELETE_TODO_ITEM,
     UPDATE_TODO_ITEM,
     CLEAR_COMPLETED_TODO_ITEM,
+    OPEN_LOGIN_DIALOG,
+    CLOSE_LOGIN_DIALOG,
     SET_DISPLAY_FILTER,
     SET_SNACK_BAR_STATE,
     SET_TODO_LIST,
@@ -25,6 +27,10 @@ const initialState = {
     isFetching: false,
     completed: 0,
     uncompleted: 0,
+};
+
+const initialLoginDialogState = {
+    dialogOpen: false,
 };
 
 export const initialSnackBarState = {
@@ -159,11 +165,32 @@ function snackBarReducer(state = initialSnackBarState, action) {
     }
 }
 
+function loginDialogReducer(state = initialLoginDialogState, action) {
+    switch (action.type) {
+        case OPEN_LOGIN_DIALOG:
+            return {
+                ...state,
+                dialogOpen: true,
+            };
+
+        case CLOSE_LOGIN_DIALOG:
+            return {
+                ...state,
+                dialogOpen: false,
+            };
+        default:
+            return {
+                ...state,
+            };
+    }
+}
+
 const reducer = combineReducers({
     authReducer,
     todoReducer,
     todoDisplayFilterReducer,
     snackBarReducer,
+    loginDialogReducer,
 });
 
 export default reducer;

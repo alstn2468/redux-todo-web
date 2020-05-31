@@ -13,6 +13,7 @@ import GlobalStyles from 'Components/GlobalStyles';
 import LoadingOverlay from 'Components/LoadingOverlay';
 import ThemeChangeButton from 'Components/ThemeChangeButton';
 import UserInfo from 'Components/UserInfo';
+import LoginDialog from 'Components/LoginDialog';
 
 const TodoContainer = styled.div`
     display: flex;
@@ -59,6 +60,7 @@ function App() {
             </TodoContainer>
             <LoadingOverlay />
             <SnackBar />
+            <LoginDialog />
         </ThemeProvider>
     );
 }

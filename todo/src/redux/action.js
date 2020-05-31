@@ -1,5 +1,7 @@
 import { SUCCESS, ERROR } from '../Constants/SnackBarVariant';
 
+export const OPEN_LOGIN_DIALOG = 'OPEN_LOGIN_DIALOG';
+export const CLOSE_LOGIN_DIALOG = 'CLOSE_LOGIN_DIALOG';
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -254,6 +256,18 @@ function setSnackBarState(snackBarState) {
     return {
         type: SET_SNACK_BAR_STATE,
         snackBarState,
+    };
+}
+
+export function openLoginDialog() {
+    return {
+        type: OPEN_LOGIN_DIALOG,
+    };
+}
+
+export function closeLoginDialog() {
+    return {
+        type: CLOSE_LOGIN_DIALOG,
     };
 }
 

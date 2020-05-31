@@ -44,6 +44,12 @@ const globalStyles = createGlobalStyle`
       width: 100%;
     }
 
+    .login-dialog-container{
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+    }
+
     .todo-container {
       border: 1px solid ${({ theme }) => theme.containerBorder};
     }
@@ -80,6 +86,7 @@ const globalStyles = createGlobalStyle`
     .auth-button {
         color: ${({ theme }) => theme.headerButtonColor};
         transition: color 0.5s ease;
+        cursor: pointer;
 
         &:hover {
             color: ${({ theme }) => theme.headerButtonHoverColor};
@@ -100,8 +107,31 @@ const globalStyles = createGlobalStyle`
         }
     }
 
+    .dialog-button {
+        border: 1px solid #000000;
+        background-color: #000000;
+        color: #ffffff;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.5s ease;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            border: 1px solid ${({ theme }) => theme.headerButtonHoverColor};;
+            background-color: ${({ theme }) => theme.headerButtonHoverColor};;
+        }
+    }
+
     .header-button {
         color: ${({ theme }) => theme.headerButtonColor};
+        cursor: pointer;
+
+        svg {
+            transition: fill 0.5s ease;
+        }
         
         :after {
             content: '';
@@ -118,10 +148,18 @@ const globalStyles = createGlobalStyle`
         &:focus {
             outline: none;
         }
+
+        &:hover {
+            svg {
+                fill: ${({ theme }) => theme.headerButtonHoverColor};
+            }
+        }
     }
 
     .header-button.able {
         transition: color 0.5s ease;
+        cursor: pointer;
+
         &:focus {
             outline: none;
         }
