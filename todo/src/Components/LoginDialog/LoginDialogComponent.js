@@ -93,7 +93,14 @@ const LoginDialogSubmitButton = styled.button`
     }
 `;
 
-function LoginDialogComponent({ dialogOpen, closeDialog }) {
+function LoginDialogComponent({
+    username,
+    password,
+    onChangeUsername,
+    onChangePassword,
+    dialogOpen,
+    closeDialog,
+}) {
     return (
         <LoginDialogWrapper
             className="login-dialog-wrapper"
@@ -113,10 +120,17 @@ function LoginDialogComponent({ dialogOpen, closeDialog }) {
                     <LoginDialogInput
                         name="username"
                         autoComplete="off"
+                        value={username}
                         type="text"
+                        onChange={onChangeUsername}
                     />
                     <LoginDialogLabel for="password">PASSWORD</LoginDialogLabel>
-                    <LoginDialogInput name="password" type="password" />
+                    <LoginDialogInput
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={onChangePassword}
+                    />
                     <LoginDialogButtonContainer>
                         <LoginDialogSubmitButton className="dialog-button">
                             LOGIN
@@ -129,6 +143,10 @@ function LoginDialogComponent({ dialogOpen, closeDialog }) {
 }
 
 LoginDialogComponent.propTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    onChangeUsername: PropTypes.func.isRequired,
+    onChangePassword: PropTypes.func.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
 };
