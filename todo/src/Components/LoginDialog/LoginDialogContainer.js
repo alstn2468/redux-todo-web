@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginDialogComponent from './LoginDialogComponent';
 import { connect } from 'react-redux';
-import { closeLoginDialog } from 'redux/action';
+import actionCreators from 'redux/action';
 
 function mapStateToProps(state) {
     return {
@@ -13,8 +13,12 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    function onClickLoginButton() {
+        dispatch(actionCreators.fetchLogin(username, password));
+    }
+
     function closeDialog() {
-        dispatch(closeLoginDialog());
+        dispatch(actionCreators.closeLoginDialog());
     }
 
     function onChangeUsername(event) {
@@ -31,6 +35,7 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
             closeDialog={closeDialog}
             username={username}
             password={password}
+            onClickLoginButton={onClickLoginButton}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}
         />

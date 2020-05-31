@@ -1,3 +1,4 @@
+import Cookies from 'universal-cookie';
 import { combineReducers } from 'redux';
 import {
     LOGIN_USER,
@@ -16,6 +17,8 @@ import {
     todoDisplayFilter,
 } from 'redux/action';
 import { SUCCESS } from '../Constants/SnackBarVariant';
+
+const cookies = new Cookies();
 
 const initialLoggedInState = {
     isLoggedIn: false,
@@ -45,9 +48,14 @@ function authReducer(state = initialLoggedInState, action) {
         case SIGNUP_USER:
             return {
                 ...state,
+                isLoggedIn: true,
+                user: action.user,
             };
 
         case LOGOUT_USER:
+            cookies.remove('Access-Token');
+            cookies.remove('User');
+
             return {
                 ...initialLoggedInState,
             };
@@ -69,8 +77,14 @@ function todoReducer(state = initialState, action) {
 
         case SET_TODO_LIST:
             const { todos } = action;
-            completed = todos.filter((todo) => todo.isCompleted).length;
-            uncompleted = todos.filter((todo) => !todo.isCompleted).length;
+
+            if (todos.length > 0) {
+                completed = todos.filter((todo) => todo.isCompleted).length;
+                uncompleted = todos.filter((todo) => !todo.isCompleted).length;
+            } else {
+                completed = 0;
+                uncompleted = 0;
+            }
 
             return {
                 ...state,

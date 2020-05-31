@@ -1,3 +1,4 @@
+import Cookies from 'universal-cookie';
 import { SUCCESS, ERROR } from '../Constants/SnackBarVariant';
 
 export const OPEN_LOGIN_DIALOG = 'OPEN_LOGIN_DIALOG';
@@ -20,7 +21,54 @@ export const todoDisplayFilter = {
     DISPLAY_UNCOMPLETD_TODO: 'DISPLAY_UNCOMPLETED_TODO',
 };
 
-const API_URL = process.env.REACT_APP_API_URL + 'todo';
+const BASE_URL = process.env.REACT_APP_LOCAL_URL;
+const API_URL = process.env.REACT_APP_LOCAL_URL + 'todo';
+const cookies = new Cookies();
+
+async function tokenIsExpired(dispatch, response) {
+    const response_json = await response.json();
+    const { error } = response_json;
+
+    dispatch(logoutUser());
+
+    setTimeout(() => dispatch(setIsFetching(false)), 150);
+
+    return dispatch(
+        setSnackBarState({
+            snackBarOpen: true,
+            snackBarVariant: ERROR,
+            snackBarContent: error,
+        })
+    );
+}
+
+function fetchLogin(username, password) {
+    return async (dispatch) => {
+        const response = await fetch(BASE_URL + 'login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: cookies.get('Access-Token'),
+            },
+            body: JSON.stringify({
+                user: username,
+                password: password,
+            }),
+        });
+
+        if (response.status === 200) {
+            const response_json = await response.json();
+            const { access_token, user } = response_json;
+
+            cookies.set('Access-Token', access_token);
+            cookies.set('User', user);
+
+            dispatch(loginUser(user));
+
+            return dispatch(closeLoginDialog());
+        }
+    };
+}
 
 function fetchTodoList() {
     return async (dispatch) => {
@@ -28,14 +76,17 @@ function fetchTodoList() {
 
         const response = await fetch(API_URL, {
             method: 'GET',
+            headers: {
+                Authorization: cookies.get('Access-Token'),
+            },
         });
 
         if (response.status === 200) {
             const response_json = await response.json();
             const { data } = response_json;
 
-            setTimeout(() => dispatch(setIsFetching(false)), 150);
             dispatch(setTodoList(data));
+            setTimeout(() => dispatch(setIsFetching(false)), 150);
 
             return dispatch(
                 setSnackBarState({
@@ -44,6 +95,10 @@ function fetchTodoList() {
                     snackBarContent: 'Success Fetch Todo List!',
                 })
             );
+        }
+
+        if (response.status === 403) {
+            tokenIsExpired(dispatch, response);
         }
 
         setTimeout(() => dispatch(setIsFetching(false)), 150);
@@ -66,6 +121,7 @@ function fetchCreateTodoItem(text) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: cookies.get('Access-Token'),
             },
             body: JSON.stringify(text),
         });
@@ -106,6 +162,7 @@ function fetchUpdateTodoItem(item) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: cookies.get('Access-Token'),
             },
             body: JSON.stringify(item),
         });
@@ -144,6 +201,9 @@ function fetchDeleteTodoItem(item) {
 
         const response = await fetch(API_URL + `/${item.id}`, {
             method: 'DELETE',
+            headers: {
+                Authorization: cookies.get('Access-Token'),
+            },
         });
 
         if (response.status === 204) {
@@ -177,6 +237,9 @@ function fetchClearCompletedTodoItem() {
 
         const response = await fetch(API_URL, {
             method: 'DELETE',
+            headers: {
+                Authorization: cookies.get('Access-Token'),
+            },
         });
 
         if (response.status === 204) {
@@ -201,6 +264,35 @@ function fetchClearCompletedTodoItem() {
                 snackBarContent: 'Fail Clear Completed Todo Items!',
             })
         );
+    };
+}
+
+function fetchLogoutUser() {
+    return async (dispatch) => {
+        dispatch(setIsFetching(true));
+        dispatch(logoutUser());
+        dispatch(setTodoList({ todos: [], completed: 0, uncompleted: 0 }));
+        return setTimeout(() => dispatch(setIsFetching(false)), 300);
+    };
+}
+
+function loginUser(user) {
+    return {
+        type: LOGIN_USER,
+        user,
+    };
+}
+
+function signupUser(user) {
+    return {
+        type: SIGNUP_USER,
+        user,
+    };
+}
+
+function logoutUser() {
+    return {
+        type: LOGOUT_USER,
     };
 }
 
@@ -259,19 +351,20 @@ function setSnackBarState(snackBarState) {
     };
 }
 
-export function openLoginDialog() {
+function openLoginDialog() {
     return {
         type: OPEN_LOGIN_DIALOG,
     };
 }
 
-export function closeLoginDialog() {
+function closeLoginDialog() {
     return {
         type: CLOSE_LOGIN_DIALOG,
     };
 }
 
 const actionCreators = {
+    fetchLogin,
     fetchTodoList,
     fetchCreateTodoItem,
     fetchUpdateTodoItem,
@@ -279,6 +372,10 @@ const actionCreators = {
     fetchClearCompletedTodoItem,
     setDisplayFilter,
     setSnackBarState,
+    openLoginDialog,
+    closeLoginDialog,
+    loginUser,
+    fetchLogoutUser,
 };
 
 export default actionCreators;

@@ -52,7 +52,12 @@ const AuthButton = styled.button`
     }
 `;
 
-function UserInfoComponent({ isLoggedIn, user, onClickLoginButton }) {
+function UserInfoComponent({
+    isLoggedIn,
+    user,
+    onClickLoginButton,
+    onClickLogoutButton,
+}) {
     return (
         <UserInfoContainer>
             <UserName>
@@ -60,7 +65,12 @@ function UserInfoComponent({ isLoggedIn, user, onClickLoginButton }) {
                 {user}
             </UserName>
             {isLoggedIn ? (
-                <AuthButton className="auth-button">LOGOUT</AuthButton>
+                <AuthButton
+                    className="auth-button"
+                    onClick={onClickLogoutButton}
+                >
+                    LOGOUT
+                </AuthButton>
             ) : (
                 <AuthButton
                     className="auth-button"
@@ -77,6 +87,7 @@ UserInfoComponent.propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
     user: PropTypes.string,
     onClickLoginButton: PropTypes.func.isRequired,
+    onClickLogoutButton: PropTypes.func.isRequired,
 };
 
 export default UserInfoComponent;

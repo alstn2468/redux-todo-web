@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
 import { todoDisplayFilter } from 'redux/action';
 import TodoListComponent from './TodoListComponent';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 function getDisplayTodos(state, filter) {
     switch (filter) {
@@ -39,7 +42,11 @@ function TodoListContainer({ isLoggedIn, todos, dispatch }) {
             dispatch(actionCreators.fetchTodoList());
         }
 
-        if (isLoggedIn) {
+        function getAccessToken() {
+            return cookies.get('Access-Token');
+        }
+
+        if (isLoggedIn || getAccessToken()) {
             fetchTodoList();
         }
     }, [dispatch, isLoggedIn]);

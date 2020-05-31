@@ -15,6 +15,7 @@ const LoginDialogWrapper = styled.div`
     transition: all 0.5s ease;
     background-color: ${(prop) =>
         prop.dialogOpen ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)'};
+    z-index: ${(prop) => (prop.dialogOpen ? 100 : -100)};
 `;
 
 const LoginDialogContainer = styled.div`
@@ -96,6 +97,7 @@ const LoginDialogSubmitButton = styled.button`
 function LoginDialogComponent({
     username,
     password,
+    onClickLoginButton,
     onChangeUsername,
     onChangePassword,
     dialogOpen,
@@ -132,7 +134,10 @@ function LoginDialogComponent({
                         onChange={onChangePassword}
                     />
                     <LoginDialogButtonContainer>
-                        <LoginDialogSubmitButton className="dialog-button">
+                        <LoginDialogSubmitButton
+                            className="dialog-button"
+                            onClick={onClickLoginButton}
+                        >
                             LOGIN
                         </LoginDialogSubmitButton>
                     </LoginDialogButtonContainer>
@@ -145,6 +150,7 @@ function LoginDialogComponent({
 LoginDialogComponent.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
+    onClickLoginButton: PropTypes.func.isRequired,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
