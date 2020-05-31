@@ -35,6 +35,7 @@ const TodoData = styled.div`
     text-decoration: ${(props) =>
         props.isCompleted ? 'line-through' : 'none'};
     margin: 0 10px;
+    user-select: none;
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 15px;

@@ -61,7 +61,7 @@ function UserInfoComponent({
     return (
         <UserInfoContainer>
             <UserName>
-                {isLoggedIn && <UserIcon />}
+                {isLoggedIn && <UserIcon className="user-info-icon" />}
                 {user}
             </UserName>
             {isLoggedIn ? (

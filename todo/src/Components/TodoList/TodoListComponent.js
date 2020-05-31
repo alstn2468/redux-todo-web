@@ -22,6 +22,7 @@ const EmptyList = styled.div`
     align-items: center;
     margin-top: -20px;
     font-size: 26px;
+    user-select: none;
 
     @media (min-width: 320px) and (max-width: 480px) {
         margin-top: -15px;

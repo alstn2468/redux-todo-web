@@ -50,6 +50,17 @@ const globalStyles = createGlobalStyle`
         border-radius: 10px;
     }
 
+    .login-dialog-label {
+        user-select: none;
+        color: #000000;
+    }
+
+    .login-dialog-input {
+        color: #000000;
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #000000;
+    }
+
     .todo-container {
       border: 1px solid ${({ theme }) => theme.containerBorder};
     }
@@ -87,6 +98,7 @@ const globalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.headerButtonColor};
         transition: color 0.5s ease;
         cursor: pointer;
+        user-select: none;
 
         &:hover {
             color: ${({ theme }) => theme.headerButtonHoverColor};
@@ -101,6 +113,7 @@ const globalStyles = createGlobalStyle`
         border-left: 1px solid ${({ theme }) => theme.containerBorder};
         padding-left: 5px;
         margin-left: 5px;
+        user-select: none;
 
         &:focus {
             outline: none;
@@ -114,6 +127,7 @@ const globalStyles = createGlobalStyle`
         cursor: pointer;
         text-align: center;
         transition: all 0.5s ease;
+        user-select: none;
 
         &:focus {
             outline: none;
@@ -128,6 +142,7 @@ const globalStyles = createGlobalStyle`
     .header-button {
         color: ${({ theme }) => theme.headerButtonColor};
         cursor: pointer;
+        user-select: none;
 
         svg {
             transition: fill 0.5s ease;
@@ -206,6 +221,10 @@ const globalStyles = createGlobalStyle`
             width: 20px;
             margin: 2px;
         }
+    }
+
+    .user-info-icon {
+        fill: ${({ theme }) => theme.text};
     }
 `;
 

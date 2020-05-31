@@ -31,6 +31,7 @@ const TodoTitleText = styled.div`
     font-weight: bold;
     font-family: 'Abel', sans-serif;
     text-shadow: 4px 4px 1px gray;
+    user-select: none;
 
     @media (min-width: 320px) and (max-width: 480px) {
         margin-top: 24px;

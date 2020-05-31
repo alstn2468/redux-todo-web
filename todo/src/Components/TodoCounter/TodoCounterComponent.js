@@ -22,6 +22,7 @@ const TodoCounterItem = styled.div`
 const TodoCounterText = styled.div`
     font-size: 20px;
     margin: 5px 10px 5px 5px;
+    user-select: none;
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 16px;

@@ -118,16 +118,28 @@ function LoginDialogComponent({
                     </CloseButton>
                 </CloseButtonContainer>
                 <LoginDialogFormContainer>
-                    <LoginDialogLabel for="username">USERNAME</LoginDialogLabel>
+                    <LoginDialogLabel
+                        htmlFor="username"
+                        className="login-dialog-label"
+                    >
+                        USERNAME
+                    </LoginDialogLabel>
                     <LoginDialogInput
+                        className="login-dialog-input"
                         name="username"
                         autoComplete="off"
                         value={username}
                         type="text"
                         onChange={onChangeUsername}
                     />
-                    <LoginDialogLabel for="password">PASSWORD</LoginDialogLabel>
+                    <LoginDialogLabel
+                        htmlFor="password"
+                        className="login-dialog-label"
+                    >
+                        PASSWORD
+                    </LoginDialogLabel>
                     <LoginDialogInput
+                        className="login-dialog-input"
                         name="password"
                         type="password"
                         value={password}
