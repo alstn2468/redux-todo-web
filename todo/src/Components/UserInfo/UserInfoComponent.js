@@ -40,12 +40,25 @@ const UserName = styled.div`
     }
 `;
 
-const AuthButton = styled.button`
-    font-size: 20px;
+const AuthButtonContainer = styled.div`
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     flex: 1;
     padding-right: 5px;
+`;
+
+const AuthButtonDivisor = styled.div`
+    font-size: 18px;
+    margin: 0 5px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 10px;
+    }
+`;
+
+const AuthButton = styled.button`
+    font-size: 20px;
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 10px;
@@ -64,21 +77,32 @@ function UserInfoComponent({
                 {isLoggedIn && <UserIcon className="user-info-icon" />}
                 {user}
             </UserName>
-            {isLoggedIn ? (
-                <AuthButton
-                    className="auth-button"
-                    onClick={onClickLogoutButton}
-                >
-                    LOGOUT
-                </AuthButton>
-            ) : (
-                <AuthButton
-                    className="auth-button"
-                    onClick={onClickLoginButton}
-                >
-                    LOGIN
-                </AuthButton>
-            )}
+            <AuthButtonContainer>
+                {isLoggedIn ? (
+                    <AuthButton
+                        className="auth-button"
+                        onClick={onClickLogoutButton}
+                    >
+                        LOGOUT
+                    </AuthButton>
+                ) : (
+                    <>
+                        <AuthButton
+                            className="auth-button"
+                            onClick={onClickLoginButton}
+                        >
+                            LOGIN
+                        </AuthButton>
+                        <AuthButtonDivisor>/</AuthButtonDivisor>
+                        <AuthButton
+                            className="auth-button"
+                            onClick={() => console.log('SIGN UP')}
+                        >
+                            SIGN UP
+                        </AuthButton>
+                    </>
+                )}
+            </AuthButtonContainer>
         </UserInfoContainer>
     );
 }
