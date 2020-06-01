@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginDialogComponent from './LoginDialogComponent';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
+import { usernameMinLength, passwordMinLength } from 'Constants/Regex';
 
 function mapStateToProps(state) {
     return {
@@ -18,6 +19,8 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
     }
 
     function closeDialog() {
+        setUsername('');
+        setPassword('');
         dispatch(actionCreators.closeLoginDialog());
     }
 
@@ -35,6 +38,8 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
             closeDialog={closeDialog}
             username={username}
             password={password}
+            usernameValid={username.length >= usernameMinLength}
+            passwordValid={password.length >= passwordMinLength}
             onClickLoginButton={onClickLoginButton}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}

@@ -73,9 +73,22 @@ const LoginDialogInput = styled.input`
     height: 30px;
     padding-left: 5px;
 
+    &:focus {
+        outline: none;
+    }
+
     @media (min-width: 320px) and (max-width: 480px) {
         height: 20px;
     }
+`;
+
+const ValidStatus = styled.span`
+    transition: all 0.5s ease;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    width: ${(props) => (props.isValid ? '60%' : '0%')};
+    height: 2px;
+    background-color: #00c851;
 `;
 
 const LoginDialogButtonContainer = styled.div`
@@ -102,6 +115,8 @@ function LoginDialogComponent({
     onChangePassword,
     dialogOpen,
     closeDialog,
+    usernameValid,
+    passwordValid,
 }) {
     return (
         <LoginDialogWrapper
@@ -132,6 +147,7 @@ function LoginDialogComponent({
                         type="text"
                         onChange={onChangeUsername}
                     />
+                    <ValidStatus isValid={usernameValid} />
                     <LoginDialogLabel
                         htmlFor="password"
                         className="login-dialog-label"
@@ -145,10 +161,12 @@ function LoginDialogComponent({
                         value={password}
                         onChange={onChangePassword}
                     />
+                    <ValidStatus isValid={passwordValid} />
                     <LoginDialogButtonContainer>
                         <LoginDialogSubmitButton
                             className="dialog-button"
                             onClick={onClickLoginButton}
+                            disabled={!usernameValid || !passwordValid}
                         >
                             LOGIN
                         </LoginDialogSubmitButton>
@@ -167,6 +185,8 @@ LoginDialogComponent.propTypes = {
     onChangePassword: PropTypes.func.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
+    usernameValid: PropTypes.bool.isRequired,
+    passwordValid: PropTypes.bool.isRequired,
 };
 
 export default LoginDialogComponent;

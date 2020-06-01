@@ -139,6 +139,17 @@ const globalStyles = createGlobalStyle`
         }
     }
 
+    .dialog-button:disabled {
+        border: 1px solid #000000;
+        background-color: #000000;
+        color: #ffffff;
+        cursor: default; 
+        text-align: center;
+        transition: all 0.5s ease;
+        user-select: none;
+        opacity: 0.3;
+    }
+
     .header-button {
         color: ${({ theme }) => theme.headerButtonColor};
         cursor: pointer;
