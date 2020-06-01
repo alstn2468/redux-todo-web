@@ -56,6 +56,11 @@ const LoginDialogFormContainer = styled.div`
     flex: 4;
     flex-direction: column;
     align-items: center;
+    margin-top: -10px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin-top: -5px;
+    }
 `;
 
 const LoginDialogLabel = styled.label`

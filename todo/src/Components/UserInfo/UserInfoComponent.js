@@ -51,9 +51,12 @@ const AuthButtonContainer = styled.div`
 const AuthButtonDivisor = styled.div`
     font-size: 18px;
     margin: 0 5px;
+    margin-top: -4px;
 
     @media (min-width: 320px) and (max-width: 480px) {
         font-size: 10px;
+        margin: 0 2px;
+        margin-top: -2px;
     }
 `;
 
