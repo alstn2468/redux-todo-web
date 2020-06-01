@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from 'assets/Icons/close.svg';
 
-const LoginDialogWrapper = styled.div`
+const SignUpDialogWrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -18,9 +18,9 @@ const LoginDialogWrapper = styled.div`
     z-index: ${(prop) => (prop.dialogOpen ? 100 : -100)};
 `;
 
-const LoginDialogContainer = styled.div`
+const SignUpDialogContainer = styled.div`
     width: 25%;
-    height: 250px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     transition: all 0.5s ease;
@@ -28,7 +28,7 @@ const LoginDialogContainer = styled.div`
 
     @media (min-width: 320px) and (max-width: 480px) {
         width: 80%;
-        height: 200px;
+        height: 230px;
     }
 `;
 
@@ -51,19 +51,19 @@ const CloseButton = styled.button`
     }
 `;
 
-const LoginDialogFormContainer = styled.div`
+const SignUpDialogFormContainer = styled.div`
     display: flex;
     flex: 4;
     flex-direction: column;
     align-items: center;
-    margin-top: -10px;
+    margin-top: -25px;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        margin-top: -5px;
+        margin-top: -25px;
     }
 `;
 
-const LoginDialogLabel = styled.label`
+const SignUpDialogLabel = styled.label`
     font-size: 16px;
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -71,7 +71,7 @@ const LoginDialogLabel = styled.label`
     }
 `;
 
-const LoginDialogInput = styled.input`
+const SignUpDialogInput = styled.input`
     width: 60%;
     margin-top: 5px;
     margin-bottom: 8px;
@@ -96,12 +96,12 @@ const ValidStatus = styled.span`
     background-color: #00c851;
 `;
 
-const LoginDialogButtonContainer = styled.div`
+const SignUpDialogButtonContainer = styled.div`
     width: 60%;
     margin-top: 10px;
 `;
 
-const LoginDialogSubmitButton = styled.button`
+const SignUpDialogSubmitButton = styled.button`
     width: 100%;
     height: 40px;
     font-size: 16px;
@@ -112,20 +112,23 @@ const LoginDialogSubmitButton = styled.button`
     }
 `;
 
-function LoginDialogComponent({
+function SignUpDialogComponent({
     username,
     password,
-    onClickLoginButton,
-    onChangeUsername,
-    onChangePassword,
-    dialogOpen,
-    closeDialog,
+    passwordConfirm,
     usernameValid,
     passwordValid,
+    passwordConfirmValid,
+    dialogOpen,
+    closeDialog,
+    onChangeUsername,
+    onChangePassword,
+    onClickSignUpButton,
+    onChangePasswordConfrim,
 }) {
     return (
-        <LoginDialogWrapper className="dialog-wrapper" dialogOpen={dialogOpen}>
-            <LoginDialogContainer
+        <SignUpDialogWrapper className="dialog-wrapper" dialogOpen={dialogOpen}>
+            <SignUpDialogContainer
                 className="dialog-container"
                 dialogOpen={dialogOpen}
             >
@@ -134,14 +137,14 @@ function LoginDialogComponent({
                         <CloseIcon onClick={closeDialog} />
                     </CloseButton>
                 </CloseButtonContainer>
-                <LoginDialogFormContainer>
-                    <LoginDialogLabel
+                <SignUpDialogFormContainer>
+                    <SignUpDialogLabel
                         htmlFor="username"
                         className="dialog-label"
                     >
                         USERNAME
-                    </LoginDialogLabel>
-                    <LoginDialogInput
+                    </SignUpDialogLabel>
+                    <SignUpDialogInput
                         className="dialog-input"
                         name="username"
                         autoComplete="off"
@@ -150,13 +153,13 @@ function LoginDialogComponent({
                         onChange={onChangeUsername}
                     />
                     <ValidStatus isValid={usernameValid} />
-                    <LoginDialogLabel
+                    <SignUpDialogLabel
                         htmlFor="password"
                         className="dialog-label"
                     >
                         PASSWORD
-                    </LoginDialogLabel>
-                    <LoginDialogInput
+                    </SignUpDialogLabel>
+                    <SignUpDialogInput
                         className="dialog-input"
                         name="password"
                         type="password"
@@ -164,31 +167,52 @@ function LoginDialogComponent({
                         onChange={onChangePassword}
                     />
                     <ValidStatus isValid={passwordValid} />
-                    <LoginDialogButtonContainer>
-                        <LoginDialogSubmitButton
+                    <SignUpDialogLabel
+                        htmlFor="passwordConfirm"
+                        className="dialog-label"
+                    >
+                        PASSWORD CONFIRM
+                    </SignUpDialogLabel>
+                    <SignUpDialogInput
+                        className="dialog-input"
+                        name="passwordConfirm"
+                        type="password"
+                        value={passwordConfirm}
+                        onChange={onChangePasswordConfrim}
+                    />
+                    <ValidStatus isValid={passwordConfirmValid} />
+                    <SignUpDialogButtonContainer>
+                        <SignUpDialogSubmitButton
                             className="dialog-button"
-                            onClick={onClickLoginButton}
-                            disabled={!usernameValid || !passwordValid}
+                            onClick={onClickSignUpButton}
+                            disabled={
+                                !usernameValid ||
+                                !passwordValid ||
+                                !passwordConfirmValid
+                            }
                         >
-                            LOGIN
-                        </LoginDialogSubmitButton>
-                    </LoginDialogButtonContainer>
-                </LoginDialogFormContainer>
-            </LoginDialogContainer>
-        </LoginDialogWrapper>
+                            SIGN UP
+                        </SignUpDialogSubmitButton>
+                    </SignUpDialogButtonContainer>
+                </SignUpDialogFormContainer>
+            </SignUpDialogContainer>
+        </SignUpDialogWrapper>
     );
 }
 
-LoginDialogComponent.propTypes = {
+SignUpDialogComponent.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    onClickLoginButton: PropTypes.func.isRequired,
+    passwordConfirm: PropTypes.string.isRequired,
+    onClickSignUpButton: PropTypes.func.isRequired,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
+    onChangePasswordConfrim: PropTypes.func.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,
     passwordValid: PropTypes.bool.isRequired,
+    passwordConfirmValid: PropTypes.bool.isRequired,
 };
 
-export default LoginDialogComponent;
+export default SignUpDialogComponent;

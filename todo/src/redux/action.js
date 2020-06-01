@@ -3,6 +3,8 @@ import { SUCCESS, ERROR } from '../Constants/SnackBarVariant';
 
 export const OPEN_LOGIN_DIALOG = 'OPEN_LOGIN_DIALOG';
 export const CLOSE_LOGIN_DIALOG = 'CLOSE_LOGIN_DIALOG';
+export const OPEN_SIGNUP_DIALOG = 'OPEN_SIGNUP_DIALOG';
+export const CLOSE_SIGNUP_DIALOG = 'CLOSE_SIGNUP_DIALOG';
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -363,19 +365,33 @@ function closeLoginDialog() {
     };
 }
 
+function openSignUpDialog() {
+    return {
+        type: OPEN_SIGNUP_DIALOG,
+    };
+}
+
+function closeSignUpDialog() {
+    return {
+        type: CLOSE_SIGNUP_DIALOG,
+    };
+}
+
 const actionCreators = {
     fetchLogin,
     fetchTodoList,
+    fetchLogoutUser,
     fetchCreateTodoItem,
     fetchUpdateTodoItem,
     fetchDeleteTodoItem,
     fetchClearCompletedTodoItem,
     setDisplayFilter,
+    loginUser,
     setSnackBarState,
     openLoginDialog,
     closeLoginDialog,
-    loginUser,
-    fetchLogoutUser,
+    openSignUpDialog,
+    closeSignUpDialog,
 };
 
 export default actionCreators;

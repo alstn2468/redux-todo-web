@@ -17,6 +17,10 @@ function UserInfoContainer({ isLoggedIn, user, dispatch }) {
         dispatch(actionCreators.openLoginDialog());
     }
 
+    function onClickSignUpButton() {
+        dispatch(actionCreators.openSignUpDialog());
+    }
+
     function onClickLogoutButton() {
         dispatch(actionCreators.fetchLogoutUser());
     }
@@ -39,6 +43,7 @@ function UserInfoContainer({ isLoggedIn, user, dispatch }) {
             user={user}
             onClickLoginButton={onClickLoginButton}
             onClickLogoutButton={onClickLogoutButton}
+            onClickSignUpButton={onClickSignUpButton}
         />
     );
 }

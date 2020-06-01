@@ -73,6 +73,7 @@ function UserInfoComponent({
     user,
     onClickLoginButton,
     onClickLogoutButton,
+    onClickSignUpButton,
 }) {
     return (
         <UserInfoContainer>
@@ -99,7 +100,7 @@ function UserInfoComponent({
                         <AuthButtonDivisor>/</AuthButtonDivisor>
                         <AuthButton
                             className="auth-button"
-                            onClick={() => console.log('SIGN UP')}
+                            onClick={onClickSignUpButton}
                         >
                             SIGN UP
                         </AuthButton>

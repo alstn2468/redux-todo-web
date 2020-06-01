@@ -10,6 +10,8 @@ import {
     CLEAR_COMPLETED_TODO_ITEM,
     OPEN_LOGIN_DIALOG,
     CLOSE_LOGIN_DIALOG,
+    OPEN_SIGNUP_DIALOG,
+    CLOSE_SIGNUP_DIALOG,
     SET_DISPLAY_FILTER,
     SET_SNACK_BAR_STATE,
     SET_TODO_LIST,
@@ -32,7 +34,7 @@ const initialState = {
     uncompleted: 0,
 };
 
-const initialLoginDialogState = {
+const initialDialogState = {
     dialogOpen: false,
 };
 
@@ -179,7 +181,7 @@ function snackBarReducer(state = initialSnackBarState, action) {
     }
 }
 
-function loginDialogReducer(state = initialLoginDialogState, action) {
+function loginDialogReducer(state = initialDialogState, action) {
     switch (action.type) {
         case OPEN_LOGIN_DIALOG:
             return {
@@ -199,12 +201,33 @@ function loginDialogReducer(state = initialLoginDialogState, action) {
     }
 }
 
+function signUpDialogReducer(state = initialDialogState, action) {
+    switch (action.type) {
+        case OPEN_SIGNUP_DIALOG:
+            return {
+                ...state,
+                dialogOpen: true,
+            };
+
+        case CLOSE_SIGNUP_DIALOG:
+            return {
+                ...state,
+                dialogOpen: false,
+            };
+        default:
+            return {
+                ...state,
+            };
+    }
+}
+
 const reducer = combineReducers({
     authReducer,
     todoReducer,
     todoDisplayFilterReducer,
     snackBarReducer,
     loginDialogReducer,
+    signUpDialogReducer,
 });
 
 export default reducer;

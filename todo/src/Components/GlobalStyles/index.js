@@ -44,18 +44,18 @@ const globalStyles = createGlobalStyle`
       width: 100%;
     }
 
-    .login-dialog-container{
+    .dialog-container{
         background-color: #ffffff;
         border: 1px solid #ffffff;
         border-radius: 10px;
     }
 
-    .login-dialog-label {
+    .dialog-label {
         user-select: none;
         color: #000000;
     }
 
-    .login-dialog-input {
+    .dialog-input {
         color: #000000;
         background-color: rgba(0, 0, 0, 0);
         border: 1px solid #000000;
