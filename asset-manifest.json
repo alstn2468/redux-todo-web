@@ -1,30 +1,33 @@
 {
   "files": {
-    "main.js": "/Redux_ToDo_Web/static/js/main.704a5e5f.chunk.js",
-    "main.js.map": "/Redux_ToDo_Web/static/js/main.704a5e5f.chunk.js.map",
+    "main.js": "/Redux_ToDo_Web/static/js/main.d16f5bed.chunk.js",
+    "main.js.map": "/Redux_ToDo_Web/static/js/main.d16f5bed.chunk.js.map",
     "runtime-main.js": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js",
     "runtime-main.js.map": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js.map",
-    "static/js/2.63a9e9f5.chunk.js": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js",
-    "static/js/2.63a9e9f5.chunk.js.map": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.map",
+    "static/js/2.3065d038.chunk.js": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js",
+    "static/js/2.3065d038.chunk.js.map": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js.map",
     "index.html": "/Redux_ToDo_Web/index.html",
-    "precache-manifest.b48d8227e8d94f89955615faac938cbb.js": "/Redux_ToDo_Web/precache-manifest.b48d8227e8d94f89955615faac938cbb.js",
+    "precache-manifest.f6f7445efa26e2359ea1f78cfe2f086c.js": "/Redux_ToDo_Web/precache-manifest.f6f7445efa26e2359ea1f78cfe2f086c.js",
     "service-worker.js": "/Redux_ToDo_Web/service-worker.js",
-    "static/js/2.63a9e9f5.chunk.js.LICENSE": "/Redux_ToDo_Web/static/js/2.63a9e9f5.chunk.js.LICENSE",
+    "static/js/2.3065d038.chunk.js.LICENSE": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js.LICENSE",
+    "static/media/close.cad70081.svg": "/Redux_ToDo_Web/static/media/close.cad70081.svg",
     "static/media/cross.441d8611.svg": "/Redux_ToDo_Web/static/media/cross.441d8611.svg",
     "static/media/facebook.d99368ca.svg": "/Redux_ToDo_Web/static/media/facebook.d99368ca.svg",
     "static/media/github.192a6620.svg": "/Redux_ToDo_Web/static/media/github.192a6620.svg",
+    "static/media/information.52eead9b.svg": "/Redux_ToDo_Web/static/media/information.52eead9b.svg",
     "static/media/instagram.5b23a837.svg": "/Redux_ToDo_Web/static/media/instagram.5b23a837.svg",
     "static/media/linkedin.9e36c8fd.svg": "/Redux_ToDo_Web/static/media/linkedin.9e36c8fd.svg",
-    "static/media/moon.89799566.svg": "/Redux_ToDo_Web/static/media/moon.89799566.svg",
-    "static/media/pencil.c4a18e05.svg": "/Redux_ToDo_Web/static/media/pencil.c4a18e05.svg",
+    "static/media/moon.6776b87f.svg": "/Redux_ToDo_Web/static/media/moon.6776b87f.svg",
+    "static/media/pencil.a19509c4.svg": "/Redux_ToDo_Web/static/media/pencil.a19509c4.svg",
     "static/media/save.f27d5f1c.svg": "/Redux_ToDo_Web/static/media/save.f27d5f1c.svg",
-    "static/media/success.d29f1779.svg": "/Redux_ToDo_Web/static/media/success.d29f1779.svg",
-    "static/media/sun.fbbe405e.svg": "/Redux_ToDo_Web/static/media/sun.fbbe405e.svg",
-    "static/media/trash.480b19cb.svg": "/Redux_ToDo_Web/static/media/trash.480b19cb.svg"
+    "static/media/success.37c6455f.svg": "/Redux_ToDo_Web/static/media/success.37c6455f.svg",
+    "static/media/sun.e169a38b.svg": "/Redux_ToDo_Web/static/media/sun.e169a38b.svg",
+    "static/media/trash.480b19cb.svg": "/Redux_ToDo_Web/static/media/trash.480b19cb.svg",
+    "static/media/user.47be60ba.svg": "/Redux_ToDo_Web/static/media/user.47be60ba.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ebe40911.js",
-    "static/js/2.63a9e9f5.chunk.js",
-    "static/js/main.704a5e5f.chunk.js"
+    "static/js/2.3065d038.chunk.js",
+    "static/js/main.d16f5bed.chunk.js"
   ]
 }
