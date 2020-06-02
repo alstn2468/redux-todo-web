@@ -10,6 +10,11 @@ const globalStyles = createGlobalStyle`
         border-radius: 0;
     }
 
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
     body {
       align-items: center;
       background: ${({ theme }) => theme.body};

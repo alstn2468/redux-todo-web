@@ -29,9 +29,11 @@ function SnackbarComponent({
             className={classes.snackBar}
         >
             <Alert onClose={onCloseSnackBar} severity={snackBarVariant}>
-                {Array.isArray(snackBarContent)
-                    ? snackBarContent.map((msg) => <p>{msg}</p>)
-                    : snackBarContent}
+                {Array.isArray(snackBarContent) ? (
+                    snackBarContent.map((msg) => <p>{msg}</p>)
+                ) : (
+                    <p>{snackBarContent}</p>
+                )}
             </Alert>
         </BaseSnackBar>
     );
