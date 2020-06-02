@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 import { ReactComponent as CloseIcon } from 'assets/Icons/close.svg';
+import { ReactComponent as BaseInfoIcon } from 'assets/Icons/information.svg';
 
 const SignUpDialogWrapper = styled.div`
     position: fixed;
@@ -32,16 +34,43 @@ const SignUpDialogContainer = styled.div`
     }
 `;
 
+const TopHeaderContainer = styled.div`
+    display: flex;
+    flex: 1;
+`;
+
+const InfoIconContainer = styled.div`
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+        svg {
+            fill: #ff8800;
+        }
+    }
+`;
+
+const InfoIcon = styled(BaseInfoIcon)`
+    transition: fill 0.5s ease;
+    width: 100%;
+    height: 100%;
+`;
+
 const CloseButtonContainer = styled.div`
     display: flex;
     flex: 1;
     justify-content: flex-end;
     align-items: center;
 `;
+
 const CloseButton = styled.button`
     width: 14px;
     height: 14px;
-    margin-right: 10px;
+    margin-right: 15px;
     margin-bottom: 15px;
 
     @media (min-width: 320px) and (max-width: 480px) {
@@ -133,11 +162,16 @@ function SignUpDialogComponent({
                 className="dialog-container"
                 dialogOpen={dialogOpen}
             >
-                <CloseButtonContainer>
-                    <CloseButton className="header-button">
-                        <CloseIcon onClick={closeDialog} />
-                    </CloseButton>
-                </CloseButtonContainer>
+                <TopHeaderContainer>
+                    <InfoIconContainer>
+                        <InfoIcon />
+                    </InfoIconContainer>
+                    <CloseButtonContainer>
+                        <CloseButton className="header-button">
+                            <CloseIcon onClick={closeDialog} />
+                        </CloseButton>
+                    </CloseButtonContainer>
+                </TopHeaderContainer>
                 <SignUpDialogFormContainer>
                     <SignUpDialogLabel
                         htmlFor="username"
