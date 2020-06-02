@@ -118,6 +118,7 @@ function LoginDialogComponent({
     onClickLoginButton,
     onChangeUsername,
     onChangePassword,
+    onKeyPressEnter,
     dialogOpen,
     closeDialog,
     usernameValid,
@@ -162,6 +163,7 @@ function LoginDialogComponent({
                         type="password"
                         value={password}
                         onChange={onChangePassword}
+                        onKeyPress={onKeyPressEnter}
                     />
                     <ValidStatus isValid={passwordValid} />
                     <LoginDialogButtonContainer>
@@ -185,6 +187,7 @@ LoginDialogComponent.propTypes = {
     onClickLoginButton: PropTypes.func.isRequired,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
+    onKeyPressEnter: PropTypes.func.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,

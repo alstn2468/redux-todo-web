@@ -16,6 +16,18 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
 
     function onClickLoginButton() {
         dispatch(actionCreators.fetchLogin(username, password));
+        setUsername('');
+        setPassword('');
+    }
+
+    function onKeyPressEnter(event) {
+        if (
+            event.key === 'Enter' &&
+            username.length >= usernameMinLength &&
+            password.length >= passwordMinLength
+        ) {
+            onClickLoginButton();
+        }
     }
 
     function closeDialog() {
@@ -41,6 +53,7 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
             usernameValid={username.length >= usernameMinLength}
             passwordValid={password.length >= passwordMinLength}
             onClickLoginButton={onClickLoginButton}
+            onKeyPressEnter={onKeyPressEnter}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}
         />
