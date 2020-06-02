@@ -93,7 +93,7 @@ const ValidStatus = styled.span`
     margin-bottom: 10px;
     width: ${(props) => (props.isValid ? '60%' : '0%')};
     height: 2px;
-    background-color: #00c851;
+    background-color: ${(props) => (props.isEqual ? '#00c851' : '#ff4444')};
 `;
 
 const SignUpDialogButtonContainer = styled.div`
@@ -118,6 +118,7 @@ function SignUpDialogComponent({
     passwordConfirm,
     usernameValid,
     passwordValid,
+    passwordEqual,
     passwordConfirmValid,
     dialogOpen,
     closeDialog,
@@ -152,7 +153,7 @@ function SignUpDialogComponent({
                         type="text"
                         onChange={onChangeUsername}
                     />
-                    <ValidStatus isValid={usernameValid} />
+                    <ValidStatus isValid={usernameValid} isEqual={true} />
                     <SignUpDialogLabel
                         htmlFor="password"
                         className="dialog-label"
@@ -166,7 +167,10 @@ function SignUpDialogComponent({
                         value={password}
                         onChange={onChangePassword}
                     />
-                    <ValidStatus isValid={passwordValid} />
+                    <ValidStatus
+                        isValid={passwordValid}
+                        isEqual={passwordEqual}
+                    />
                     <SignUpDialogLabel
                         htmlFor="passwordConfirm"
                         className="dialog-label"
@@ -180,7 +184,10 @@ function SignUpDialogComponent({
                         value={passwordConfirm}
                         onChange={onChangePasswordConfrim}
                     />
-                    <ValidStatus isValid={passwordConfirmValid} />
+                    <ValidStatus
+                        isValid={passwordConfirmValid}
+                        isEqual={passwordEqual}
+                    />
                     <SignUpDialogButtonContainer>
                         <SignUpDialogSubmitButton
                             className="dialog-button"
@@ -212,6 +219,7 @@ SignUpDialogComponent.propTypes = {
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,
     passwordValid: PropTypes.bool.isRequired,
+    passwordEqual: PropTypes.bool.isRequired,
     passwordConfirmValid: PropTypes.bool.isRequired,
 };
 

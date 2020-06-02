@@ -45,10 +45,8 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
             passwordConfirm={passwordConfirm}
             usernameValid={username.length >= usernameMinLength}
             passwordValid={password.length >= passwordMinLength}
-            passwordConfirmValid={
-                passwordConfirm.length >= passwordMinLength &&
-                password === passwordConfirm
-            }
+            passwordConfirmValid={passwordConfirm.length >= passwordMinLength}
+            passwordEqual={passwordConfirm === password}
             onClickSignUpButton={onClickSignUpButton}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}

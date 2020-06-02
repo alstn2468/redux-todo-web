@@ -150,7 +150,7 @@ function fetchCreateTodoItem(text) {
                 setSnackBarState({
                     snackBarOpen: true,
                     snackBarVariant: SUCCESS,
-                    snackBarContent: 'Success Add Todo Item!',
+                    snackBarContent: 'Success Create Todo Item!',
                 })
             );
         }
@@ -161,7 +161,7 @@ function fetchCreateTodoItem(text) {
             setSnackBarState({
                 snackBarOpen: true,
                 snackBarVariant: ERROR,
-                snackBarContent: 'Fail Fetch Todo List!',
+                snackBarContent: 'Fail Create Todo List!',
             })
         );
     };
