@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
-import { initialSnackBarState } from 'redux/reducer';
 import SnackbarComponent from './SnackBarComponent';
 
 const mapStateToProps = (state) => {
@@ -20,7 +19,6 @@ function SnackbarContainer(props) {
     function onCloseSnackBar() {
         dispatch(
             actionCreators.setSnackBarState({
-                ...initialSnackBarState,
                 snackBarOpen: false,
             })
         );
