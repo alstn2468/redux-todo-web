@@ -150,23 +150,6 @@ const globalStyles = createGlobalStyle`
         opacity: 0.3;
     }
 
-    @media (min-width: 320px) and (max-width: 480px) {
-        .MuiAlert-icon {
-            padding: 9px 0 !important;
-        }
-
-        .MuiSvgIcon-root {
-            width: 0.8em !important;
-            height: 0.8em !important;
-        }
-
-        .MuiAlert-root {
-            font-size: 12px !important;
-            padding: 1px 9px !important;
-            line-height: 1.7 !important;
-        }
-    }
-
     .header-button {
         color: ${({ theme }) => theme.headerButtonColor};
         cursor: pointer;

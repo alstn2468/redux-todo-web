@@ -23,7 +23,7 @@ export const todoDisplayFilter = {
 };
 
 const BASE_URL = process.env.REACT_APP_API_URL;
-const API_URL = process.env.REACT_APP_API_URL + 'todo';
+const API_URL = BASE_URL + 'todo';
 const cookies = new Cookies();
 
 async function tokenIsExpired(dispatch, response) {
@@ -148,7 +148,7 @@ function fetchTodoList() {
         }
 
         if (response.status === 403) {
-            tokenIsExpired(dispatch, response);
+            return tokenIsExpired(dispatch, response);
         }
 
         setTimeout(() => dispatch(setIsFetching(false)), 150);
