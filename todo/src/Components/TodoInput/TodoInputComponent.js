@@ -31,10 +31,12 @@ function TodoInputComponent({
     text,
     onPressEnterKey,
     onChangeText,
+    todoInputRef,
 }) {
     return (
         <InputContainer>
             <Input
+                ref={todoInputRef}
                 disabled={!isLoggedIn}
                 type="text"
                 placeholder={
@@ -56,6 +58,7 @@ TodoInputComponent.propTypes = {
     onPressEnterKey: PropTypes.func.isRequired,
     onChangeText: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
+    todoInputRef: PropTypes.object.isRequired,
 };
 
 export default TodoInputComponent;

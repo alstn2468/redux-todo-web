@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { WARNING } from 'Constants/SnackBarVariant';
 import actionCreators from 'redux/action';
@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 function TodoContainer({ isLoggedIn, item, dispatch }) {
     const [text, setText] = useState(item.text);
     const [flag, setFlag] = useState(false);
+    const todoInputRef = useRef(null);
 
     function onClickUpdateButton() {
         if (flag) {
@@ -23,6 +24,7 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
                         text,
                     })
                 );
+                todoInputRef.current && todoInputRef.current.blur();
             } else {
                 return dispatch(
                     actionCreators.setSnackBarState({
@@ -57,6 +59,7 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
                         text,
                     })
                 );
+                todoInputRef.current && todoInputRef.current.blur();
                 setFlag(!flag);
             }
         }
@@ -77,6 +80,7 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
             flag={flag}
             item={item}
             isLoggedIn={isLoggedIn}
+            todoInputRef={todoInputRef}
             setText={setText}
             onClickUpdateButton={onClickUpdateButton}
             onClickDeleteButton={onClickDeleteButton}

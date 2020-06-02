@@ -61,6 +61,7 @@ function TodoComponent({
     flag,
     item,
     setText,
+    todoInputRef,
     onClickUpdateButton,
     onClickDeleteButton,
     onPressEnterKey,
@@ -76,6 +77,7 @@ function TodoComponent({
             />
             {flag ? (
                 <TodoInput
+                    ref={todoInputRef}
                     className="todo-input"
                     disabled={!isLoggedIn}
                     onChange={(event) => setText(event.target.value)}
@@ -113,6 +115,7 @@ TodoComponent.propTypes = {
         isCompleted: PropTypes.bool.isRequired,
     }),
     setText: PropTypes.func.isRequired,
+    todoInputRef: PropTypes.object.isRequired,
     onClickUpdateButton: PropTypes.func.isRequired,
     onClickDeleteButton: PropTypes.func.isRequired,
     onPressEnterKey: PropTypes.func.isRequired,

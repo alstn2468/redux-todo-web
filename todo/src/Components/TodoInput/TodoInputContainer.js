@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import TodoInputComponent from './TodoInputComponent';
 import { WARNING } from 'Constants/SnackBarVariant';
 import { connect } from 'react-redux';
@@ -12,6 +12,7 @@ function mapStateToProps(state) {
 
 function TodoInputContainer({ isLoggedIn, dispatch }) {
     const [text, setText] = useState('');
+    const todoInputRef = useRef(null);
 
     function onChangeText(event) {
         setText(event.target.value);
@@ -34,6 +35,7 @@ function TodoInputContainer({ isLoggedIn, dispatch }) {
                     })
                 );
                 setText('');
+                todoInputRef.current && todoInputRef.current.blur();
             }
         }
     }
@@ -44,6 +46,7 @@ function TodoInputContainer({ isLoggedIn, dispatch }) {
             isLoggedIn={isLoggedIn}
             onPressEnterKey={onPressEnterKey}
             onChangeText={onChangeText}
+            todoInputRef={todoInputRef}
         />
     );
 }

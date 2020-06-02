@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import LoginDialogComponent from './LoginDialogComponent';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
@@ -13,8 +13,10 @@ function mapStateToProps(state) {
 function LoginDialogContainer({ dialogOpen, dispatch }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const passwordInputRef = useRef(null);
 
     function onClickLoginButton() {
+        passwordInputRef.current && passwordInputRef.current.blur();
         dispatch(actionCreators.fetchLogin(username, password));
         setUsername('');
         setPassword('');
@@ -52,6 +54,7 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
             password={password}
             usernameValid={username.length >= usernameMinLength}
             passwordValid={password.length >= passwordMinLength}
+            passwordInputRef={passwordInputRef}
             onClickLoginButton={onClickLoginButton}
             onKeyPressEnter={onKeyPressEnter}
             onChangePassword={onChangePassword}

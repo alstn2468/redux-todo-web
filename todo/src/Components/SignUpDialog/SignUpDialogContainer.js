@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import SignUpDialogComponent from './SignUpDialogComponent';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
@@ -14,11 +14,14 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const passwordConfirmInputRef = useRef(null);
 
     function onClickSignUpButton() {
         setUsername('');
         setPassword('');
         setPasswordConfirm('');
+        passwordConfirmInputRef.current &&
+            passwordConfirmInputRef.current.blur();
         dispatch(
             actionCreators.fetchSignUp(username, password, passwordConfirm)
         );
@@ -45,7 +48,7 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
         setPassword(event.target.value);
     }
 
-    function onChangePasswordConfrim(event) {
+    function onChangePasswordConfirm(event) {
         setPasswordConfirm(event.target.value);
     }
 
@@ -60,10 +63,11 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
             passwordValid={password.length >= passwordMinLength}
             passwordConfirmValid={passwordConfirm.length >= passwordMinLength}
             passwordEqual={passwordConfirm === password}
+            passwordConfirmInputRef={passwordConfirmInputRef}
             onClickSignUpButton={onClickSignUpButton}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}
-            onChangePasswordConfrim={onChangePasswordConfrim}
+            onChangePasswordConfirm={onChangePasswordConfirm}
             onKeyPressEnter={onKeyPressEnter}
         />
     );

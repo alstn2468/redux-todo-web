@@ -188,12 +188,13 @@ function SignUpDialogComponent({
     passwordValid,
     passwordEqual,
     passwordConfirmValid,
+    passwordConfirmInputRef,
     dialogOpen,
     closeDialog,
     onChangeUsername,
     onChangePassword,
     onClickSignUpButton,
-    onChangePasswordConfrim,
+    onChangePasswordConfirm,
     onKeyPressEnter,
 }) {
     return (
@@ -301,11 +302,12 @@ function SignUpDialogComponent({
                         PASSWORD CONFIRM
                     </SignUpDialogLabel>
                     <SignUpDialogInput
+                        ref={passwordConfirmInputRef}
                         className="dialog-input"
                         name="passwordConfirm"
                         type="password"
                         value={passwordConfirm}
-                        onChange={onChangePasswordConfrim}
+                        onChange={onChangePasswordConfirm}
                         onKeyPress={onKeyPressEnter}
                         maxLength={30}
                     />
@@ -339,7 +341,8 @@ SignUpDialogComponent.propTypes = {
     onClickSignUpButton: PropTypes.func.isRequired,
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
-    onChangePasswordConfrim: PropTypes.func.isRequired,
+    onChangePasswordConfirm: PropTypes.func.isRequired,
+    passwordConfirmInputRef: PropTypes.object.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,
