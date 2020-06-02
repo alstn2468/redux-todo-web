@@ -20,7 +20,7 @@
 -   [x] Redux asynchronous action processing
 -   [x] Implement authentication logic using jwt
 -   [x] Implement login modal
--   [ ] Implement sign up modal
+-   [x] Implement sign up modal
 
 ### What I Earned
 
