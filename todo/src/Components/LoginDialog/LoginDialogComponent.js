@@ -76,6 +76,7 @@ const LoginDialogInput = styled.input`
     margin-top: 5px;
     margin-bottom: 8px;
     height: 30px;
+    font-size: 14px;
     padding-left: 5px;
 
     &:focus {
@@ -84,6 +85,7 @@ const LoginDialogInput = styled.input`
 
     @media (min-width: 320px) and (max-width: 480px) {
         height: 20px;
+        font-size: 10px;
     }
 `;
 

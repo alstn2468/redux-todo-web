@@ -13,7 +13,7 @@ const TodoListContainer = styled.div`
 
     @media (min-width: 320px) and (max-width: 480px) {
         width: 90%;
-        padding-top: 15px;
+        padding-top: 10px;
     }
 `;
 

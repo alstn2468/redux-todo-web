@@ -46,6 +46,7 @@ const InfoIconContainer = styled.div`
     margin-top: 15px;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 
     &:hover {
         svg {
@@ -142,12 +143,14 @@ const SignUpDialogInput = styled.input`
     margin-bottom: 8px;
     height: 30px;
     padding-left: 5px;
+    font-size: 14px;
 
     &:focus {
         outline: none;
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 10px;
         height: 20px;
     }
 `;

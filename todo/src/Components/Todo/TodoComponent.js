@@ -24,7 +24,7 @@ const TodoContainer = styled.div`
     @media (min-width: 320px) and (max-width: 480px) {
         height: 40px;
         width: 90%;
-        margin: 0px 0px 15px 0px;
+        margin: 0px 0px 10px 0px;
     }
 `;
 
