@@ -28,12 +28,10 @@ function SnackbarComponent({
             onClose={onCloseSnackBar}
             className={classes.snackBar}
         >
-            <Alert
-                onClose={onCloseSnackBar}
-                severity={snackBarVariant}
-                style={{ whiteSpace: 'pre' }}
-            >
-                {snackBarContent}
+            <Alert onClose={onCloseSnackBar} severity={snackBarVariant}>
+                {Array.isArray(snackBarContent)
+                    ? snackBarContent.map((msg) => <p>{msg}</p>)
+                    : snackBarContent}
             </Alert>
         </BaseSnackBar>
     );

@@ -9,8 +9,13 @@ const mapStateToProps = (state) => {
 };
 
 function SnackbarContainer(props) {
-    const { snackBarOpen, snackBarVariant, autoHideDuration, dispatch } = props;
-    let { snackBarContent } = props;
+    const {
+        snackBarOpen,
+        snackBarContent,
+        snackBarVariant,
+        autoHideDuration,
+        dispatch,
+    } = props;
 
     function onCloseSnackBar() {
         dispatch(
@@ -19,10 +24,6 @@ function SnackbarContainer(props) {
                 snackBarOpen: false,
             })
         );
-    }
-
-    if (Array.isArray(snackBarContent)) {
-        snackBarContent = snackBarContent.join('\n');
     }
 
     return (
