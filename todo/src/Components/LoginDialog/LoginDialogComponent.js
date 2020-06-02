@@ -149,6 +149,7 @@ function LoginDialogComponent({
                         value={username}
                         type="text"
                         onChange={onChangeUsername}
+                        maxLength={25}
                     />
                     <ValidStatus isValid={usernameValid} />
                     <LoginDialogLabel
@@ -164,6 +165,7 @@ function LoginDialogComponent({
                         value={password}
                         onChange={onChangePassword}
                         onKeyPress={onKeyPressEnter}
+                        maxLength={30}
                     />
                     <ValidStatus isValid={passwordValid} />
                     <LoginDialogButtonContainer>

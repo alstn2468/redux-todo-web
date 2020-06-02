@@ -241,6 +241,7 @@ function SignUpDialogComponent({
                         value={username}
                         type="text"
                         onChange={onChangeUsername}
+                        maxLength={25}
                     />
                     <ValidStatus isValid={usernameValid} isEqual={true} />
                     <SignUpDialogLabel
@@ -255,6 +256,7 @@ function SignUpDialogComponent({
                         type="password"
                         value={password}
                         onChange={onChangePassword}
+                        maxLength={30}
                     />
                     <ValidStatus
                         isValid={passwordValid}
@@ -272,6 +274,7 @@ function SignUpDialogComponent({
                         type="password"
                         value={passwordConfirm}
                         onChange={onChangePasswordConfrim}
+                        maxLength={30}
                     />
                     <ValidStatus
                         isValid={passwordConfirmValid}
