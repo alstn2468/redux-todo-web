@@ -217,9 +217,9 @@ function SignUpDialogComponent({
                         <LineDivisor />
                         <TooltipTitle>Password Condition</TooltipTitle>
                         <TooltipText>❌ Common passwords</TooltipText>
-                        <TooltipText>❌ Consist only of numbers</TooltipText>
-                        <TooltipText>❌ Similar to user name</TooltipText>
+                        <TooltipText>❌ Similar to username</TooltipText>
                         <TooltipText>❌ Less than 8 characters</TooltipText>
+                        <TooltipText>❌ Consist only of numbers</TooltipText>
                     </ReactTooltip>
                     <CloseButtonContainer>
                         <CloseButton className="header-button">
