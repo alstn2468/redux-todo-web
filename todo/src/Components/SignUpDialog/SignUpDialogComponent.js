@@ -213,16 +213,44 @@ function SignUpDialogComponent({
                         effect="solid"
                     >
                         <TooltipTitle>Username Condition</TooltipTitle>
-                        <TooltipText>❌ Less than 4 characters</TooltipText>
                         <TooltipText>
-                            ❌ Special characters except @/./+/-/_
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Less than 4 characters
+                        </TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Special characters except @/./+/-/_
                         </TooltipText>
                         <LineDivisor />
                         <TooltipTitle>Password Condition</TooltipTitle>
-                        <TooltipText>❌ Common passwords</TooltipText>
-                        <TooltipText>❌ Similar to username</TooltipText>
-                        <TooltipText>❌ Less than 8 characters</TooltipText>
-                        <TooltipText>❌ Consist only of numbers</TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Common passwords
+                        </TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Similar to username
+                        </TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Less than 8 characters
+                        </TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Consist only of numbers
+                        </TooltipText>
                     </ReactTooltip>
                     <CloseButtonContainer>
                         <CloseButton className="header-button">
