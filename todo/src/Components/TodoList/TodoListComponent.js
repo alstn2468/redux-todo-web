@@ -9,6 +9,7 @@ const TodoListContainer = styled.div`
     align-items: center;
     flex-direction: column;
     padding-top: 20px;
+    margin-bottom: 30px;
 
     @media (min-width: 320px) and (max-width: 480px) {
         width: 90%;
