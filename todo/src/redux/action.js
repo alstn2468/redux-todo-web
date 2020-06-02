@@ -58,8 +58,9 @@ function fetchLogin(username, password) {
             }),
         });
 
+        const response_json = await response.json();
+
         if (response.status === 200) {
-            const response_json = await response.json();
             const { access_token, user } = response_json;
 
             cookies.set('Access-Token', access_token);
@@ -69,6 +70,16 @@ function fetchLogin(username, password) {
 
             return dispatch(closeLoginDialog());
         }
+
+        const { error } = response_json;
+
+        return dispatch(
+            setSnackBarState({
+                snackBarOpen: true,
+                snackBarVariant: ERROR,
+                snackBarContent: error,
+            })
+        );
     };
 }
 
