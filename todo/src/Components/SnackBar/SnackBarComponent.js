@@ -33,7 +33,9 @@ function SnackbarComponent({
                 severity={snackBarVariant}
                 children={
                     Array.isArray(snackBarContent) ? (
-                        snackBarContent.map((msg) => <p>{msg}</p>)
+                        snackBarContent.map((msg, idx) => (
+                            <p key={idx}>{msg}</p>
+                        ))
                     ) : (
                         <p>{snackBarContent}</p>
                     )
@@ -47,7 +49,8 @@ SnackbarComponent.propTypes = {
     onCloseSnackBar: PropTypes.func.isRequired,
     snackBarOpen: PropTypes.bool.isRequired,
     snackBarVariant: PropTypes.string.isRequired,
-    snackBarContent: PropTypes.string,
+    snackBarContent: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+        .isRequired,
     autoHideDuration: PropTypes.number,
 };
 

@@ -20,7 +20,8 @@ function Alert(props) {
 Alert.propTypes = {
     severity: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
-    children: PropTypes.object.isRequired,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+        .isRequired,
 };
 
 export default Alert;
