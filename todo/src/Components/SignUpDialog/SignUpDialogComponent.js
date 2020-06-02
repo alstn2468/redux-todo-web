@@ -52,12 +52,47 @@ const InfoIconContainer = styled.div`
             fill: #ff8800;
         }
     }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 const InfoIcon = styled(BaseInfoIcon)`
     transition: fill 0.5s ease;
     width: 100%;
     height: 100%;
+`;
+
+const TooltipTitle = styled.div`
+    font-size: 18px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 14px;
+    }
+`;
+
+const TooltipText = styled.div`
+    font-size: 14px;
+    margin: 3px 0;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 12px;
+    }
+`;
+
+const LineDivisor = styled.div`
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+    margin: 8px 0;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        margin: 6px 0;
+    }
 `;
 
 const CloseButtonContainer = styled.div`
@@ -75,8 +110,9 @@ const CloseButton = styled.button`
 
     @media (min-width: 320px) and (max-width: 480px) {
         width: 11px;
+        margin-right: 10px;
+        margin-bottom: 20px;
         height: 11px;
-        margin-bottom: 5px;
     }
 `;
 
@@ -163,9 +199,28 @@ function SignUpDialogComponent({
                 dialogOpen={dialogOpen}
             >
                 <TopHeaderContainer>
-                    <InfoIconContainer>
+                    <InfoIconContainer data-tip data-for="signUpToolTip">
                         <InfoIcon />
                     </InfoIconContainer>
+                    <ReactTooltip
+                        id="signUpToolTip"
+                        className="signup-tooltip"
+                        backgroundColor="#ff8800"
+                        place="right"
+                        effect="solid"
+                    >
+                        <TooltipTitle>Username Condition</TooltipTitle>
+                        <TooltipText>❌ Less than 4 characters</TooltipText>
+                        <TooltipText>
+                            ❌ Special characters except @/./+/-/_
+                        </TooltipText>
+                        <LineDivisor />
+                        <TooltipTitle>Password Condition</TooltipTitle>
+                        <TooltipText>❌ Common passwords</TooltipText>
+                        <TooltipText>❌ Consist only of numbers</TooltipText>
+                        <TooltipText>❌ Similar to user name</TooltipText>
+                        <TooltipText>❌ Less than 8 characters</TooltipText>
+                    </ReactTooltip>
                     <CloseButtonContainer>
                         <CloseButton className="header-button">
                             <CloseIcon onClick={closeDialog} />
