@@ -28,7 +28,11 @@ function SnackbarComponent({
             onClose={onCloseSnackBar}
             className={classes.snackBar}
         >
-            <Alert onClose={onCloseSnackBar} severity={snackBarVariant}>
+            <Alert
+                onClose={onCloseSnackBar}
+                severity={snackBarVariant}
+                style={{ whiteSpace: 'pre' }}
+            >
                 {snackBarContent}
             </Alert>
         </BaseSnackBar>
