@@ -22,8 +22,8 @@ export const todoDisplayFilter = {
     DISPLAY_UNCOMPLETD_TODO: 'DISPLAY_UNCOMPLETED_TODO',
 };
 
-const BASE_URL = process.env.REACT_APP_LOCAL_URL;
-const API_URL = process.env.REACT_APP_LOCAL_URL + 'todo';
+const BASE_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL + 'todo';
 const cookies = new Cookies();
 
 async function tokenIsExpired(dispatch, response) {
