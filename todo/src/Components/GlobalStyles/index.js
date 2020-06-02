@@ -12,7 +12,8 @@ const globalStyles = createGlobalStyle`
 
     html {
         width: 100%;
-        height: 100%;
+        height: auto;
+        overflow: scroll;
     }
 
     body {

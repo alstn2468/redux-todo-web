@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { ReactComponent as MoonIcon } from "assets/Icons/moon.svg";
-import { ReactComponent as SunIcon } from "assets/Icons/sun.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { ReactComponent as MoonIcon } from 'assets/Icons/moon.svg';
+import { ReactComponent as SunIcon } from 'assets/Icons/sun.svg';
 
 const ButtonContainer = styled.button`
     position: fixed;
@@ -25,16 +25,17 @@ const ButtonContainer = styled.button`
 
         &:first-child {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateX(10)" : "translateX(-100px)"};
+                lightTheme ? 'translateX(10)' : 'translateX(-100px)'};
         }
 
         &:nth-child(2) {
             transform: ${({ lightTheme }) =>
-                lightTheme ? "translateX(100px)" : "translateX(-10)"};
+                lightTheme ? 'translateX(100px)' : 'translateX(-10)'};
         }
     }
 
     @media (min-width: 320px) and (max-width: 480px) {
+        position: absolute;
         width: 3.5rem;
         height: 1.7rem;
         border-radius: 20px;
@@ -49,7 +50,7 @@ const ButtonContainer = styled.button`
 `;
 
 function ThemeChangeButton({ theme, setTheme }) {
-    const isLight = theme === "light";
+    const isLight = theme === 'light';
 
     return (
         <ButtonContainer onClick={setTheme} lightTheme={isLight}>
@@ -61,7 +62,7 @@ function ThemeChangeButton({ theme, setTheme }) {
 
 ThemeChangeButton.propTypes = {
     theme: PropTypes.string.isRequired,
-    setTheme: PropTypes.func.isRequired
+    setTheme: PropTypes.func.isRequired,
 };
 
 export default ThemeChangeButton;
