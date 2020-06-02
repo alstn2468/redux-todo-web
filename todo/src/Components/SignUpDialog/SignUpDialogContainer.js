@@ -15,7 +15,14 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    function onClickSignUpButton() {}
+    function onClickSignUpButton() {
+        setUsername('');
+        setPassword('');
+        setPasswordConfirm('');
+        dispatch(
+            actionCreators.fetchSignUp(username, password, passwordConfirm)
+        );
+    }
 
     function closeDialog() {
         setUsername('');

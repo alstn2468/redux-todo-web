@@ -6,7 +6,6 @@ export const CLOSE_LOGIN_DIALOG = 'CLOSE_LOGIN_DIALOG';
 export const OPEN_SIGNUP_DIALOG = 'OPEN_SIGNUP_DIALOG';
 export const CLOSE_SIGNUP_DIALOG = 'CLOSE_SIGNUP_DIALOG';
 export const LOGIN_USER = 'LOGIN_USER';
-export const SIGNUP_USER = 'SIGNUP_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const SET_TODO_LIST = 'SET_TODO_LIST';
 export const CREATE_TODO_ITEM = 'CREATE_TODO_ITEM';
@@ -44,13 +43,51 @@ async function tokenIsExpired(dispatch, response) {
     );
 }
 
+function fetchSignUp(username, password, passwordConfirm) {
+    return async (dispatch) => {
+        const response = await fetch(BASE_URL + 'signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user: username,
+                password: password,
+                passwordConfirm: passwordConfirm,
+            }),
+        });
+
+        const response_json = await response.json();
+
+        if (response.status === 201) {
+            const { access_token, user } = response_json;
+
+            cookies.set('Access-Token', access_token);
+            cookies.set('User', user);
+
+            dispatch(loginUser(user));
+
+            return dispatch(closeSignUpDialog());
+        }
+
+        const { error } = response_json;
+
+        return dispatch(
+            setSnackBarState({
+                snackBarOpen: true,
+                snackBarVariant: ERROR,
+                snackBarContent: error,
+            })
+        );
+    };
+}
+
 function fetchLogin(username, password) {
     return async (dispatch) => {
         const response = await fetch(BASE_URL + 'login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: cookies.get('Access-Token'),
             },
             body: JSON.stringify({
                 user: username,
@@ -284,7 +321,7 @@ function fetchLogoutUser() {
     return async (dispatch) => {
         dispatch(setIsFetching(true));
         dispatch(logoutUser());
-        dispatch(setTodoList({ todos: [], completed: 0, uncompleted: 0 }));
+        dispatch(setTodoList([]));
         return setTimeout(() => dispatch(setIsFetching(false)), 300);
     };
 }
@@ -292,13 +329,6 @@ function fetchLogoutUser() {
 function loginUser(user) {
     return {
         type: LOGIN_USER,
-        user,
-    };
-}
-
-function signupUser(user) {
-    return {
-        type: SIGNUP_USER,
         user,
     };
 }
@@ -390,6 +420,7 @@ function closeSignUpDialog() {
 
 const actionCreators = {
     fetchLogin,
+    fetchSignUp,
     fetchTodoList,
     fetchLogoutUser,
     fetchCreateTodoItem,
