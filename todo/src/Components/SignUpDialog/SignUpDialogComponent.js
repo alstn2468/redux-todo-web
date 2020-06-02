@@ -194,6 +194,7 @@ function SignUpDialogComponent({
     onChangePassword,
     onClickSignUpButton,
     onChangePasswordConfrim,
+    onKeyPressEnter,
 }) {
     return (
         <SignUpDialogWrapper className="dialog-wrapper" dialogOpen={dialogOpen}>
@@ -305,6 +306,7 @@ function SignUpDialogComponent({
                         type="password"
                         value={passwordConfirm}
                         onChange={onChangePasswordConfrim}
+                        onKeyPress={onKeyPressEnter}
                         maxLength={30}
                     />
                     <ValidStatus
@@ -344,6 +346,7 @@ SignUpDialogComponent.propTypes = {
     passwordValid: PropTypes.bool.isRequired,
     passwordEqual: PropTypes.bool.isRequired,
     passwordConfirmValid: PropTypes.bool.isRequired,
+    onKeyPressEnter: PropTypes.func.isRequired,
 };
 
 export default SignUpDialogComponent;

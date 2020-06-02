@@ -24,6 +24,12 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
         );
     }
 
+    function onKeyPressEnter(event) {
+        if (event.key === 'Enter') {
+            onClickSignUpButton();
+        }
+    }
+
     function closeDialog() {
         setUsername('');
         setPassword('');
@@ -58,6 +64,7 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}
             onChangePasswordConfrim={onChangePasswordConfrim}
+            onKeyPressEnter={onKeyPressEnter}
         />
     );
 }
