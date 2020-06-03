@@ -14,6 +14,7 @@ const globalStyles = createGlobalStyle`
         width: 100%;
         height: auto;
         overflow: scroll;
+        background: ${({ theme }) => theme.body};
     }
 
     body {
