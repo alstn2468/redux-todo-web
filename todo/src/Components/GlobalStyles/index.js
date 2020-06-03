@@ -15,6 +15,7 @@ const globalStyles = createGlobalStyle`
         height: 100%;
         overflow: scroll;
         background: ${({ theme }) => theme.body};
+        transition: all 0.25s linear;
     }
 
     body {
