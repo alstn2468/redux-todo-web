@@ -12,7 +12,7 @@ const globalStyles = createGlobalStyle`
 
     html {
         width: 100%;
-        height: auto;
+        height: 100%;
         overflow: scroll;
         background: ${({ theme }) => theme.body};
     }
@@ -26,7 +26,7 @@ const globalStyles = createGlobalStyle`
       width: 100%;
       flex-direction: column;
       justify-content: center;
-      height: 100%;
+      height: auto;
       margin: 0;
       padding: 0;
       font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;

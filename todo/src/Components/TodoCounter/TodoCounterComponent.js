@@ -8,7 +8,7 @@ const TodoCounterContainer = styled.div`
     display: flex;
 
     @media (min-width: 320px) and (max-width: 480px) {
-        margin-left: -75px;
+        margin-left: -80px;
         margin-top: -65px;
     }
 `;
