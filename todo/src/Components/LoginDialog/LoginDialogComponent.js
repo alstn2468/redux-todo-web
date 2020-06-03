@@ -93,9 +93,9 @@ const ValidStatus = styled.span`
     transition: all 0.5s ease;
     margin-top: -10px;
     margin-bottom: 10px;
-    width: ${(props) => (props.isValid ? '60%' : '0%')};
     height: 2px;
-    background-color: #00c851;
+    width: ${(props) => (props.isEmpty ? '0%' : '60%')};
+    background-color: ${(props) => (props.isValid ? '#00c851' : '#ff4444')};
 `;
 
 const LoginDialogButtonContainer = styled.div`
@@ -154,7 +154,10 @@ function LoginDialogComponent({
                         onChange={onChangeUsername}
                         maxLength={25}
                     />
-                    <ValidStatus isValid={usernameValid} />
+                    <ValidStatus
+                        isValid={usernameValid}
+                        isEmpty={username.length === 0}
+                    />
                     <LoginDialogLabel
                         htmlFor="password"
                         className="dialog-label"
@@ -171,7 +174,10 @@ function LoginDialogComponent({
                         onKeyPress={onKeyPressEnter}
                         maxLength={30}
                     />
-                    <ValidStatus isValid={passwordValid} />
+                    <ValidStatus
+                        isValid={passwordValid}
+                        isEmpty={password.length === 0}
+                    />
                     <LoginDialogButtonContainer>
                         <LoginDialogSubmitButton
                             className="dialog-button"

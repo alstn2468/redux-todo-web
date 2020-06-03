@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import LoginDialogComponent from './LoginDialogComponent';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
-import { usernameMinLength, passwordMinLength } from 'Constants/Regex';
+import { validUsername, validPassword } from 'utils/Validation';
 
 function mapStateToProps(state) {
     return {
@@ -14,6 +14,8 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const passwordInputRef = useRef(null);
+    const isValidUsername = validUsername(username);
+    const isValidPassword = validPassword(password);
 
     function onClickLoginButton() {
         passwordInputRef.current && passwordInputRef.current.blur();
@@ -23,11 +25,7 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
     }
 
     function onKeyPressEnter(event) {
-        if (
-            event.key === 'Enter' &&
-            username.length >= usernameMinLength &&
-            password.length >= passwordMinLength
-        ) {
+        if (event.key === 'Enter' && isValidUsername && isValidPassword) {
             onClickLoginButton();
         }
     }
@@ -52,8 +50,8 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
             closeDialog={closeDialog}
             username={username}
             password={password}
-            usernameValid={username.length >= usernameMinLength}
-            passwordValid={password.length >= passwordMinLength}
+            usernameValid={isValidUsername}
+            passwordValid={isValidPassword}
             passwordInputRef={passwordInputRef}
             onClickLoginButton={onClickLoginButton}
             onKeyPressEnter={onKeyPressEnter}

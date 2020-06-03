@@ -19,6 +19,12 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const passwordConfirmInputRef = useRef(null);
+    const isValidUsername = validUsername(username);
+    const isValidPassword = validPassword(password);
+    const isValidPasswordConfirm = validPasswordConfirm(
+        password,
+        passwordConfirm
+    );
 
     function onClickSignUpButton() {
         setUsername('');
@@ -32,7 +38,12 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     }
 
     function onKeyPressEnter(event) {
-        if (event.key === 'Enter') {
+        if (
+            event.key === 'Enter' &&
+            isValidUsername &&
+            isValidPassword &&
+            isValidPasswordConfirm
+        ) {
             onClickSignUpButton();
         }
     }
@@ -63,12 +74,9 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
             username={username}
             password={password}
             passwordConfirm={passwordConfirm}
-            usernameValid={validUsername(username)}
-            passwordValid={validPassword(password)}
-            passwordConfirmValid={validPasswordConfirm(
-                password,
-                passwordConfirm
-            )}
+            usernameValid={isValidUsername}
+            passwordValid={isValidPassword}
+            passwordConfirmValid={isValidPasswordConfirm}
             passwordConfirmInputRef={passwordConfirmInputRef}
             onClickSignUpButton={onClickSignUpButton}
             onChangePassword={onChangePassword}
