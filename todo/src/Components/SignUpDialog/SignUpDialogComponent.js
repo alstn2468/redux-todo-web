@@ -182,9 +182,9 @@ const ValidStatus = styled.span`
     transition: all 0.5s ease;
     margin-top: -10px;
     margin-bottom: 10px;
-    width: ${(props) => (props.isValid ? '60%' : '0%')};
+    width: ${(props) => (props.isEmpty ? '0%' : '60%')};
     height: 2px;
-    background-color: ${(props) => (props.isEqual ? '#00c851' : '#ff4444')};
+    background-color: ${(props) => (props.isValid ? '#00c851' : '#ff4444')};
 `;
 
 const SignUpDialogButtonContainer = styled.div`
@@ -209,7 +209,6 @@ function SignUpDialogComponent({
     passwordConfirm,
     usernameValid,
     passwordValid,
-    passwordEqual,
     passwordConfirmValid,
     passwordConfirmInputRef,
     dialogOpen,
@@ -306,7 +305,10 @@ function SignUpDialogComponent({
                         onChange={onChangeUsername}
                         maxLength={25}
                     />
-                    <ValidStatus isValid={usernameValid} isEqual={true} />
+                    <ValidStatus
+                        isValid={usernameValid}
+                        isEmpty={username.length === 0}
+                    />
                     <SignUpDialogLabel
                         htmlFor="password"
                         className="dialog-label"
@@ -323,7 +325,7 @@ function SignUpDialogComponent({
                     />
                     <ValidStatus
                         isValid={passwordValid}
-                        isEqual={passwordEqual}
+                        isEmpty={password.length === 0}
                     />
                     <SignUpDialogLabel
                         htmlFor="passwordConfirm"
@@ -343,7 +345,7 @@ function SignUpDialogComponent({
                     />
                     <ValidStatus
                         isValid={passwordConfirmValid}
-                        isEqual={passwordEqual}
+                        isEmpty={passwordConfirm.length === 0}
                     />
                     <SignUpDialogButtonContainer>
                         <SignUpDialogSubmitButton
@@ -377,7 +379,6 @@ SignUpDialogComponent.propTypes = {
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,
     passwordValid: PropTypes.bool.isRequired,
-    passwordEqual: PropTypes.bool.isRequired,
     passwordConfirmValid: PropTypes.bool.isRequired,
     onKeyPressEnter: PropTypes.func.isRequired,
 };

@@ -2,7 +2,11 @@ import React, { useState, useRef } from 'react';
 import SignUpDialogComponent from './SignUpDialogComponent';
 import { connect } from 'react-redux';
 import actionCreators from 'redux/action';
-import { usernameMinLength, passwordMinLength } from 'Constants/Regex';
+import {
+    validUsername,
+    validPassword,
+    validPasswordConfirm,
+} from 'utils/Validation';
 
 function mapStateToProps(state) {
     return {
@@ -59,10 +63,12 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
             username={username}
             password={password}
             passwordConfirm={passwordConfirm}
-            usernameValid={username.length >= usernameMinLength}
-            passwordValid={password.length >= passwordMinLength}
-            passwordConfirmValid={passwordConfirm.length >= passwordMinLength}
-            passwordEqual={passwordConfirm === password}
+            usernameValid={validUsername(username)}
+            passwordValid={validPassword(password)}
+            passwordConfirmValid={validPasswordConfirm(
+                password,
+                passwordConfirm
+            )}
             passwordConfirmInputRef={passwordConfirmInputRef}
             onClickSignUpButton={onClickSignUpButton}
             onChangePassword={onChangePassword}
