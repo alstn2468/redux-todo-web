@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Redux_ToDo_Web/static/js/main.3ede76f3.chunk.js",
-    "main.js.map": "/Redux_ToDo_Web/static/js/main.3ede76f3.chunk.js.map",
+    "main.js": "/Redux_ToDo_Web/static/js/main.d6169ba9.chunk.js",
+    "main.js.map": "/Redux_ToDo_Web/static/js/main.d6169ba9.chunk.js.map",
     "runtime-main.js": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js",
     "runtime-main.js.map": "/Redux_ToDo_Web/static/js/runtime-main.ebe40911.js.map",
     "static/js/2.3065d038.chunk.js": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js",
     "static/js/2.3065d038.chunk.js.map": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js.map",
     "index.html": "/Redux_ToDo_Web/index.html",
-    "precache-manifest.adfe2b519b92dce7293d74653b938881.js": "/Redux_ToDo_Web/precache-manifest.adfe2b519b92dce7293d74653b938881.js",
+    "precache-manifest.7cc1922b93438e31744758990bafd09b.js": "/Redux_ToDo_Web/precache-manifest.7cc1922b93438e31744758990bafd09b.js",
     "service-worker.js": "/Redux_ToDo_Web/service-worker.js",
     "static/js/2.3065d038.chunk.js.LICENSE": "/Redux_ToDo_Web/static/js/2.3065d038.chunk.js.LICENSE",
     "static/media/close.cad70081.svg": "/Redux_ToDo_Web/static/media/close.cad70081.svg",
@@ -28,6 +28,6 @@
   "entrypoints": [
     "static/js/runtime-main.ebe40911.js",
     "static/js/2.3065d038.chunk.js",
-    "static/js/main.3ede76f3.chunk.js"
+    "static/js/main.d6169ba9.chunk.js"
   ]
 }
