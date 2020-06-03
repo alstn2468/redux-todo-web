@@ -40,15 +40,20 @@ const TopHeaderContainer = styled.div`
 `;
 
 const InfoIconContainer = styled.div`
+    display: flex;
+    flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     margin-left: 15px;
     margin-top: 15px;
-    width: 20px;
+    width: auto;
     height: 20px;
+    color: #000000;
     cursor: pointer;
 
     &:hover {
+        color: #ff8800;
+
         svg {
             fill: #ff8800;
         }
@@ -57,15 +62,33 @@ const InfoIconContainer = styled.div`
     @media (min-width: 320px) and (max-width: 480px) {
         margin-left: 10px;
         margin-top: 10px;
-        width: 16px;
         height: 16px;
     }
 `;
 
 const InfoIcon = styled(BaseInfoIcon)`
+    display: flex;
     transition: fill 0.5s ease;
-    width: 100%;
-    height: 100%;
+    width: 20px;
+    height: 20px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        width: 16px;
+        height: 16px;
+    }
+`;
+
+const InfoText = styled.div`
+    font-size: 16px;
+    transition: all 0.5s ease;
+    margin-left: -4px;
+    margin-bottom: -2px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        font-size: 12px;
+        margin-left: -2px;
+        margin-bottom: 0;
+    }
 `;
 
 const TooltipTitle = styled.div`
@@ -206,6 +229,7 @@ function SignUpDialogComponent({
                 <TopHeaderContainer>
                     <InfoIconContainer data-tip data-for="signUpToolTip">
                         <InfoIcon />
+                        <InfoText>HELP</InfoText>
                     </InfoIconContainer>
                     <ReactTooltip
                         id="signUpToolTip"
@@ -220,6 +244,12 @@ function SignUpDialogComponent({
                                 ❌
                             </span>{' '}
                             Less than 4 characters
+                        </TooltipText>
+                        <TooltipText>
+                            <span role="img" aria-label="warning-icon">
+                                ❌
+                            </span>{' '}
+                            Except alphabets and numbers
                         </TooltipText>
                         <TooltipText>
                             <span role="img" aria-label="warning-icon">
