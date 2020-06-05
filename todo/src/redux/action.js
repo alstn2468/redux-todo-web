@@ -45,6 +45,8 @@ async function tokenIsExpired(dispatch, response) {
 
 function fetchSignUp(username, password, passwordConfirm) {
     return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
         const response = await fetch(BASE_URL + 'signup', {
             method: 'POST',
             headers: {
@@ -66,9 +68,12 @@ function fetchSignUp(username, password, passwordConfirm) {
             cookies.set('User', user);
 
             dispatch(loginUser(user));
+            setTimeout(() => dispatch(setIsFetching(false)), 150);
 
             return dispatch(closeSignUpDialog());
         }
+
+        setTimeout(() => dispatch(setIsFetching(false)), 150);
 
         const { error } = response_json;
 
@@ -84,6 +89,8 @@ function fetchSignUp(username, password, passwordConfirm) {
 
 function fetchLogin(username, password) {
     return async (dispatch) => {
+        dispatch(setIsFetching(true));
+
         const response = await fetch(BASE_URL + 'login', {
             method: 'POST',
             headers: {
@@ -104,9 +111,12 @@ function fetchLogin(username, password) {
             cookies.set('User', user);
 
             dispatch(loginUser(user));
+            setTimeout(() => dispatch(setIsFetching(false)), 150);
 
             return dispatch(closeLoginDialog());
         }
+
+        setTimeout(() => dispatch(setIsFetching(false)), 150);
 
         const { error } = response_json;
 
