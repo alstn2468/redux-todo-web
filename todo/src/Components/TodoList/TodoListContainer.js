@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
-import { todoDisplayFilter } from 'redux/action';
-import TodoListComponent from './TodoListComponent';
-import Cookies from 'universal-cookie';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchTodoList } from "actions/todoAction";
+import { todoDisplayFilter } from "actions/filterAction";
+import TodoListComponent from "Components/TodoList/TodoListComponent";
+import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
@@ -25,7 +25,7 @@ function getDisplayTodos(state, filter) {
             };
 
         default:
-            throw new Error('Unknown Filter : ' + filter);
+            throw new Error("Unknown Filter : " + filter);
     }
 }
 
@@ -38,16 +38,12 @@ function mapStateToProps(state) {
 
 function TodoListContainer({ isLoggedIn, todos, dispatch }) {
     useEffect(() => {
-        function fetchTodoList() {
-            dispatch(actionCreators.fetchTodoList());
-        }
-
         function getAccessToken() {
-            return cookies.get('Access-Token');
+            return cookies.get("Access-Token");
         }
 
         if (isLoggedIn || getAccessToken()) {
-            fetchTodoList();
+            dispatch(fetchTodoList());
         }
     }, [dispatch, isLoggedIn]);
 

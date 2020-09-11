@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { connect } from 'react-redux';
-import { WARNING } from 'Constants/SnackBarVariant';
-import actionCreators from 'redux/action';
-import TodoComponent from './TodoComponent';
+import React, { useState, useRef } from "react";
+import { connect } from "react-redux";
+import { WARNING } from "Constants/SnackBarVariant";
+import { fetchUpdateTodoItem, fetchDeleteTodoItem } from "actions/todoAction";
+import { setSnackBarState } from "actions/snackBarAction";
+import TodoComponent from "Components/Todo/TodoComponent";
 
 function mapStateToProps(state) {
     return {
@@ -17,9 +18,9 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
 
     function onClickUpdateButton() {
         if (flag) {
-            if (text !== '') {
+            if (text !== "") {
                 dispatch(
-                    actionCreators.fetchUpdateTodoItem({
+                    fetchUpdateTodoItem({
                         ...item,
                         text,
                     })
@@ -27,10 +28,10 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
                 todoInputRef.current && todoInputRef.current.blur();
             } else {
                 return dispatch(
-                    actionCreators.setSnackBarState({
+                    setSnackBarState({
                         snackBarOpen: true,
                         snackBarVariant: WARNING,
-                        snackBarContent: 'Please write any text.',
+                        snackBarContent: "Please write any text.",
                     })
                 );
             }
@@ -39,22 +40,22 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
     }
 
     function onClickDeleteButton() {
-        dispatch(actionCreators.fetchDeleteTodoItem(item));
+        dispatch(fetchDeleteTodoItem(item));
     }
 
     function onPressEnterKey(event) {
-        if (event.key === 'Enter') {
-            if (text === '') {
+        if (event.key === "Enter") {
+            if (text === "") {
                 dispatch(
-                    actionCreators.setSnackBarState({
+                    setSnackBarState({
                         snackBarOpen: true,
                         snackBarVariant: WARNING,
-                        snackBarContent: 'Please write any text.',
+                        snackBarContent: "Please write any text.",
                     })
                 );
             } else {
                 dispatch(
-                    actionCreators.fetchUpdateTodoItem({
+                    fetchUpdateTodoItem({
                         ...item,
                         text,
                     })
@@ -67,7 +68,7 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
 
     function onClickCompletedStatusButton() {
         dispatch(
-            actionCreators.fetchUpdateTodoItem({
+            fetchUpdateTodoItem({
                 ...item,
                 isCompleted: !item.isCompleted,
             })

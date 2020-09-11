@@ -1,3 +1,3 @@
-import LoadingOverlayContainer from './LoadingOverlayContainer';
+import LoadingOverlayContainer from "Components/LoadingOverlay/LoadingOverlayContainer";
 
 export default LoadingOverlayContainer;

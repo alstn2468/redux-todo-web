@@ -1,3 +1,3 @@
-import TodoCounterContainer from './TodoCounterContainer';
+import TodoCounterContainer from "Components/TodoCounter/TodoCounterContainer";
 
 export default TodoCounterContainer;

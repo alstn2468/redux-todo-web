@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import LoadingOverlayComponent from './LoadingOverlayComponent';
+import { connect } from "react-redux";
+import LoadingOverlayComponent from "Components/LoadingOverlay/LoadingOverlayComponent";
 
 function mapStateToProps(state) {
     return state.todoReducer;

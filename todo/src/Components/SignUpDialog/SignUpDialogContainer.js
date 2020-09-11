@@ -1,12 +1,13 @@
-import React, { useState, useRef } from 'react';
-import SignUpDialogComponent from './SignUpDialogComponent';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
+import React, { useState, useRef } from "react";
+import SignUpDialogComponent from "Components/SignUpDialog/SignUpDialogComponent";
+import { connect } from "react-redux";
+import { fetchSignUp } from "actions/authAction";
+import { closeSignUpDialog } from "actions/signUpDialogAction";
 import {
     validUsername,
     validPassword,
     validPasswordConfirm,
-} from 'utils/Validation';
+} from "utils/Validation";
 
 function mapStateToProps(state) {
     return {
@@ -15,9 +16,9 @@ function mapStateToProps(state) {
 }
 
 function SignUpDialogContainer({ dialogOpen, dispatch }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
     const passwordConfirmInputRef = useRef(null);
     const isValidUsername = validUsername(username);
     const isValidPassword = validPassword(password);
@@ -27,19 +28,17 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     );
 
     function onClickSignUpButton() {
-        setUsername('');
-        setPassword('');
-        setPasswordConfirm('');
+        setUsername("");
+        setPassword("");
+        setPasswordConfirm("");
         passwordConfirmInputRef.current &&
             passwordConfirmInputRef.current.blur();
-        dispatch(
-            actionCreators.fetchSignUp(username, password, passwordConfirm)
-        );
+        dispatch(fetchSignUp(username, password, passwordConfirm));
     }
 
     function onKeyPressEnter(event) {
         if (
-            event.key === 'Enter' &&
+            event.key === "Enter" &&
             isValidUsername &&
             isValidPassword &&
             isValidPasswordConfirm
@@ -49,10 +48,10 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     }
 
     function closeDialog() {
-        setUsername('');
-        setPassword('');
-        setPasswordConfirm('');
-        dispatch(actionCreators.closeSignUpDialog());
+        setUsername("");
+        setPassword("");
+        setPasswordConfirm("");
+        dispatch(closeSignUpDialog());
     }
 
     function onChangeUsername(event) {

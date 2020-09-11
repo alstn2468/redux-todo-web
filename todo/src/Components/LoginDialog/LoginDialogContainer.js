@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
-import LoginDialogComponent from './LoginDialogComponent';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
-import { validUsername, validPassword } from 'utils/Validation';
+import React, { useState, useRef } from "react";
+import LoginDialogComponent from "Components/LoginDialog/LoginDialogComponent";
+import { connect } from "react-redux";
+import { fetchLogin } from "actions/authAction";
+import { closeLoginDialog } from "actions/loginDialogAction";
+import { validUsername, validPassword } from "utils/Validation";
 
 function mapStateToProps(state) {
     return {
@@ -11,29 +12,29 @@ function mapStateToProps(state) {
 }
 
 function LoginDialogContainer({ dialogOpen, dispatch }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const passwordInputRef = useRef(null);
     const isValidUsername = validUsername(username);
     const isValidPassword = validPassword(password);
 
     function onClickLoginButton() {
         passwordInputRef.current && passwordInputRef.current.blur();
-        dispatch(actionCreators.fetchLogin(username, password));
-        setUsername('');
-        setPassword('');
+        dispatch(fetchLogin(username, password));
+        setUsername("");
+        setPassword("");
     }
 
     function onKeyPressEnter(event) {
-        if (event.key === 'Enter' && isValidUsername && isValidPassword) {
+        if (event.key === "Enter" && isValidUsername && isValidPassword) {
             onClickLoginButton();
         }
     }
 
     function closeDialog() {
-        setUsername('');
-        setPassword('');
-        dispatch(actionCreators.closeLoginDialog());
+        setUsername("");
+        setPassword("");
+        dispatch(closeLoginDialog());
     }
 
     function onChangeUsername(event) {

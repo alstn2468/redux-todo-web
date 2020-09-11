@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
-import SnackbarComponent from './SnackBarComponent';
+import React from "react";
+import { connect } from "react-redux";
+import { setSnackBarState } from "actions/snackBarAction";
+import SnackbarComponent from "Components/SnackBar/SnackBarComponent";
 
 const mapStateToProps = (state) => {
     return state.snackBarReducer;
@@ -18,7 +18,7 @@ function SnackbarContainer(props) {
 
     function onCloseSnackBar() {
         dispatch(
-            actionCreators.setSnackBarState({
+            setSnackBarState({
                 snackBarOpen: false,
             })
         );

@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import UserInfoComponent from './UserInfoComponent';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
-import Cookies from 'universal-cookie';
+import React, { useEffect } from "react";
+import UserInfoComponent from "Components/UserInfo/UserInfoComponent";
+import { connect } from "react-redux";
+import { openLoginDialog } from "actions/loginDialogAction";
+import { openSignUpDialog } from "actions/signUpDialogAction";
+import { loginUser, fetchLogoutUser } from "actions/authAction";
+import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
@@ -14,26 +16,22 @@ function mapStateToProps(state) {
 
 function UserInfoContainer({ isLoggedIn, user, dispatch }) {
     function onClickLoginButton() {
-        dispatch(actionCreators.openLoginDialog());
+        dispatch(openLoginDialog());
     }
 
     function onClickSignUpButton() {
-        dispatch(actionCreators.openSignUpDialog());
+        dispatch(openSignUpDialog());
     }
 
     function onClickLogoutButton() {
-        dispatch(actionCreators.fetchLogoutUser());
+        dispatch(fetchLogoutUser());
     }
 
-    const cookieUser = cookies.get('User');
+    const cookieUser = cookies.get("User");
 
     useEffect(() => {
-        function dispatchLoginUser() {
-            dispatch(actionCreators.loginUser(cookieUser));
-        }
-
         if (cookieUser) {
-            dispatchLoginUser();
+            dispatch(loginUser(cookieUser));
         }
     }, [dispatch, cookieUser]);
 

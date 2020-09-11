@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
-import ClearCompletedButtonComponent from './ClearCompletedButtonComponent';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchClearCompletedTodoItem } from "actions/todoAction";
+import ClearCompletedButtonComponent from "Components/ClearCompletedButton/ClearCompletedButtonComponent";
 
 function mapStateToProps(state) {
     return {
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 
 function ClearCompletedButtonContainer({ isLoggedIn, dispatch }) {
     function onClickClearCompletedButton() {
-        dispatch(actionCreators.fetchClearCompletedTodoItem());
+        dispatch(fetchClearCompletedTodoItem());
     }
 
     return (

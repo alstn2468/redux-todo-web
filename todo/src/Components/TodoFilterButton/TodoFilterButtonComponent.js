@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { todoDisplayFilter } from 'redux/action';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { todoDisplayFilter } from "actions/filterAction";
 
 const FilterButtonContainer = styled.div`
     display: flex;
@@ -39,9 +39,9 @@ function TodoFilterButtonComponent({
             <Button
                 className={`header-button ${
                     filter === todoDisplayFilter.DISPLAY_ALL_TODO && isLoggedIn
-                        ? 'selected'
-                        : 'unselected'
-                } ${isLoggedIn ? ' able' : ''}`}
+                        ? "selected"
+                        : "unselected"
+                } ${isLoggedIn ? " able" : ""}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_ALL_TODO || !isLoggedIn
                 }
@@ -53,9 +53,9 @@ function TodoFilterButtonComponent({
                 className={`header-button ${
                     filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO &&
                     isLoggedIn
-                        ? 'selected'
-                        : 'unselected'
-                } ${isLoggedIn ? ' able' : ''}`}
+                        ? "selected"
+                        : "unselected"
+                } ${isLoggedIn ? " able" : ""}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO ||
                     !isLoggedIn
@@ -68,9 +68,9 @@ function TodoFilterButtonComponent({
                 className={`header-button ${
                     filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO &&
                     isLoggedIn
-                        ? 'selected'
-                        : 'unselected'
-                } ${isLoggedIn ? 'able' : ''}`}
+                        ? "selected"
+                        : "unselected"
+                } ${isLoggedIn ? "able" : ""}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO ||
                     !isLoggedIn

@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
-import TodoInputComponent from './TodoInputComponent';
-import { WARNING } from 'Constants/SnackBarVariant';
-import { connect } from 'react-redux';
-import actionCreators from 'redux/action';
+import React, { useState, useRef } from "react";
+import TodoInputComponent from "Components/TodoInput/TodoInputComponent";
+import { WARNING } from "Constants/SnackBarVariant";
+import { connect } from "react-redux";
+import { setSnackBarState } from "actions/snackBarAction";
+import { fetchCreateTodoItem } from "actions/todoAction";
 
 function mapStateToProps(state) {
     return {
@@ -11,7 +12,7 @@ function mapStateToProps(state) {
 }
 
 function TodoInputContainer({ isLoggedIn, dispatch }) {
-    const [text, setText] = useState('');
+    const [text, setText] = useState("");
     const todoInputRef = useRef(null);
 
     function onChangeText(event) {
@@ -19,22 +20,22 @@ function TodoInputContainer({ isLoggedIn, dispatch }) {
     }
 
     function onPressEnterKey(event) {
-        if (event.key === 'Enter') {
-            if (text === '') {
+        if (event.key === "Enter") {
+            if (text === "") {
                 dispatch(
-                    actionCreators.setSnackBarState({
+                    setSnackBarState({
                         snackBarOpen: true,
                         snackBarVariant: WARNING,
-                        snackBarContent: 'Please write any text.',
+                        snackBarContent: "Please write any text.",
                     })
                 );
             } else {
                 dispatch(
-                    actionCreators.fetchCreateTodoItem({
+                    fetchCreateTodoItem({
                         text,
                     })
                 );
-                setText('');
+                setText("");
                 todoInputRef.current && todoInputRef.current.blur();
             }
         }
