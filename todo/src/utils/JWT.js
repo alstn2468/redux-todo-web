@@ -1,7 +1,7 @@
 export function getPayload(token) {
     const payload = token.split(".")[1];
 
-    return payload ? payload : {};
+    return payload ? btoa(payload) : {};
 }
 
 export function isExpired(payload) {
