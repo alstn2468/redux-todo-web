@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from 'Constants/theme';
-import useDarkMode from 'Hooks/useDarkMode';
-import Header from 'Components/Header';
-import SnackBar from 'Components/SnackBar';
-import TodoList from 'Components/TodoList';
-import TodoInput from 'Components/TodoInput';
-import SocialMedia from 'Components/SocialMedia';
-import GlobalStyles from 'Components/GlobalStyles';
-import LoadingOverlay from 'Components/LoadingOverlay';
-import ThemeChangeButton from 'Components/ThemeChangeButton';
-import UserInfo from 'Components/UserInfo';
-import LoginDialog from 'Components/LoginDialog';
-import SignUpDialog from 'Components/SignUpDialog';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "Constants/Theme";
+import useDarkMode from "Hooks/useDarkMode";
+import Header from "Components/Header";
+import SnackBar from "Components/SnackBar";
+import TodoList from "Components/TodoList";
+import TodoInput from "Components/TodoInput";
+import SocialMedia from "Components/SocialMedia";
+import GlobalStyles from "Components/GlobalStyles";
+import LoadingOverlay from "Components/LoadingOverlay";
+import ThemeChangeButton from "Components/ThemeChangeButton";
+import UserInfo from "Components/UserInfo";
+import LoginDialog from "Components/LoginDialog";
+import SignUpDialog from "Components/SignUpDialog";
 
 const TodoContainer = styled.div`
     display: flex;
@@ -30,7 +30,7 @@ const TodoTitleText = styled.div`
     margin-bottom: 5px;
     font-size: 52px;
     font-weight: bold;
-    font-family: 'Abel', sans-serif;
+    font-family: "Abel", sans-serif;
     text-shadow: 4px 4px 1px gray;
     user-select: none;
 
@@ -49,7 +49,7 @@ function App() {
     }
 
     return (
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
             <TodoContainer>
                 <TodoTitleText>TO DO LIST</TodoTitleText>
                 <SocialMedia />

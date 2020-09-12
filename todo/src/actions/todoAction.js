@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 
 import { SUCCESS, ERROR } from "Constants/SnackBarVariant";
-import { API_URL } from "Constants/URL";
+import { API_URL } from "Constants/Url";
 import { setIsFetching } from "actions/fetchAction";
 import { logoutUser } from "actions/authAction";
 import { setSnackBarState } from "actions/snackBarAction";

@@ -1,5 +1,5 @@
 import Cookies from "universal-cookie";
-import { BASE_URL } from "Constants/URL";
+import { BASE_URL } from "Constants/Url";
 import { ERROR } from "Constants/SnackBarVariant";
 import { setIsFetching } from "actions/fetchAction";
 import { closeSignUpDialog } from "actions/signUpDialogAction";
