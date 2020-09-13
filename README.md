@@ -21,6 +21,10 @@
 -   [x] Implement authentication logic using jwt
 -   [x] Implement login modal
 -   [x] Implement sign up modal
+-   [x] Split reducers, actions files
+-   [ ] Fix component structure
+-   [ ] Fix jwt auth logic
+-   [ ] Remove container components
 
 ### What I Earned
 
