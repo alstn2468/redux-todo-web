@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import TodoButton from "Components/TodoButton";
+import TodoButton from "Components/Todo/TodoButton";
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
