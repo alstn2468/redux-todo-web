@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import ClearCompletedButtonComponent from "Components/ClearCompletedButton/ClearCompletedButtonComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchClearCompletedTodoItem } from "actions/todoAction";
@@ -6,10 +6,10 @@ import { fetchClearCompletedTodoItem } from "actions/todoAction";
 function ClearCompletedButtonContainer() {
     const dispatch = useDispatch();
     const { isLoggedIn } = useSelector((state) => state.authReducer);
-    const onClickClearCompletedButton = useCallback(
-        () => dispatch(fetchClearCompletedTodoItem()),
-        [dispatch]
-    );
+
+    function onClickClearCompletedButton() {
+        dispatch(fetchClearCompletedTodoItem());
+    }
 
     return (
         <ClearCompletedButtonComponent
