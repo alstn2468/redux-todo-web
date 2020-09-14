@@ -1,17 +1,13 @@
 import React, { useState, useRef } from "react";
 import LoginDialogComponent from "Components/LoginDialog/LoginDialogComponent";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchLogin } from "actions/authAction";
 import { closeLoginDialog } from "actions/loginDialogAction";
 import { validUsername, validPassword } from "utils/Validation";
 
-function mapStateToProps(state) {
-    return {
-        ...state.loginDialogReducer,
-    };
-}
-
-function LoginDialogContainer({ dialogOpen, dispatch }) {
+function LoginDialogContainer() {
+    const dispatch = useDispatch();
+    const { dialogOpen } = useSelector((state) => state.loginDialogReducer);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const passwordInputRef = useRef(null);
@@ -62,4 +58,4 @@ function LoginDialogContainer({ dialogOpen, dispatch }) {
     );
 }
 
-export default connect(mapStateToProps)(LoginDialogContainer);
+export default LoginDialogContainer;

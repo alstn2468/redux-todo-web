@@ -1,7 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { ReactComponent as CloseIcon } from 'assets/Icons/close.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import {
+    DialogInput,
+    DialogButton,
+    DialogCloseButton,
+} from "Components/Dialog";
 
 const LoginDialogWrapper = styled.div`
     position: fixed;
@@ -14,7 +18,7 @@ const LoginDialogWrapper = styled.div`
     align-items: center;
     transition: all 0.5s ease;
     background-color: ${(prop) =>
-        prop.dialogOpen ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)'};
+        prop.dialogOpen ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0)"};
     z-index: ${(prop) => (prop.dialogOpen ? 100 : -100)};
 `;
 
@@ -32,25 +36,6 @@ const LoginDialogContainer = styled.div`
     }
 `;
 
-const CloseButtonContainer = styled.div`
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
-`;
-const CloseButton = styled.button`
-    width: 14px;
-    height: 14px;
-    margin-right: 10px;
-    margin-bottom: 15px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        width: 11px;
-        height: 11px;
-        margin-bottom: 5px;
-    }
-`;
-
 const LoginDialogFormContainer = styled.div`
     display: flex;
     flex: 4;
@@ -60,57 +45,6 @@ const LoginDialogFormContainer = styled.div`
 
     @media (min-width: 320px) and (max-width: 480px) {
         margin-top: -5px;
-    }
-`;
-
-const LoginDialogLabel = styled.label`
-    font-size: 16px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 12px;
-    }
-`;
-
-const LoginDialogInput = styled.input`
-    width: 60%;
-    margin-top: 5px;
-    margin-bottom: 8px;
-    height: 30px;
-    font-size: 14px;
-    padding-left: 5px;
-
-    &:focus {
-        outline: none;
-    }
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        height: 20px;
-        font-size: 10px;
-    }
-`;
-
-const ValidStatus = styled.span`
-    transition: all 0.5s ease;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    height: 2px;
-    width: ${(props) => (props.isEmpty ? '0%' : '60%')};
-    background-color: ${(props) => (props.isValid ? '#00c851' : '#ff4444')};
-`;
-
-const LoginDialogButtonContainer = styled.div`
-    width: 60%;
-    margin-top: 10px;
-`;
-
-const LoginDialogSubmitButton = styled.button`
-    width: 100%;
-    height: 40px;
-    font-size: 16px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        height: 34px;
-        font-size: 12px;
     }
 `;
 
@@ -133,60 +67,33 @@ function LoginDialogComponent({
                 className="dialog-container"
                 dialogOpen={dialogOpen}
             >
-                <CloseButtonContainer>
-                    <CloseButton className="header-button">
-                        <CloseIcon onClick={closeDialog} />
-                    </CloseButton>
-                </CloseButtonContainer>
+                <DialogCloseButton onClick={closeDialog} />
                 <LoginDialogFormContainer>
-                    <LoginDialogLabel
-                        htmlFor="username"
-                        className="dialog-label"
-                    >
-                        USERNAME
-                    </LoginDialogLabel>
-                    <LoginDialogInput
-                        className="dialog-input"
+                    <DialogInput
+                        label="USERNAME"
                         name="username"
-                        autoComplete="off"
-                        value={username}
                         type="text"
+                        value={username}
                         onChange={onChangeUsername}
+                        isValid={usernameValid}
                         maxLength={25}
                     />
-                    <ValidStatus
-                        isValid={usernameValid}
-                        isEmpty={username.length === 0}
-                    />
-                    <LoginDialogLabel
-                        htmlFor="password"
-                        className="dialog-label"
-                    >
-                        PASSWORD
-                    </LoginDialogLabel>
-                    <LoginDialogInput
-                        ref={passwordInputRef}
-                        className="dialog-input"
+                    <DialogInput
+                        label="PASSWORD"
                         name="password"
                         type="password"
+                        ref={passwordInputRef}
                         value={password}
                         onChange={onChangePassword}
                         onKeyPress={onKeyPressEnter}
+                        isValid={passwordValid}
                         maxLength={30}
                     />
-                    <ValidStatus
-                        isValid={passwordValid}
-                        isEmpty={password.length === 0}
+                    <DialogButton
+                        onClick={onClickLoginButton}
+                        disabled={!usernameValid || !passwordValid}
+                        label="LOGIN"
                     />
-                    <LoginDialogButtonContainer>
-                        <LoginDialogSubmitButton
-                            className="dialog-button"
-                            onClick={onClickLoginButton}
-                            disabled={!usernameValid || !passwordValid}
-                        >
-                            LOGIN
-                        </LoginDialogSubmitButton>
-                    </LoginDialogButtonContainer>
                 </LoginDialogFormContainer>
             </LoginDialogContainer>
         </LoginDialogWrapper>
