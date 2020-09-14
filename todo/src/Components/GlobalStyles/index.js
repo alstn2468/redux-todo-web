@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
     ${reset};
@@ -205,6 +205,10 @@ const globalStyles = createGlobalStyle`
                 fill: ${({ theme }) => theme.headerButtonHoverColor};
             }
         }
+    }
+
+    .header-button {
+        cursor: not-allowed;
     }
 
     .header-button.able {
