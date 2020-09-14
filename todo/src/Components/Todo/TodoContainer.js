@@ -1,17 +1,13 @@
 import React, { useState, useRef } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { WARNING } from "Constants/SnackBarVariant";
 import { fetchUpdateTodoItem, fetchDeleteTodoItem } from "actions/todoAction";
 import { setSnackBarState } from "actions/snackBarAction";
 import TodoComponent from "Components/Todo/TodoComponent";
 
-function mapStateToProps(state) {
-    return {
-        isLoggedIn: state.authReducer.isLoggedIn,
-    };
-}
-
-function TodoContainer({ isLoggedIn, item, dispatch }) {
+function TodoContainer({ item }) {
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector((state) => state.authReducer);
     const [text, setText] = useState(item.text);
     const [flag, setFlag] = useState(false);
     const todoInputRef = useRef(null);
@@ -66,7 +62,7 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
         }
     }
 
-    function onClickCompletedStatusButton() {
+    function onClcikStatusChangeButton() {
         dispatch(
             fetchUpdateTodoItem({
                 ...item,
@@ -82,13 +78,13 @@ function TodoContainer({ isLoggedIn, item, dispatch }) {
             item={item}
             isLoggedIn={isLoggedIn}
             todoInputRef={todoInputRef}
-            setText={setText}
+            onChangeInput={setText}
+            onPressEnterKey={onPressEnterKey}
             onClickUpdateButton={onClickUpdateButton}
             onClickDeleteButton={onClickDeleteButton}
-            onPressEnterKey={onPressEnterKey}
-            onClickCompletedStatusButton={onClickCompletedStatusButton}
+            onClcikStatusChangeButton={onClcikStatusChangeButton}
         />
     );
 }
 
-export default connect(mapStateToProps)(TodoContainer);
+export default TodoContainer;

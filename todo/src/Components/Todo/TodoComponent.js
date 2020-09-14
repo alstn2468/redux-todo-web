@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import TodoButton from 'Components/TodoButton';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import TodoButton from "Components/TodoButton";
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
     updateTodoItemButtonStyle,
-} from 'Constants/ButtonStyles';
-import { ReactComponent as Success } from 'assets/Icons/success.svg';
-import { ReactComponent as Cross } from 'assets/Icons/cross.svg';
-import { ReactComponent as Trash } from 'assets/Icons/trash.svg';
-import { ReactComponent as Pencil } from 'assets/Icons/pencil.svg';
-import { ReactComponent as Save } from 'assets/Icons/save.svg';
+} from "Constants/ButtonStyles";
+import { ReactComponent as Success } from "assets/Icons/success.svg";
+import { ReactComponent as Cross } from "assets/Icons/cross.svg";
+import { ReactComponent as Trash } from "assets/Icons/trash.svg";
+import { ReactComponent as Pencil } from "assets/Icons/pencil.svg";
+import { ReactComponent as Save } from "assets/Icons/save.svg";
 
 const TodoContainer = styled.div`
     display: flex;
@@ -33,7 +33,7 @@ const TodoData = styled.div`
     font-size: 22px;
     font-weight: 400;
     text-decoration: ${(props) =>
-        props.isCompleted ? 'line-through' : 'none'};
+        props.isCompleted ? "line-through" : "none"};
     margin: 0 10px;
     user-select: none;
 
@@ -60,17 +60,17 @@ function TodoComponent({
     text,
     flag,
     item,
-    setText,
+    onChangeInput,
     todoInputRef,
     onClickUpdateButton,
     onClickDeleteButton,
     onPressEnterKey,
-    onClickCompletedStatusButton,
+    onClcikStatusChangeButton,
 }) {
     return (
         <TodoContainer className="todo-item">
             <TodoButton
-                onClick={onClickCompletedStatusButton}
+                onClick={onClcikStatusChangeButton}
                 buttonIcon={item.isCompleted ? <Success /> : <Cross />}
                 flag={flag}
                 styles={changeCompleteButtonStyle}
@@ -80,7 +80,7 @@ function TodoComponent({
                     ref={todoInputRef}
                     className="todo-input"
                     disabled={!isLoggedIn}
-                    onChange={(event) => setText(event.target.value)}
+                    onChange={(event) => onChangeInput(event.target.value)}
                     onKeyPress={(event) => onPressEnterKey(event)}
                     value={text}
                 />
@@ -114,12 +114,12 @@ TodoComponent.propTypes = {
         text: PropTypes.string.isRequired,
         isCompleted: PropTypes.bool.isRequired,
     }),
-    setText: PropTypes.func.isRequired,
+    onChangeInput: PropTypes.func.isRequired,
     todoInputRef: PropTypes.object.isRequired,
     onClickUpdateButton: PropTypes.func.isRequired,
     onClickDeleteButton: PropTypes.func.isRequired,
     onPressEnterKey: PropTypes.func.isRequired,
-    onClickCompletedStatusButton: PropTypes.func.isRequired,
+    onClcikStatusChangeButton: PropTypes.func.isRequired,
 };
 
 export default TodoComponent;
