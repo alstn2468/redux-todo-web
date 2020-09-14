@@ -4,21 +4,22 @@ import styled from "styled-components";
 import { ReactComponent as CloseIcon } from "assets/Icons/close.svg";
 
 const CloseButtonContainer = styled.div`
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        top: 10px;
+    }
 `;
+
 const CloseButton = styled.button`
     width: 14px;
     height: 14px;
-    margin-right: 10px;
-    margin-bottom: 15px;
 
     @media (min-width: 320px) and (max-width: 480px) {
         width: 11px;
         height: 11px;
-        margin-bottom: 5px;
     }
 `;
 

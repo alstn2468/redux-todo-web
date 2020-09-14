@@ -38,14 +38,10 @@ const LoginDialogContainer = styled.div`
 
 const LoginDialogFormContainer = styled.div`
     display: flex;
-    flex: 4;
+    flex: 1;
     flex-direction: column;
     align-items: center;
-    margin-top: -10px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        margin-top: -5px;
-    }
+    justify-content: center;
 `;
 
 function LoginDialogComponent({

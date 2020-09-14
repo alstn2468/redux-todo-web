@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import SignUpDialogComponent from "Components/SignUpDialog/SignUpDialogComponent";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchSignUp } from "actions/authAction";
 import { closeSignUpDialog } from "actions/signUpDialogAction";
 import {
@@ -9,13 +9,9 @@ import {
     validPasswordConfirm,
 } from "utils/Validation";
 
-function mapStateToProps(state) {
-    return {
-        ...state.signUpDialogReducer,
-    };
-}
-
-function SignUpDialogContainer({ dialogOpen, dispatch }) {
+function SignUpDialogContainer() {
+    const dispatch = useDispatch();
+    const { dialogOpen } = useSelector((state) => state.signUpDialogReducer);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -86,4 +82,4 @@ function SignUpDialogContainer({ dialogOpen, dispatch }) {
     );
 }
 
-export default connect(mapStateToProps)(SignUpDialogContainer);
+export default SignUpDialogContainer;

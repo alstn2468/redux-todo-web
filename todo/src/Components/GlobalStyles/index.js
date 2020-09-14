@@ -56,6 +56,7 @@ const globalStyles = createGlobalStyle`
         background-color: #ffffff;
         border: 1px solid #ffffff;
         border-radius: 10px;
+        position: relative;
     }
 
     .dialog-label {
@@ -186,6 +187,7 @@ const globalStyles = createGlobalStyle`
         
         :after {
             content: '';
+            user-select: none;
             border-right-width: 1px;
             border-right-color: ${({ theme }) => theme.headerAfterBorderColor};
             border-right-style: solid;
