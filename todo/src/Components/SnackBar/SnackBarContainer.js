@@ -1,20 +1,16 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setSnackBarState } from "actions/snackBarAction";
 import SnackbarComponent from "Components/SnackBar/SnackBarComponent";
 
-const mapStateToProps = (state) => {
-    return state.snackBarReducer;
-};
-
-function SnackbarContainer(props) {
+function SnackbarContainer() {
+    const dispatch = useDispatch();
     const {
         snackBarOpen,
         snackBarContent,
         snackBarVariant,
         autoHideDuration,
-        dispatch,
-    } = props;
+    } = useSelector((state) => state.snackBarReducer);
 
     function onCloseSnackBar() {
         dispatch(
@@ -35,4 +31,4 @@ function SnackbarContainer(props) {
     );
 }
 
-export default connect(mapStateToProps)(SnackbarContainer);
+export default SnackbarContainer;

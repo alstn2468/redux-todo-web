@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MuiAlert from '@material-ui/lab/Alert';
+import React from "react";
+import PropTypes from "prop-types";
+import MuiAlert from "@material-ui/lab/Alert";
 
-function Alert(props) {
-    const { onClose, severity, children } = props;
-
+function Alert({ onClose, severity, children }) {
     return (
         <MuiAlert
             elevation={6}
