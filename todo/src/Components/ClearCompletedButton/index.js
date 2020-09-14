@@ -21,7 +21,7 @@ function ClearCompletedButton() {
     const { isLoggedIn } = useSelector((state) => state.authReducer);
     const onClickClearCompletedButton = useCallback(
         () => dispatch(fetchClearCompletedTodoItem()),
-        []
+        [dispatch]
     );
 
     return (
