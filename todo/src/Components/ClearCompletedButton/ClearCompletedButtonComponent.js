@@ -19,7 +19,7 @@ function ClearCompletedButtonComponent({ isLoggedIn, onClick }) {
     return (
         <Button
             disabled={!isLoggedIn}
-            className={`header-button${isLoggedIn ? " able" : ""}`}
+            className={`header-button${isLoggedIn ? " able" : " disable"}`}
             onClick={onClick}
         >
             CLEAR COMPLETED

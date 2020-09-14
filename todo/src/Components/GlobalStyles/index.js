@@ -207,7 +207,7 @@ const globalStyles = createGlobalStyle`
         }
     }
 
-    .header-button {
+    .header-button.disable {
         cursor: not-allowed;
     }
 

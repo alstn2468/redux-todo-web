@@ -41,7 +41,7 @@ function TodoFilterButtonComponent({
                     filter === todoDisplayFilter.DISPLAY_ALL_TODO && isLoggedIn
                         ? "selected"
                         : "unselected"
-                } ${isLoggedIn ? " able" : ""}`}
+                } ${isLoggedIn ? " able" : " disable"}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_ALL_TODO || !isLoggedIn
                 }
@@ -55,7 +55,7 @@ function TodoFilterButtonComponent({
                     isLoggedIn
                         ? "selected"
                         : "unselected"
-                } ${isLoggedIn ? " able" : ""}`}
+                } ${isLoggedIn ? " able" : " disable"}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_COMPLETD_TODO ||
                     !isLoggedIn
@@ -70,7 +70,7 @@ function TodoFilterButtonComponent({
                     isLoggedIn
                         ? "selected"
                         : "unselected"
-                } ${isLoggedIn ? "able" : ""}`}
+                } ${isLoggedIn ? " able" : " disable"}`}
                 disabled={
                     filter === todoDisplayFilter.DISPLAY_UNCOMPLETD_TODO ||
                     !isLoggedIn
