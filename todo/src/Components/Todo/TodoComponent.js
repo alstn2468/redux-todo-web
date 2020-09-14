@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import TodoButton from "Components/Todo/TodoButton";
+import TodoUpdateInput from "Components/Todo/TodoUpdateInput";
 import {
     changeCompleteButtonStyle,
     deleteTodoItemButtonStyle,
@@ -42,19 +43,6 @@ const TodoData = styled.div`
     }
 `;
 
-const TodoInput = styled.input`
-    width: 80%;
-    border: none;
-    font-size: 22px;
-    font-weight: 400;
-    text-align: left;
-    margin: 0 10px;
-
-    @media (min-width: 320px) and (max-width: 480px) {
-        font-size: 15px;
-    }
-`;
-
 function TodoComponent({
     isLoggedIn,
     text,
@@ -76,13 +64,12 @@ function TodoComponent({
                 styles={changeCompleteButtonStyle}
             />
             {flag ? (
-                <TodoInput
-                    ref={todoInputRef}
-                    className="todo-input"
-                    disabled={!isLoggedIn}
-                    onChange={(event) => onChangeInput(event.target.value)}
-                    onKeyPress={(event) => onPressEnterKey(event)}
+                <TodoUpdateInput
                     value={text}
+                    isLoggedIn={isLoggedIn}
+                    ref={todoInputRef}
+                    onChange={onChangeInput}
+                    onKeyPress={onPressEnterKey}
                 />
             ) : (
                 <TodoData isCompleted={item.isCompleted}>{item.text}</TodoData>

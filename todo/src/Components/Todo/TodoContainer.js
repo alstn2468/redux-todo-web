@@ -71,6 +71,10 @@ function TodoContainer({ item }) {
         );
     }
 
+    function onChangeInput(event) {
+        setText(event.target.value);
+    }
+
     return (
         <TodoComponent
             text={text}
@@ -78,7 +82,7 @@ function TodoContainer({ item }) {
             item={item}
             isLoggedIn={isLoggedIn}
             todoInputRef={todoInputRef}
-            onChangeInput={setText}
+            onChangeInput={onChangeInput}
             onPressEnterKey={onPressEnterKey}
             onClickUpdateButton={onClickUpdateButton}
             onClickDeleteButton={onClickDeleteButton}
