@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import SignUpDialogComponent from "Components/SignUpDialog/SignUpDialogComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSignUp } from "actions/authAction";
@@ -15,7 +15,6 @@ function SignUpDialogContainer() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    const passwordConfirmInputRef = useRef(null);
     const isValidUsername = validUsername(username);
     const isValidPassword = validPassword(password);
     const isValidPasswordConfirm = validPasswordConfirm(
@@ -23,12 +22,11 @@ function SignUpDialogContainer() {
         passwordConfirm
     );
 
-    function onClickSignUpButton() {
+    function onClickSignUpButton(event) {
         setUsername("");
         setPassword("");
         setPasswordConfirm("");
-        passwordConfirmInputRef.current &&
-            passwordConfirmInputRef.current.blur();
+        event.target.blur();
         dispatch(fetchSignUp(username, password, passwordConfirm));
     }
 
@@ -39,7 +37,7 @@ function SignUpDialogContainer() {
             isValidPassword &&
             isValidPasswordConfirm
         ) {
-            onClickSignUpButton();
+            onClickSignUpButton(event);
         }
     }
 
@@ -72,7 +70,6 @@ function SignUpDialogContainer() {
             usernameValid={isValidUsername}
             passwordValid={isValidPassword}
             passwordConfirmValid={isValidPasswordConfirm}
-            passwordConfirmInputRef={passwordConfirmInputRef}
             onClickSignUpButton={onClickSignUpButton}
             onChangePassword={onChangePassword}
             onChangeUsername={onChangeUsername}

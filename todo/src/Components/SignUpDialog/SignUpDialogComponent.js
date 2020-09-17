@@ -52,7 +52,6 @@ function SignUpDialogComponent({
     usernameValid,
     passwordValid,
     passwordConfirmValid,
-    passwordConfirmInputRef,
     dialogOpen,
     closeDialog,
     onChangeUsername,
@@ -92,7 +91,6 @@ function SignUpDialogComponent({
                         label="PASSWORD CONFIRM"
                         name="passwordConfirm"
                         type="password"
-                        ref={passwordConfirmInputRef}
                         value={passwordConfirm}
                         onChange={onChangePasswordConfirm}
                         onKeyPress={onKeyPressEnter}
@@ -122,7 +120,6 @@ SignUpDialogComponent.propTypes = {
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
     onChangePasswordConfirm: PropTypes.func.isRequired,
-    passwordConfirmInputRef: PropTypes.object.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,

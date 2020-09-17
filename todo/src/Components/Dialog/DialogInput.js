@@ -58,11 +58,14 @@ function DialogInput({ label, value, onChange, name, isValid, ...rest }) {
 }
 
 DialogInput.propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onKeyPress: PropTypes.func,
     isValid: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    maxLength: PropTypes.number.isRequired,
 };
 
 export default DialogInput;

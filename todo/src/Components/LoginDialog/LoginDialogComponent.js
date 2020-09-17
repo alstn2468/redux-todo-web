@@ -47,7 +47,6 @@ const LoginDialogFormContainer = styled.div`
 function LoginDialogComponent({
     username,
     password,
-    passwordInputRef,
     onClickLoginButton,
     onChangeUsername,
     onChangePassword,
@@ -78,7 +77,6 @@ function LoginDialogComponent({
                         label="PASSWORD"
                         name="password"
                         type="password"
-                        ref={passwordInputRef}
                         value={password}
                         onChange={onChangePassword}
                         onKeyPress={onKeyPressEnter}
@@ -103,7 +101,6 @@ LoginDialogComponent.propTypes = {
     onChangeUsername: PropTypes.func.isRequired,
     onChangePassword: PropTypes.func.isRequired,
     onKeyPressEnter: PropTypes.func.isRequired,
-    passwordInputRef: PropTypes.object.isRequired,
     dialogOpen: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     usernameValid: PropTypes.bool.isRequired,
