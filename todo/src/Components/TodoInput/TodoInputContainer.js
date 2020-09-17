@@ -1,17 +1,13 @@
 import React, { useState, useRef } from "react";
 import TodoInputComponent from "Components/TodoInput/TodoInputComponent";
 import { WARNING } from "Constants/SnackBarVariant";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setSnackBarState } from "actions/snackBarAction";
 import { fetchCreateTodoItem } from "actions/todoAction";
 
-function mapStateToProps(state) {
-    return {
-        isLoggedIn: state.authReducer.isLoggedIn,
-    };
-}
-
-function TodoInputContainer({ isLoggedIn, dispatch }) {
+function TodoInputContainer() {
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector((state) => state.authReducer);
     const [text, setText] = useState("");
     const todoInputRef = useRef(null);
 
@@ -52,4 +48,4 @@ function TodoInputContainer({ isLoggedIn, dispatch }) {
     );
 }
 
-export default connect(mapStateToProps)(TodoInputContainer);
+export default TodoInputContainer;
