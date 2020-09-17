@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import UserInfoComponent from "Components/UserInfo/UserInfoComponent";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openLoginDialog } from "actions/loginDialogAction";
 import { openSignUpDialog } from "actions/signUpDialogAction";
 import { loginUser, fetchLogoutUser } from "actions/authAction";
@@ -8,13 +8,10 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-function mapStateToProps(state) {
-    return {
-        ...state.authReducer,
-    };
-}
+function UserInfoContainer() {
+    const dispatch = useDispatch();
+    const { user, isLoggedIn } = useSelector((state) => state.authReducer);
 
-function UserInfoContainer({ isLoggedIn, user, dispatch }) {
     function onClickLoginButton() {
         dispatch(openLoginDialog());
     }
@@ -46,4 +43,4 @@ function UserInfoContainer({ isLoggedIn, user, dispatch }) {
     );
 }
 
-export default connect(mapStateToProps)(UserInfoContainer);
+export default UserInfoContainer;
