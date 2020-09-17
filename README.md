@@ -22,7 +22,7 @@
 -   [x] Implement login modal
 -   [x] Implement sign up modal
 -   [x] Split reducers, actions files
--   [ ] Fix component structure
+-   [x] Fix component structure
 -   [ ] Fix jwt auth logic
 
 ### What I Earned
