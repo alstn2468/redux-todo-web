@@ -24,7 +24,6 @@
 -   [x] Split reducers, actions files
 -   [ ] Fix component structure
 -   [ ] Fix jwt auth logic
--   [ ] Remove container components
 
 ### What I Earned
 
