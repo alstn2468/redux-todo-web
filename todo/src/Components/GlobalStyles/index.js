@@ -226,8 +226,9 @@ const globalStyles = createGlobalStyle`
         }
     }
 
-    .selected {
+    .header-button.selected {
       color: ${({ theme }) => theme.headerButtonHoverColor};
+      cursor: unset;
     }
 
     ._loading_overlay_content{

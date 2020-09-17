@@ -1,16 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setDisplayFilter, todoDisplayFilter } from "actions/filterAction";
 import TodoFilterButtonComponent from "Components/TodoFilterButton/TodoFilterButtonComponent";
 
-function mapStateToProps(state) {
-    return {
-        filter: state.todoDisplayFilterReducer,
-        isLoggedIn: state.authReducer.isLoggedIn,
-    };
-}
+function TodoFilterButtonContainer() {
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector((state) => state.authReducer);
+    const filter = useSelector((state) => state.todoDisplayFilterReducer);
 
-function TodoFilterButtonContainer({ isLoggedIn, filter, dispatch }) {
     function onClickDisplayAllButton() {
         dispatch(setDisplayFilter(todoDisplayFilter.DISPLAY_ALL_TODO));
     }
@@ -33,4 +30,4 @@ function TodoFilterButtonContainer({ isLoggedIn, filter, dispatch }) {
     );
 }
 
-export default connect(mapStateToProps)(TodoFilterButtonContainer);
+export default TodoFilterButtonContainer;
