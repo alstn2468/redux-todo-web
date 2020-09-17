@@ -10,6 +10,10 @@ const globalStyles = createGlobalStyle`
         border-radius: 0;
     }
 
+    *:focus {
+        outline: none;
+    }
+
     html {
         width: 100%;
         height: 100%;
